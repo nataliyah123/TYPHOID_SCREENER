@@ -7,7 +7,7 @@
 I have striped off some of the functionality from the app for the contributors to gain some experience and learn the ins and outs 
 of the app. Some of the functionality can be seen in the video below while others was striped before I made the video. the app does not have a pretty UI at the time of writing this document.
 
-[![Typhoid Screener]()]([https://www.youtube.com/watch?v=StTqXEQ2l-Y](https://youtu.be/s8BIGCNx3xk) "Typhoid Screener")
+[![Everything Is AWESOME](https://images.pexels.com/photos/89955/pexels-photo-89955.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)](https://youtu.be/s8BIGCNx3xk "Everything Is AWESOME")
 
 ## How to contribute to this project
 
@@ -20,8 +20,7 @@ of the app. Some of the functionality can be seen in the video below while other
 1). Fork the repository using the fork button available on upper right
 corner.
 
-![](media/image2.png){width="6.492361111111111in"
-height="0.5381944444444444in"}
+![](media/image2.png)
 
 2). Run the command
 
