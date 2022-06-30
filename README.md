@@ -7,14 +7,7 @@
 I have striped off some of the functionality from the app for the contributors to gain some experience and learn the ins and outs 
 of the app. Some of the functionality can be seen in the video below while others was striped before I made the video. the app does not have a pretty UI at the time of writing this document.
 
-&lt;div style="height: 0; padding-bottom: calc(56.47%);
-position:relative; width: 100%;"&gt;&lt;iframe allow="autoplay;
-gyroscope;" allowfullscreen height="100%" referrerpolicy="strict-origin"
-style="border:0; height:100%; left:0; overflow:hidden;
-position:absolute; top:0; width:100%" title="Embedded content made on
-Kapwing" width="100%"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p
-style="font-size: 12px; text-align: right;"&gt;Video edited on &lt;a
-href="https://youtu.be/s8BIGCNx3xk";
+<iframe width="560" height="315" src="https://www.youtube.com/embed/s8BIGCNx3xk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## How to contribute to this project
