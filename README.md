@@ -7,8 +7,7 @@
 I have striped off some of the functionality from the app for the contributors to gain some experience and learn the ins and outs 
 of the app. Some of the functionality can be seen in the video below while others was striped before I made the video. the app does not have a pretty UI at the time of writing this document.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/s8BIGCNx3xk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+[![Typhoid Screener]()]([https://www.youtube.com/watch?v=StTqXEQ2l-Y](https://youtu.be/s8BIGCNx3xk) "Typhoid Screener")
 
 ## How to contribute to this project
 
