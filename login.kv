@@ -49,8 +49,7 @@
         halign: "center"
     
 
-    MDRectangleFlatIconButton:
-        icon: "android"
+    MDRectangleFlatButton:
         text: "Next"
         theme_text_color: "Custom"
         text_color: 0, 0, 1, 1
@@ -95,16 +94,21 @@
             font_size: 20            
             pos_hint: {"center_x": 0.5}
             password: True
-        MDFillRoundFlatButton:
+        MDRectangleFlatButton:
             text: "LOG IN"
             font_size: 15
+            theme_text_color: "Custom"
+            text_color: 0, 0, 1, 1
             pos_hint: {"center_x": 0.5}
             on_press: app.Login()
-        MDFillRoundFlatButton:
+        MDRectangleFlatButton:
             text: "SIGN UP"
             font_size: 15
+            theme_text_color: "Custom"
+            text_color: 0, 0, 1, 1
             pos_hint: {"center_x": 0.5}
             on_press: root.manager.current = "third_page"
+
             
         
 
@@ -153,12 +157,15 @@
             width: 220
             font_size: 20            
             pos_hint: {"center_x": 0.5}        
-            password: True    
-        MDFillRoundFlatButton:
+            password: True
+        MDRectangleFlatButton:
             text: "SIGN UP"
             font_size: 15
+            theme_text_color: "Custom"
+            text_color: 0, 0, 1, 1
             pos_hint: {"center_x": 0.5}
             on_press: app.Sign_Up()
+        
                  
 
 <FourthPage>:
@@ -297,18 +304,21 @@
                         group: "diar_pain_radio"
                         text: "No"
                         pos_hint: {'center_x': .6, 'center_y': .5}
-                
-                MDFillRoundFlatButton:
+                        
+                MDRectangleFlatButton:
                     text: "SUBMIT"
                     font_size: 15
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 1, 1
                     pos_hint: {"center_x": 0.5}
                     on_press: app.Sign_Up()
-                MDFillRoundFlatButton:
+                MDRectangleFlatButton:
                     text: "PREDICT"
                     font_size: 15
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 1, 1
                     pos_hint: {"center_x": 0.5}
-                    #on_press: app.Sign_Up()    
-                 
+                    #on_press: app.Sign_Up()                  
 
 <FifthPage>:
     name: "fifth_page" 
@@ -321,23 +331,23 @@
         padding: 15
         spacing: 10
         orientation: 'vertical'         
-        MDFlatButton:
-            text: "Create a New Record"
+        MDRectangleFlatButton:
+            text: "  Create a New Record  "
             font_size: 15
             pos_hint: {"center_x": 0.5}
             on_press: app.changer()
-        MDFlatButton:
-            text: "Edit a record"
+        MDRectangleFlatButton:
+            text: "         Edit Records         "
             font_size: 15
             pos_hint: {"center_x": 0.5}
             on_press: root.manager.current = "seventh_page"    
-        MDFlatButton:
-            text: "Show previous records"
+        MDRectangleFlatButton:
+            text: "Show Previous Records"
             font_size: 15
             pos_hint: {"center_x": 0.5}
             on_press: root.manager.current = "eight_page" 
-        MDFlatButton:
-            text: "Delete a records"
+        MDRectangleFlatButton:
+            text: "        Delete Records       "
             font_size: 15
             pos_hint: {"center_x": 0.5}              
             on_press: root.manager.current = "ninth_page"
@@ -353,14 +363,14 @@
         padding: 15
         spacing: 10
         orientation: 'vertical'         
-        MDRectangleFlatIconButton:
-            text: "Data"
+        MDRectangleFlatButton:
+            text: " Data "
             font_size: 15
             pos_hint: {"center_x": 0.5}
             #on_press: app.changer()
             on_press: root.manager.current = "fifth_page"
-        MDRectangleFlatIconButton:
-            icon: "android"
+        MDRectangleFlatButton:
+            #icon: "android"
             text: "Camera "
             #theme_text_color: "Custom"
             #text_color: 0, 0, 1, 1
@@ -437,11 +447,11 @@
         padding: 15
         spacing: 10
         orientation: 'vertical'
-        MDFlatButton:
+
+        MDRectangleFlatButton:
             text: "BACK"
             font_size: 15
             pos_hint: {"center_x": 0.5}
-            #on_press: app.changer()
             on_press: root.manager.current = "fifth_page"     
 
 <Camera2>:
