@@ -13,6 +13,8 @@ of the app. Some of the functionality can be seen in the video below while other
 
 1. Choose an open issue.
 2. Make a new branch. I will not accept your pull request if you have made changes on the master branch.
+3. Once you are done with the issue. Submit it as a PR.
+4. Mention the issue number in your PR.
 
 
 ## Installation
