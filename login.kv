@@ -170,6 +170,7 @@
 
 <FourthPage>:
     name: "fourth_page"    
+        #create new records
         # Show patient symptoms form page #4        
     MDCard:    
         size_hint: None, None
@@ -318,10 +319,16 @@
                     theme_text_color: "Custom"
                     text_color: 0, 0, 1, 1
                     pos_hint: {"center_x": 0.5}
-                    #on_press: app.Sign_Up()                  
+                    #on_press: app.Sign_Up()     
+                MDRectangleFlatButton:
+                    text: "BACK"
+                    font_size: 15
+                    pos_hint: {"center_x": 0.5}
+                    on_press: root.manager.current = "fifth_page"              
 
 <FifthPage>:
     name: "fifth_page" 
+    #different options to alter data
     # Data collection and processing
     MDCard:    
         size_hint: None, None
@@ -351,6 +358,11 @@
             font_size: 15
             pos_hint: {"center_x": 0.5}              
             on_press: root.manager.current = "ninth_page"
+        MDRectangleFlatButton:
+            text: "BACK"
+            font_size: 15
+            pos_hint: {"center_x": 0.5}
+            on_press: root.manager.current = "sixth_page" 
         
 <SixthPage>:
     name: "sixth_page"             
@@ -364,24 +376,24 @@
         spacing: 10
         orientation: 'vertical'         
         MDRectangleFlatButton:
-            text: " Data "
+            text: "  Data  " 
             font_size: 15
-            pos_hint: {"center_x": 0.5}
+            pos_hint: {"center_x": 0.5, "center_y": 0.6}
             #on_press: app.changer()
             on_press: root.manager.current = "fifth_page"
         MDRectangleFlatButton:
             #icon: "android"
-            text: "Camera "
-            #theme_text_color: "Custom"
-            #text_color: 0, 0, 1, 1
-            #line_color: 0, 0, 1, 1
-            #theme_icon_color: "Custom"
-            #icon_color: 0, 0, 1, 1
-            valign: "center"
-            pos_hint: {"center_x": 0.5, "center_y": 0.1}
-            spacing: None
+            text: " Image "
+            #valign: "center"
+            pos_hint: {"center_x": 0.5, "center_y": 0.4}
+            #spacing: None
             on_press:                    
-                root.manager.current = "tenth_page"   
+                root.manager.current = "tenth_page"
+        MDRectangleFlatButton:
+            text: "BACK"
+            font_size: 15
+            pos_hint: {"center_x": 0.5, "center_y": 0.2}
+            on_press: root.manager.current = "first_page"  
         
 
 <SeventhPage>:
@@ -422,6 +434,12 @@
             width: 220
             font_size: 20
             pos_hint: {"center_x": 0.5}
+        MDRectangleFlatButton:
+            text: "BACK"
+            font_size: 15
+            pos_hint: {"center_x": 0.5, "center_y": 0.1}
+            on_press: root.manager.current = "fifth_page"
+        
         
 <EightPage>:
     name: "eight_page"             
@@ -434,6 +452,11 @@
         padding: 15
         spacing: 10
         orientation: 'vertical'
+        MDRectangleFlatButton:
+            text: "BACK"
+            font_size: 15
+            pos_hint: {"center_x": 0.5, "center_y": 0.1}
+            on_press: root.manager.current = "fifth_page"
             
 
 <NinthPage>:
@@ -479,11 +502,13 @@
         size_hint_y: None
         pos_hint: {"center_x": 0.5, "center_y": 0.2}
         height: '48dp'
-        on_press: root.manager.current = "eleventh_page"
+        on_press: root.manager.current = "eleventh_page"   
+    
     
 
 <EleventhPage>:
-    name: "eleventh_page"    
+    name: "eleventh_page"
+    #download option    
     #result
     MDCard:    
         size_hint: None, None
@@ -498,3 +523,8 @@
             font_size: 15
             pos_hint: {"center_x": 0.5}            
             #on_press: app.download()
+        MDRectangleFlatButton:
+            text: "BACK"
+            font_size: 15
+            pos_hint: {"center_x": 0.5, "center_y": 0.1}
+            on_press: root.manager.current = "tenth_page"
