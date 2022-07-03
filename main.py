@@ -144,6 +144,9 @@ class TestApp(MDApp):
         c = conn.cursor()               
         c.execute("SELECT name,mark FROM student where name = ?", (self.root.ids.page2.ids.user.text,))
         usr_data = c.fetchall()
+        loginName = self.root.ids.page2.ids.user.text
+        loginPassword = self.root.ids.page2.ids.password.text
+
         print("this is usr_data", usr_data)        
         if (len(usr_data) == 0):
             if not self.dialog:
@@ -160,14 +163,22 @@ class TestApp(MDApp):
                     ],
                 )
                 self.dialog.open()
-        if (len(usr_data)!= 0): #################workng ere
+
+        #when username or password is empty
+        if(loginName.split() == [] or loginPassword.split() == []):
+            self.dialog = MDDialog(
+                    title = 'Invalid Input !',
+                    text = 'Please enter a valid Username and Password',
+                    size_hint = (0.7,0.2),
+                    buttons = [MDFlatButton(text='Retry',on_release = self.close)]
+                    )
+            self.dialog.open()
+
+        elif(usr_data[0][0] == self.root.ids.page2.ids.user.text and usr_data[0][1] == int(self.root.ids.page2.ids.password.text)):
             print("I am elif usr",usr_data, usr_data[0][1], usr_data[0][0] == self.root.ids.page2.ids.user.text, usr_data[0][1] == int(self.root.ids.page2.ids.password.text))
             print("checking manager", self.root.current)
-            # self.root.current = 'fourth_page'
-            # open and display dialog
-            if(usr_data[0][0] == self.root.ids.page2.ids.user.text and usr_data[0][1] == int(self.root.ids.page2.ids.password.text)):
-                print("this is page4 ibia", self.root)
-                self.root.current = 'sixth_page'
+            print("this is page4 ibia", self.root)
+            self.root.current = 'sixth_page' 
                 
         #self.root.ids.word_label.text = f'{self.root.ids.user_signup.text} Added'       
         #self.root.ids.word_input.text = ''
