@@ -8,6 +8,7 @@ from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDFlatButton
 from kivy.core.window import Window
 from kivy.utils import platform
+from kivymd.uix.pickers import MDDatePicker
 import kivy
 # try:
 #     import cv2
@@ -118,7 +119,7 @@ class TestApp(MDApp):
         # Create Database Or Connect To One
         conn = sqlite3.connect('my_db.db')
         c = conn.cursor()
-        c.execute("SELECT * FROM 'student' LIMIT 0,1")
+        c.execute("SELECT * FROM 'USERLOGIN' LIMIT 0,1")
         records = c.fetchall()
         print("salam ibia", records[0])    
         Builder.load_file('login.kv')        
@@ -185,6 +186,20 @@ class TestApp(MDApp):
         # ibia.............. self.root.manager.current is used whereas outside this function in testApp it is not
         conn.commit()
         conn.close()
+    
+    #when "Ok" is clicked in the date picker
+    def on_save(self,instance,value,date_range):
+        self.root.ids.page3.ids.date.text = str(value)
+
+    #when "Cancel" is clicked in the date picker
+    def on_cancel(self,instance,value):
+        return
+
+    #function for date picker
+    def show_date_picker(self):
+        date_dialog = MDDatePicker()
+        date_dialog.bind(on_save = self.on_save,on_cancel=self.on_cancel)
+        date_dialog.open()
 
     def changer(self,*args):
         self.root.current = 'fourth_page'    
