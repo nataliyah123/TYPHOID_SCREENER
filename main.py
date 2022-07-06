@@ -118,7 +118,7 @@ class TestApp(MDApp):
         # Create Database Or Connect To One
         conn = sqlite3.connect('my_db.db')
         c = conn.cursor()
-        c.execute("SELECT * FROM 'student' LIMIT 0,1")
+        c.execute("SELECT * FROM 'USERLOGIN' LIMIT 0,1")
         records = c.fetchall()
         print("salam ibia", records[0])    
         Builder.load_file('login.kv')        
@@ -128,7 +128,7 @@ class TestApp(MDApp):
         print("this is testin", self.root.ids.page3.ids.user_signup.text)
         conn = sqlite3.connect('my_db.db')       
         c = conn.cursor()        
-        c.execute("INSERT INTO student (name, mark, sex) values(?,?,?)",
+        c.execute("INSERT INTO USERLOGIN (name, email, password) values(?,?,?)",
             [
                  self.root.ids.page3.ids.user_signup.text,
                  self.root.ids.page3.ids.location.text,
@@ -142,7 +142,7 @@ class TestApp(MDApp):
         print("this is login", self.root.ids.page2.ids.user.text)
         conn = sqlite3.connect('my_db.db')       
         c = conn.cursor()               
-        c.execute("SELECT name,mark FROM student where name = ?", (self.root.ids.page2.ids.user.text,))
+        c.execute("SELECT name,password FROM USERLOGIN where name = ? and password = ?", (self.root.ids.page2.ids.user.text, self.root.ids.page2.ids.password.text))
         usr_data = c.fetchall()
         loginName = self.root.ids.page2.ids.user.text
         loginPassword = self.root.ids.page2.ids.password.text
