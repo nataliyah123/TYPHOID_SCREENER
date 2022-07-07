@@ -129,42 +129,116 @@
             icon_color: 0, 0, 0, 0
             halign: 'center'
             font_size: 180
-        MDTextFieldRound:
-            id: user_signup
-            icon_left: "account-check"
-            hint_text: "Username"
-            foreground_color: 1, 0, 1, 1
-            size_hint_x: None
-            width: 220
-            font_size: 20
-            pos_hint: {"center_x": 0.5}
-        MDTextFieldRound:
-            id: location
-            icon_left: "map-marker"
-            hint_text: "Location"
-            foreground_color: 1, 0, 1, 1
-            size_hint_x: None
-            width: 220
-            font_size: 20            
-            pos_hint: {"center_x": 0.5}  
             
-        MDTextFieldRound:
-            id: password
-            icon_left: "key-variant"
-            hint_text: "Password"
-            foreground_color: 1, 0, 1, 1
-            size_hint_x: None
-            width: 220
-            font_size: 20            
-            pos_hint: {"center_x": 0.5}        
-            password: True
-        MDRectangleFlatButton:
-            text: "SIGN UP"
-            font_size: 15
-            theme_text_color: "Custom"
-            text_color: 0, 0, 1, 1
-            pos_hint: {"center_x": 0.5}
-            on_press: app.Sign_Up()
+        ScrollView:
+            #size_hint_y: 1.93
+            pos_hint: {'x':0, 'y': .11}
+            do_scroll_x: False
+            do_scroll_y: True
+            GridLayout:
+                size:(root.width, 800)
+                size_hint_x: None
+                size_hint_y: None
+                cols: 1
+                height: self.minimum_height
+                row_default_height: 60
+                row_force_default: True
+                #username
+                MDTextFieldRound:
+                    id: user_signup
+                    icon_left: "account-check"
+                    hint_text: "Username"
+                    foreground_color: 1, 0, 1, 1
+                    size_hint_x: None
+                    width: 220
+                    font_size: 20
+                    pos_hint: {"center_x": 0.5}
+                #email
+                MDTextFieldRound:
+                    id: signup_email
+                    icon_left: "email"
+                    hint_text: "Email"
+                    foreground_color: 1, 0, 1, 1
+                    size_hint_x: None
+                    width: 220
+                    font_size: 20
+                    pos_hint: {"center_x": 0.5}
+                #phone number
+                MDTextFieldRound:
+                    id: phone
+                    icon_left: "phone"
+                    hint_text: "Contact number"
+                    foreground_color: 1, 0, 1, 1
+                    size_hint_x: None
+                    width: 220
+                    font_size: 20
+                    pos_hint: {"center_x": 0.5}
+                #Gender
+                MDTextFieldRound:
+                    id: gender
+                    icon_left: "gender"
+                    hint_text: "Gender"
+                    foreground_color: 1, 0, 1, 1
+                    size_hint_x: None
+                    width: 220
+                    font_size: 20
+                    pos_hint: {"center_x": 0.5}
+                #city
+                MDTextFieldRound:
+                    id: city
+                    icon_left: "city"
+                    hint_text: "City"
+                    foreground_color: 1, 0, 1, 1
+                    size_hint_x: None
+                    width: 220
+                    font_size: 20
+                    pos_hint: {"center_x": 0.5}
+                #state
+                MDTextFieldRound:
+                    id: state
+                    icon_left: "city"
+                    hint_text: "State"
+                    foreground_color: 1, 0, 1, 1
+                    size_hint_x: None
+                    width: 220
+                    font_size: 20
+                    pos_hint: {"center_x": 0.5}
+                #country
+                MDTextFieldRound:
+                    id: country
+                    icon_left: "city"
+                    hint_text: "Country"
+                    foreground_color: 1, 0, 1, 1
+                    size_hint_x: None
+                    width: 220
+                    font_size: 20
+                    pos_hint: {"center_x": 0.5}
+                #password
+                MDTextFieldRound:
+                    id: password
+                    icon_left: "key-variant"
+                    hint_text: "Password"
+                    foreground_color: 1, 0, 1, 1
+                    size_hint_x: None
+                    width: 220
+                    font_size: 20            
+                    pos_hint: {"center_x": 0.5}        
+                    password: True
+                #DOB
+                MDFloatLayout:
+                    MDRaisedButton:
+                        id : date
+                        text : "Date of Birth"
+                        pos_hint: {"center_x": 0.2,"center_y": 0.5} 
+                        on_release : app.show_date_picker()
+
+                MDRectangleFlatButton:
+                    text: "SIGN UP"
+                    font_size: 15
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 1, 1
+                    pos_hint: {"center_x": 0.5}
+                    on_press: app.Sign_Up()
         
                  
 
