@@ -116,6 +116,10 @@ class TestApp(MDApp):
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "Indigo"
         self.theme_cls.accent_palette = "Blue"
+
+        #app icon
+        self.icon = "images/logo.png"
+        
         # Create Database Or Connect To One
         conn = sqlite3.connect('my_db.db')
         c = conn.cursor()
@@ -200,7 +204,7 @@ class TestApp(MDApp):
         date_dialog = MDDatePicker()
         date_dialog.bind(on_save = self.on_save,on_cancel=self.on_cancel)
         date_dialog.open()
-
+   
     def changer(self,*args):
         self.root.current = 'fourth_page'    
 
