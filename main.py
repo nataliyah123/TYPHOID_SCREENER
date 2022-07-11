@@ -8,7 +8,7 @@ from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDFlatButton
 from kivy.core.window import Window
 from kivy.utils import platform
-from kivymd.uix.pickers import MDDatePicker
+from kivymd.uix.picker import MDDatePicker
 import kivy
 # try:
 #     import cv2
@@ -117,9 +117,9 @@ class TestApp(MDApp):
         self.theme_cls.primary_palette = "Indigo"
         self.theme_cls.accent_palette = "Blue"
         # Create Database Or Connect To One
-        conn = sqlite3.connect('my_db.db')
+        conn = sqlite3.connect('doctechpat.db')
         c = conn.cursor()
-        c.execute("SELECT * FROM 'USERLOGIN' LIMIT 0,1")
+        c.execute("SELECT * FROM 'doctortech' LIMIT 0,1")
         records = c.fetchall()
         print("salam ibia", records[0])    
         Builder.load_file('login.kv')        
@@ -127,7 +127,7 @@ class TestApp(MDApp):
 
     def Sign_Up(self):
         print("this is testin", self.root.ids.page3.ids.user_signup.text)
-        conn = sqlite3.connect('my_db.db')       
+        conn = sqlite3.connect('doctechpat.db')       
         c = conn.cursor()        
         c.execute("INSERT INTO student (name, mark, sex) values(?,?,?)",
             [
@@ -141,18 +141,28 @@ class TestApp(MDApp):
 
     def Login(self):
         print("this is login", self.root.ids.page2.ids.user.text)
-        conn = sqlite3.connect('my_db.db')       
-        c = conn.cursor()               
-        c.execute("SELECT name,mark FROM student where name = ?", (self.root.ids.page2.ids.user.text,))
+        conn = sqlite3.connect('doctechpat.db')       
+        c = conn.cursor()                      
+        # c.execute("SELECT * FROM 'doctortech' where person_name = ? AND password = ?", (self.root.ids.page2.ids.user.text,self.root.ids.page2.ids.password.text))
+        c.execute("SELECT person_name, password FROM 'doctortech' where person_name = ? AND password = ? ", (self.root.ids.page2.ids.user.text,self.root.ids.page2.ids.password.text))
+
         usr_data = c.fetchall()
         loginName = self.root.ids.page2.ids.user.text
         loginPassword = self.root.ids.page2.ids.password.text
-
-        print("this is usr_data", usr_data)        
+        print("this is usr_data", usr_data[0],loginName)  
+        #when username or password is empty
+        if(loginName.split() == [] or loginPassword.split() == []):
+            self.dialog = MDDialog(
+                    title = 'Invalid Input !',
+                    text = 'Please enter a valid Username and Password',
+                    size_hint = (0.7,0.2),
+                    buttons = [MDFlatButton(text='Retry',on_release = self.close)]
+                    )
+            self.dialog.open()      
         if (len(usr_data) == 0):
             if not self.dialog:
                 # create dialog
-                print("I am inside login usr_Data len",)
+                print("I am inside login usr_Data len",len(usr_data))
                 self.dialog = MDDialog(
                     title="Sign up notice",
                     text=f"Please Sign up!",
@@ -163,20 +173,10 @@ class TestApp(MDApp):
                         ),
                     ],
                 )
-                self.dialog.open()
+                self.dialog.open()        
 
-        #when username or password is empty
-        if(loginName.split() == [] or loginPassword.split() == []):
-            self.dialog = MDDialog(
-                    title = 'Invalid Input !',
-                    text = 'Please enter a valid Username and Password',
-                    size_hint = (0.7,0.2),
-                    buttons = [MDFlatButton(text='Retry',on_release = self.close)]
-                    )
-            self.dialog.open()
-
-        elif(usr_data[0][0] == self.root.ids.page2.ids.user.text and usr_data[0][1] == int(self.root.ids.page2.ids.password.text)):
-            print("I am elif usr",usr_data, usr_data[0][1], usr_data[0][0] == self.root.ids.page2.ids.user.text, usr_data[0][1] == int(self.root.ids.page2.ids.password.text))
+        elif(usr_data[0][0] == self.root.ids.page2.ids.user.text and usr_data[0][1] == self.root.ids.page2.ids.password.text):
+            # print("I am elif usr",usr_data, usr_data[0][1], usr_data[0][0] == self.root.ids.page2.ids.user.text, usr_data[0][1] == int(self.root.ids.page2.ids.password.text))
             print("checking manager", self.root.current)
             print("this is page4 ibia", self.root)
             self.root.current = 'sixth_page' 
