@@ -125,15 +125,37 @@ class TestApp(MDApp):
         Builder.load_file('login.kv')        
         return ScreenManagement()
 
-    def Sign_Up(self):
+    def Sign_Up_doctech(self):
         print("this is testin", self.root.ids.page3.ids.user_signup.text)
         conn = sqlite3.connect('doctechpat.db')       
         c = conn.cursor()        
-        c.execute("INSERT INTO student (name, mark, sex) values(?,?,?)",
+        c.execute("INSERT INTO doctortech (person_name, email, occupation, organization,password) values(?,?,?,?,?)",
             [
                  self.root.ids.page3.ids.user_signup.text,
-                 self.root.ids.page3.ids.location.text,
+                 self.root.ids.page3.ids.signup_email.text,
+                 self.root.ids.page3.ids.occupation.text,
+                 self.root.ids.page3.ids.organization.text,
                  self.root.ids.page3.ids.password.text
+                
+            ])
+        conn.commit()
+        conn.close()
+
+    def submit_pat_info(self):
+        print("this is testin", self.root.ids.page4.ids.date.text)
+        conn = sqlite3.connect('doctechpat.db')       
+        c = conn.cursor()        
+        c.execute("INSERT INTO Patientinfo (patientname,country, city, state,phone,email,GENDER,ETHNICITY,DATEOFBIRTH ) values(?,?,?,?,?,?,?,?,?)",
+            [
+                 self.root.ids.page4.ids.patient_name.text,
+                 self.root.ids.page4.ids.country.text,
+                 self.root.ids.page4.ids.city.text,
+                 self.root.ids.page4.ids.state.text,
+                 self.root.ids.page4.ids.phone.text,
+                 self.root.ids.page4.ids.signup_email.text,
+                 self.root.ids.page4.ids.gender.text,
+                 self.root.ids.page4.ids.ethnicity.text,
+                 self.root.ids.page4.ids.date.text               
                 
             ])
         conn.commit()
@@ -189,7 +211,7 @@ class TestApp(MDApp):
     
     #when "Ok" is clicked in the date picker
     def on_save(self,instance,value,date_range):
-        self.root.ids.page3.ids.date.text = str(value)
+        self.root.ids.page4.ids.date.text = str(value)
 
     #when "Cancel" is clicked in the date picker
     def on_cancel(self,instance,value):
