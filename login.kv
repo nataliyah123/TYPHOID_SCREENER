@@ -217,7 +217,7 @@
             do_scroll_x: False
             do_scroll_y: True
             GridLayout:
-                size:(root.width, 2000)
+                size:(root.width, 2800)
                 size_hint_x: None
                 size_hint_y: None
                 cols: 1
@@ -336,11 +336,16 @@
                     padding_y: 5 
                 BoxLayout:
                     CheckBox:
-                        id: fever_yes
+                        id: fever_high
                         group: "fever_radio"
-                        text: "Yes"
+                        text: "High"
                         active: True
                         pos_hint: {'center_x': .4, 'center_y': .5}
+                    CheckBox:
+                        id: fever_low
+                        group: "fever_radio"
+                        text: "Low"
+                        pos_hint: {'center_x': .6, 'center_y': .5}
                     CheckBox:
                         id: fever_no
                         group: "fever_radio"
@@ -354,11 +359,16 @@
                     padding_y: 5 
                 BoxLayout:
                     CheckBox:
-                        id: abd_pain_yes
+                        id: abd_pain_high
                         group: "abd_pain_radio"
-                        text: "Yes"
+                        text: "High"
                         active: True
                         pos_hint: {'center_x': .4, 'center_y': .5}
+                    CheckBox:
+                        id: abd_pain_low
+                        group: "abd_pain_radio"
+                        text: "Low"
+                        pos_hint: {'center_x': .6, 'center_y': .5}
                     CheckBox:
                         id: abd_pain_no
                         group: "abd_pain_radio"
@@ -372,11 +382,16 @@
                     padding_y: 5 
                 BoxLayout:
                     CheckBox:
-                        id: cough_yes
+                        id: cough_high
                         group: "cough_radio"
-                        text: "Yes"
+                        text: "High"
                         active: True
                         pos_hint: {'center_x': .4, 'center_y': .5}
+                    CheckBox:
+                        id: cough_low
+                        group: "cough_radio"
+                        text: "Low"
+                        pos_hint: {'center_x': .6, 'center_y': .5}
                     CheckBox:
                         id: cough_no
                         group: "cough_radio"
@@ -390,17 +405,357 @@
                     padding_y: 5 
                 BoxLayout:
                     CheckBox:
-                        id: diar_pain_yes
-                        group: "diar_pain_radio"
-                        text: "Yes"
+                        id: diarrheoa_high
+                        group: "diarrheoa_radio"
+                        text: "High"
                         active: True
                         pos_hint: {'center_x': .4, 'center_y': .5}
                     CheckBox:
-                        id: diar_pain_no
-                        group: "diar_pain_radio"
-                        text: "No"
+                        id: diarrheoa_low
+                        group: "diarrheoa_radio"
+                        text: "Low"
                         pos_hint: {'center_x': .6, 'center_y': .5}
-                        
+                    CheckBox:
+                        id: diarrheoa_no
+                        group: "diarrheoa_radio"
+                        text: "No"
+                        pos_hint: {'center_x': .8, 'center_y': .5}
+                
+                Label:
+                    id: Constipation
+                    text: "Constipation"
+                    font_size: 20
+                    halign: "center"
+                    padding_y: 5 
+                BoxLayout:
+                    CheckBox:
+                        id: Constipation_high
+                        group: "Constipation_ratio"
+                        text: "High"
+                        active: True
+                        pos_hint: {'center_x': .4, 'center_y': .5}
+                    CheckBox:
+                        id: Constipation_low
+                        group: "Constipation_ratio"
+                        text: "Low"
+                        pos_hint: {'center_x': .6, 'center_y': .5}
+                    CheckBox:
+                        id: Constipation_no
+                        group: "Constipation_ratio"
+                        text: "No"
+                        pos_hint: {'center_x': .8, 'center_y': .5}
+
+                Label:
+                    id: Rose_spot
+                    text: "Rose spot"
+                    font_size: 20
+                    halign: "center"
+                    padding_y: 5 
+                BoxLayout:
+                    CheckBox:
+                        id: Rose_spot_high
+                        group: "Rose_spot_ratio"
+                        text: "High"
+                        active: True
+                        pos_hint: {'center_x': .4, 'center_y': .5}
+                    CheckBox:
+                        id: Rose_spot_low
+                        group: "Rose_spot_ratio"
+                        text: "Low"
+                        pos_hint: {'center_x': .6, 'center_y': .5}
+                    CheckBox:
+                        id: Rose_spot_no
+                        group: "Rose_spot_ratio"
+                        text: "No"
+                        pos_hint: {'center_x': .8, 'center_y': .5}
+                Label:
+                    id: Muscle_weakness
+                    text: "Muscle weakness"
+                    font_size: 20
+                    halign: "center"
+                    padding_y: 5 
+                BoxLayout:
+                    CheckBox:
+                        id: Muscle_weakness_high
+                        group: "Muscle_weakness_ratio"
+                        text: "High"
+                        active: True
+                        pos_hint: {'center_x': .4, 'center_y': .5}
+                    CheckBox:
+                        id: Muscle_weakness_low
+                        group: "Muscle_weakness_ratio"
+                        text: "Low"
+                        pos_hint: {'center_x': .6, 'center_y': .5}
+                    CheckBox:
+                        id: Muscle_weakness_no
+                        group: "Muscle_weakness_ratio"
+                        text: "No"
+                        pos_hint: {'center_x': .8, 'center_y': .5}
+
+                Label:
+                    id: Anorexia
+                    text: "Anorexia"
+                    font_size: 20
+                    halign: "center"
+                    padding_y: 5 
+                BoxLayout:
+                    CheckBox:
+                        id: Anorexia_high
+                        group: "Anorexia_ratio"
+                        text: "High"
+                        active: True
+                        pos_hint: {'center_x': .4, 'center_y': .5}
+                    CheckBox:
+                        id: Anorexia_low
+                        group: "Anorexia_ratio"
+                        text: "Low"
+                        pos_hint: {'center_x': .6, 'center_y': .5}
+                    CheckBox:
+                        id: Anorexia_no
+                        group: "Anorexia_ratio"
+                        text: "No"
+                        pos_hint: {'center_x': .8, 'center_y': .5}
+
+                Label:
+                    id: Headache
+                    text: "Headache"
+                    font_size: 20
+                    halign: "center"
+                    padding_y: 5 
+                BoxLayout:
+                    CheckBox:
+                        id: Headache_high
+                        group: "Headache_ratio"
+                        text: "High"
+                        active: True
+                        pos_hint: {'center_x': .4, 'center_y': .5}
+                    CheckBox:
+                        id: Headache_low
+                        group: "Headache_ratio"
+                        text: "Low"
+                        pos_hint: {'center_x': .6, 'center_y': .5}
+                    CheckBox:
+                        id: Headache_no
+                        group: "Headache_ratio"
+                        text: "No"
+                        pos_hint: {'center_x': .8, 'center_y': .5}
+
+                Label:
+                    id:  rash
+                    text: "Skin rash"
+                    font_size: 20
+                    halign: "center"
+                    padding_y: 5 
+                BoxLayout:
+                    CheckBox:
+                        id: rash_high
+                        group: "rash_ratio"
+                        text: "High"
+                        active: True
+                        pos_hint: {'center_x': .4, 'center_y': .5}
+                    CheckBox:
+                        id: rash_low
+                        group: "rash_ratio"
+                        text: "Low"
+                        pos_hint: {'center_x': .6, 'center_y': .5}
+                    CheckBox:
+                        id: rash_no
+                        group: "rash_ratio"
+                        text: "No"
+                        pos_hint: {'center_x': .8, 'center_y': .5}
+
+                Label:
+                    id: Weightless
+                    text: "Weightless"
+                    font_size: 20
+                    halign: "center"
+                    padding_y: 5 
+                BoxLayout:
+                    CheckBox:
+                        id: Weightless_high
+                        group: "Weightless_ratio"
+                        text: "High"
+                        active: True
+                        pos_hint: {'center_x': .4, 'center_y': .5}
+                    CheckBox:
+                        id: Weightless_low
+                        group: "Weightless_ratio"
+                        text: "Low"
+                        pos_hint: {'center_x': .6, 'center_y': .5}
+                    CheckBox:
+                        id: Weightless_no
+                        group: "Weightless_ratio"
+                        text: "No"
+                        pos_hint: {'center_x': .8, 'center_y': .5}
+
+                Label:
+                    id: Stomach_distension
+                    text: "Stomach distension"
+                    font_size: 20
+                    halign: "center"
+                    padding_y: 5 
+                BoxLayout:
+                    CheckBox:
+                        id: distension_high
+                        group: "distension_ratio"
+                        text: "High"
+                        active: True
+                        pos_hint: {'center_x': .4, 'center_y': .5}
+                    CheckBox:
+                        id: distension_low
+                        group: "distension_ratio"
+                        text: "Low"
+                        pos_hint: {'center_x': .6, 'center_y': .5}
+                    CheckBox:
+                        id: distension_no
+                        group: "distension_ratio"
+                        text: "No"
+                        pos_hint: {'center_x': .8, 'center_y': .5}
+
+                Label:
+                    id: Malaise
+                    text: "Malaise"
+                    font_size: 20
+                    halign: "center"
+                    padding_y: 5 
+                BoxLayout:
+                    CheckBox:
+                        id: Malaise_high
+                        group: "Malaise_ratio"
+                        text: "High"
+                        active: True
+                        pos_hint: {'center_x': .4, 'center_y': .5}
+                    CheckBox:
+                        id: Malaise_low
+                        group: "Malaise_ratio"
+                        text: "Low"
+                        pos_hint: {'center_x': .6, 'center_y': .5}
+                    CheckBox:
+                        id: Malaise_no
+                        group: "Malaise_ratio"
+                        text: "No"
+                        pos_hint: {'center_x': .8, 'center_y': .5}
+
+                Label:
+                    id: stool
+                    text: "Occult blood in stool"
+                    font_size: 20
+                    halign: "center"
+                    padding_y: 5 
+                BoxLayout:
+                    CheckBox:
+                        id: stool_high
+                        group: "stool_ratio"
+                        text: "High"
+                        active: True
+                        pos_hint: {'center_x': .4, 'center_y': .5}
+                    CheckBox:
+                        id: stool_low
+                        group: "stool_ratio"
+                        text: "Low"
+                        pos_hint: {'center_x': .6, 'center_y': .5}
+                    CheckBox:
+                        id: stool_no
+                        group: "stool_ratio"
+                        text: "No"
+                        pos_hint: {'center_x': .8, 'center_y': .5}
+
+                Label:
+                    id: Hemorrhages
+                    text: "Hemorrhages"
+                    font_size: 20
+                    halign: "center"
+                    padding_y: 5 
+                BoxLayout:
+                    CheckBox:
+                        id: Hemorrhages_high
+                        group: "Hemorrhages_ratio"
+                        text: "High"
+                        active: True
+                        pos_hint: {'center_x': .4, 'center_y': .5}
+                    CheckBox:
+                        id: Hemorrhages_low
+                        group: "Hemorrhages_ratio"
+                        text: "Low"
+                        pos_hint: {'center_x': .6, 'center_y': .5}
+                    CheckBox:
+                        id: Hemorrhages_no
+                        group: "Hemorrhages_ratio"
+                        text: "No"
+                        pos_hint: {'center_x': .8, 'center_y': .5}
+
+                Label:
+                    id: Derilium
+                    text: "Derilium"
+                    font_size: 20
+                    halign: "center"
+                    padding_y: 5 
+                BoxLayout:
+                    CheckBox:
+                        id: Derilium_high
+                        group: "Derilium_ratio"
+                        text: "High"
+                        active: True
+                        pos_hint: {'center_x': .4, 'center_y': .5}
+                    CheckBox:
+                        id: Derilium_low
+                        group: "Derilium_ratio"
+                        text: "Low"
+                        pos_hint: {'center_x': .6, 'center_y': .5}
+                    CheckBox:
+                        id: Derilium_no
+                        group: "Derilium_ratio"
+                        text: "No"
+                        pos_hint: {'center_x': .8, 'center_y': .5}
+
+                Label:
+                    id: rigidity
+                    text: "Abdominal rigidity"
+                    font_size: 20
+                    halign: "center"
+                    padding_y: 5 
+                BoxLayout:
+                    CheckBox:
+                        id: rigidity_high
+                        group: "rigidity_ratio"
+                        text: "High"
+                        active: True
+                        pos_hint: {'center_x': .4, 'center_y': .5}
+                    CheckBox:
+                        id: rigidity_low
+                        group: "rigidity_ratio"
+                        text: "Low"
+                        pos_hint: {'center_x': .6, 'center_y': .5}
+                    CheckBox:
+                        id: rigidity_no
+                        group: "rigidity_ratio"
+                        text: "No"
+                        pos_hint: {'center_x': .8, 'center_y': .5}
+
+                Label:
+                    id: Epitaxis
+                    text: "Epitaxis (Bloody nose)"
+                    font_size: 20
+                    halign: "center"
+                    padding_y: 5 
+                BoxLayout:
+                    CheckBox:
+                        id: Epitaxis_high
+                        group: "Epitaxis_ratio"
+                        text: "High"
+                        active: True
+                        pos_hint: {'center_x': .4, 'center_y': .5}
+                    CheckBox:
+                        id: Epitaxis_low
+                        group: "Epitaxis_ratio"
+                        text: "Low"
+                        pos_hint: {'center_x': .6, 'center_y': .5}
+                    CheckBox:
+                        id: Epitaxis_no
+                        group: "Epitaxis_ratio"
+                        text: "No"
+                        pos_hint: {'center_x': .8, 'center_y': .5}
+    
                 MDRectangleFlatButton:
                     text: "SUBMIT"
                     font_size: 15
