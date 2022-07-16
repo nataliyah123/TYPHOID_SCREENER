@@ -20,13 +20,11 @@
     Camera2:
         id: page10
     EleventhPage:
-        id: page11
-                               
+        id: page11                               
 
 <FirstPage>:
     name: "first_page"
     #MDScreen:
-
         #MDBoxLayout:
         #MDCard:
             #size_hint: None, None
@@ -46,8 +44,7 @@
         #elevation: 10
     MDLabel:
         text: "Welcome to Mboalab! \n This app is by no means a substitue of a established diagnostic procedures"
-        halign: "center"
-    
+        halign: "center"    
 
     MDRectangleFlatButton:
         text: "Next"
@@ -107,15 +104,12 @@
             theme_text_color: "Custom"
             text_color: 0, 0, 1, 1
             pos_hint: {"center_x": 0.5}
-            on_press: root.manager.current = "third_page"
-
-            
-        
+            on_press: root.manager.current = "third_page"   
+     
 
 <ThirdPage>:
-    name: "third_page"    
-
-        # Show sign up page #3
+    name: "third_page"  
+    # Show doctor and tech sign up page #3
     MDCard:
         size_hint: None, None
         size: 300, 450
@@ -129,48 +123,84 @@
             icon_color: 0, 0, 0, 0
             halign: 'center'
             font_size: 180
-        MDTextFieldRound:
-            id: user_signup
-            icon_left: "account-check"
-            hint_text: "Username"
-            foreground_color: 1, 0, 1, 1
-            size_hint_x: None
-            width: 220
-            font_size: 20
-            pos_hint: {"center_x": 0.5}
-        MDTextFieldRound:
-            id: location
-            icon_left: "map-marker"
-            hint_text: "Location"
-            foreground_color: 1, 0, 1, 1
-            size_hint_x: None
-            width: 220
-            font_size: 20            
-            pos_hint: {"center_x": 0.5}  
             
-        MDTextFieldRound:
-            id: password
-            icon_left: "key-variant"
-            hint_text: "Password"
-            foreground_color: 1, 0, 1, 1
-            size_hint_x: None
-            width: 220
-            font_size: 20            
-            pos_hint: {"center_x": 0.5}        
-            password: True
-        MDRectangleFlatButton:
-            text: "SIGN UP"
-            font_size: 15
-            theme_text_color: "Custom"
-            text_color: 0, 0, 1, 1
-            pos_hint: {"center_x": 0.5}
-            on_press: app.Sign_Up()
-        
-                 
+        ScrollView:
+            #size_hint_y: 1.93
+            pos_hint: {'x':0, 'y': .11}
+            do_scroll_x: False
+            do_scroll_y: True
+            GridLayout:
+                size:(root.width, 800)
+                size_hint_x: None
+                size_hint_y: None
+                cols: 1
+                height: self.minimum_height
+                row_default_height: 60
+                row_force_default: True
+                #username
+                MDTextFieldRound:
+                    id: user_signup
+                    icon_left: "account-check"
+                    hint_text: "Username"
+                    foreground_color: 1, 0, 1, 1
+                    size_hint_x: None
+                    width: 220
+                    font_size: 20
+                    pos_hint: {"center_x": 0.5}
+                #email
+                MDTextFieldRound:
+                    id: signup_email
+                    icon_left: "email"
+                    hint_text: "Email"
+                    foreground_color: 1, 0, 1, 1
+                    size_hint_x: None
+                    width: 220
+                    font_size: 20
+                    pos_hint: {"center_x": 0.5}    
+                #occupation
+                MDTextFieldRound:
+                    id: occupation
+                    icon_left: "doctor"
+                    hint_text: "Doctor / technician"
+                    foreground_color: 1, 0, 1, 1
+                    size_hint_x: None
+                    width: 220
+                    font_size: 20
+                    pos_hint: {"center_x": 0.5} 
+                #organization
+                MDTextFieldRound:
+                    id: organization
+                    icon_left: "progress-wrench"
+                    hint_text: "organization"
+                    foreground_color: 1, 0, 1, 1
+                    size_hint_x: None
+                    width: 220
+                    font_size: 20
+                    pos_hint: {"center_x": 0.5}                       
+                                
+                #password
+                MDTextFieldRound:
+                    id: password
+                    icon_left: "key-variant"
+                    hint_text: "Password"
+                    foreground_color: 1, 0, 1, 1
+                    size_hint_x: None
+                    width: 220
+                    font_size: 20            
+                    pos_hint: {"center_x": 0.5}        
+                    password: True
+                
+                MDRectangleFlatButton:
+                    text: "SIGN UP"
+                    font_size: 15
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 1, 1
+                    pos_hint: {"center_x": 0.5}
+                    on_press: app.Sign_Up_doctech()                 
 
 <FourthPage>:
     name: "fourth_page"    
-        #create new records
+        # create new patient records
         # Show patient symptoms form page #4        
     MDCard:    
         size_hint: None, None
@@ -186,9 +216,8 @@
             pos_hint: {'x':0, 'y': .11}
             do_scroll_x: False
             do_scroll_y: True
-
             GridLayout:
-                size:(root.width, 800)
+                size:(root.width, 2000)
                 size_hint_x: None
                 size_hint_y: None
                 cols: 1
@@ -220,18 +249,85 @@
                     size_hint_x: None
                     width: 220
                     font_size: 20            
-                    pos_hint: {"center_x": 0.5} 
-                                   
-                TextInput:
-                    id: location
-                    icon_left: "key-variant"
-                    hint_text: "Location"
+                    pos_hint: {"center_x": 0.5}                                   
+                #city
+                MDTextFieldRound:
+                    id: city
+                    icon_left: "city"
+                    hint_text: "City"
                     foreground_color: 1, 0, 1, 1
                     size_hint_x: None
                     width: 220
-                    font_size: 20            
-                    pos_hint: {"center_x": 0.5} 
-                                                     
+                    font_size: 20
+                    pos_hint: {"center_x": 0.5}
+                #state
+                MDTextFieldRound:
+                    id: state
+                    icon_left: "city"
+                    hint_text: "State"
+                    foreground_color: 1, 0, 1, 1
+                    size_hint_x: None
+                    width: 220
+                    font_size: 20
+                    pos_hint: {"center_x": 0.5}
+                #country
+                MDTextFieldRound:
+                    id: country
+                    icon_left: "city"
+                    hint_text: "Country"
+                    foreground_color: 1, 0, 1, 1
+                    size_hint_x: None
+                    width: 220
+                    font_size: 20
+                    pos_hint: {"center_x": 0.5}
+                #Gender
+                MDTextFieldRound:
+                    id: gender
+                    icon_left: "gender"
+                    hint_text: "Gender"
+                    foreground_color: 1, 0, 1, 1
+                    size_hint_x: None
+                    width: 220
+                    font_size: 20
+                    pos_hint: {"center_x": 0.5}
+                #phone number
+                MDTextFieldRound:
+                    id: phone
+                    icon_left: "phone"
+                    hint_text: "Contact number"
+                    foreground_color: 1, 0, 1, 1
+                    size_hint_x: None
+                    width: 220
+                    font_size: 20
+                    pos_hint: {"center_x": 0.5}    
+                #email    
+                MDTextFieldRound:
+                    id: signup_email
+                    icon_left: "email"
+                    hint_text: "Email"
+                    foreground_color: 1, 0, 1, 1
+                    size_hint_x: None
+                    width: 220
+                    font_size: 20
+                    pos_hint: {"center_x": 0.5}
+                #ethnicity
+                #email    
+                MDTextFieldRound:
+                    id: ethnicity
+                    icon_left: "email"
+                    hint_text: "Caucassian"
+                    foreground_color: 1, 0, 1, 1
+                    size_hint_x: None
+                    width: 220
+                    font_size: 20
+                    pos_hint: {"center_x": 0.5}
+                #DOB
+                MDFloatLayout:
+                    MDRaisedButton:
+                        id : date
+                        text : "Date of Birth"
+                        pos_hint: {"center_x": 0.2,"center_y": 0.5} 
+                        on_release : app.show_date_picker()                                                             
                 Label:
                     id: fever
                     text: "Fever"
@@ -267,8 +363,7 @@
                         id: abd_pain_no
                         group: "abd_pain_radio"
                         text: "No"
-                        pos_hint: {'center_x': .6, 'center_y': .5}
-                
+                        pos_hint: {'center_x': .6, 'center_y': .5}                
                 Label:
                     id: cough
                     text: "Cough"
@@ -312,14 +407,14 @@
                     theme_text_color: "Custom"
                     text_color: 0, 0, 1, 1
                     pos_hint: {"center_x": 0.5}
-                    on_press: app.Sign_Up()
+                    on_press: app.submit_pat_info()
                 MDRectangleFlatButton:
                     text: "PREDICT"
                     font_size: 15
                     theme_text_color: "Custom"
                     text_color: 0, 0, 1, 1
                     pos_hint: {"center_x": 0.5}
-                    #on_press: app.Sign_Up()     
+                    #on_press: app.Sign_Up() # this needs to route to predict page     
                 MDRectangleFlatButton:
                     text: "BACK"
                     font_size: 15
@@ -328,7 +423,7 @@
 
 <FifthPage>:
     name: "fifth_page" 
-    #different options to alter data
+    # different options to alter data
     # Data collection and processing
     MDCard:    
         size_hint: None, None
@@ -470,7 +565,6 @@
         padding: 15
         spacing: 10
         orientation: 'vertical'
-
         MDRectangleFlatButton:
             text: "BACK"
             font_size: 15

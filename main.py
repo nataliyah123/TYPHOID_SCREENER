@@ -8,6 +8,7 @@ from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDFlatButton
 from kivy.core.window import Window
 from kivy.utils import platform
+from kivymd.uix.picker import MDDatePicker
 import kivy
 # try:
 #     import cv2
@@ -115,24 +116,56 @@ class TestApp(MDApp):
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "Indigo"
         self.theme_cls.accent_palette = "Blue"
+
+        #app icon
+        self.icon = "images/logo.png"
+        
         # Create Database Or Connect To One
-        conn = sqlite3.connect('my_db.db')
+        conn = sqlite3.connect('doctechpat.db')
         c = conn.cursor()
+<<<<<<< HEAD
         c.execute("SELECT * FROM 'USERLOGIN' LIMIT 0,1")
+=======
+        c.execute("SELECT * FROM 'doctortech' LIMIT 0,1")
+>>>>>>> a3a8a1b27e7e11f8a34e37a49781fd7353bea660
         records = c.fetchall()
         print("salam ibia", records[0])    
         Builder.load_file('login.kv')        
         return ScreenManagement()
 
-    def Sign_Up(self):
+    def Sign_Up_doctech(self):
         print("this is testin", self.root.ids.page3.ids.user_signup.text)
-        conn = sqlite3.connect('my_db.db')       
+        conn = sqlite3.connect('doctechpat.db')       
         c = conn.cursor()        
-        c.execute("INSERT INTO USERLOGIN (name, email, password) values(?,?,?)",
+
+        c.execute("INSERT INTO doctortech (person_name, email, occupation, organization,password) values(?,?,?,?,?)",
+
             [
                  self.root.ids.page3.ids.user_signup.text,
-                 self.root.ids.page3.ids.location.text,
+                 self.root.ids.page3.ids.signup_email.text,
+                 self.root.ids.page3.ids.occupation.text,
+                 self.root.ids.page3.ids.organization.text,
                  self.root.ids.page3.ids.password.text
+                
+            ])
+        conn.commit()
+        conn.close()
+
+    def submit_pat_info(self):
+        print("this is testin", self.root.ids.page4.ids.date.text)
+        conn = sqlite3.connect('doctechpat.db')       
+        c = conn.cursor()        
+        c.execute("INSERT INTO Patientinfo (patientname,country, city, state,phone,email,GENDER,ETHNICITY,DATEOFBIRTH ) values(?,?,?,?,?,?,?,?,?)",
+            [
+                 self.root.ids.page4.ids.patient_name.text,
+                 self.root.ids.page4.ids.country.text,
+                 self.root.ids.page4.ids.city.text,
+                 self.root.ids.page4.ids.state.text,
+                 self.root.ids.page4.ids.phone.text,
+                 self.root.ids.page4.ids.signup_email.text,
+                 self.root.ids.page4.ids.gender.text,
+                 self.root.ids.page4.ids.ethnicity.text,
+                 self.root.ids.page4.ids.date.text               
                 
             ])
         conn.commit()
@@ -140,18 +173,28 @@ class TestApp(MDApp):
 
     def Login(self):
         print("this is login", self.root.ids.page2.ids.user.text)
-        conn = sqlite3.connect('my_db.db')       
-        c = conn.cursor()               
-        c.execute("SELECT name,password FROM USERLOGIN where name = ? and password = ?", (self.root.ids.page2.ids.user.text, self.root.ids.page2.ids.password.text))
+
+        conn = sqlite3.connect('doctechpat.db')       
+        c = conn.cursor()                      
+        # c.execute("SELECT * FROM 'doctortech' where person_name = ? AND password = ?", (self.root.ids.page2.ids.user.text,self.root.ids.page2.ids.password.text))
+
         usr_data = c.fetchall()
         loginName = self.root.ids.page2.ids.user.text
         loginPassword = self.root.ids.page2.ids.password.text
-
-        print("this is usr_data", usr_data)        
+        print("this is usr_data", usr_data[0],loginName)  
+        #when username or password is empty
+        if(loginName.split() == [] or loginPassword.split() == []):
+            self.dialog = MDDialog(
+                    title = 'Invalid Input !',
+                    text = 'Please enter a valid Username and Password',
+                    size_hint = (0.7,0.2),
+                    buttons = [MDFlatButton(text='Retry',on_release = self.close)]
+                    )
+            self.dialog.open()      
         if (len(usr_data) == 0):
             if not self.dialog:
                 # create dialog
-                print("I am inside login usr_Data len",)
+                print("I am inside login usr_Data len",len(usr_data))
                 self.dialog = MDDialog(
                     title="Sign up notice",
                     text=f"Please Sign up!",
@@ -162,20 +205,10 @@ class TestApp(MDApp):
                         ),
                     ],
                 )
-                self.dialog.open()
+                self.dialog.open()        
 
-        #when username or password is empty
-        if(loginName.split() == [] or loginPassword.split() == []):
-            self.dialog = MDDialog(
-                    title = 'Invalid Input !',
-                    text = 'Please enter a valid Username and Password',
-                    size_hint = (0.7,0.2),
-                    buttons = [MDFlatButton(text='Retry',on_release = self.close)]
-                    )
-            self.dialog.open()
-
-        elif(usr_data[0][0] == self.root.ids.page2.ids.user.text and usr_data[0][1] == int(self.root.ids.page2.ids.password.text)):
-            print("I am elif usr",usr_data, usr_data[0][1], usr_data[0][0] == self.root.ids.page2.ids.user.text, usr_data[0][1] == int(self.root.ids.page2.ids.password.text))
+        elif(usr_data[0][0] == self.root.ids.page2.ids.user.text and usr_data[0][1] == self.root.ids.page2.ids.password.text):
+            # print("I am elif usr",usr_data, usr_data[0][1], usr_data[0][0] == self.root.ids.page2.ids.user.text, usr_data[0][1] == int(self.root.ids.page2.ids.password.text))
             print("checking manager", self.root.current)
             print("this is page4 ibia", self.root)
             self.root.current = 'sixth_page' 
@@ -185,7 +218,21 @@ class TestApp(MDApp):
         # ibia.............. self.root.manager.current is used whereas outside this function in testApp it is not
         conn.commit()
         conn.close()
+    
+    #when "Ok" is clicked in the date picker
+    def on_save(self,instance,value,date_range):
+        self.root.ids.page4.ids.date.text = str(value)
 
+    #when "Cancel" is clicked in the date picker
+    def on_cancel(self,instance,value):
+        return
+
+    #function for date picker
+    def show_date_picker(self):
+        date_dialog = MDDatePicker()
+        date_dialog.bind(on_save = self.on_save,on_cancel=self.on_cancel)
+        date_dialog.open()
+   
     def changer(self,*args):
         self.root.current = 'fourth_page'    
 
