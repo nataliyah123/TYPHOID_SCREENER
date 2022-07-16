@@ -123,11 +123,8 @@ class TestApp(MDApp):
         # Create Database Or Connect To One
         conn = sqlite3.connect('doctechpat.db')
         c = conn.cursor()
-<<<<<<< HEAD
-        c.execute("SELECT * FROM 'USERLOGIN' LIMIT 0,1")
-=======
+
         c.execute("SELECT * FROM 'doctortech' LIMIT 0,1")
->>>>>>> a3a8a1b27e7e11f8a34e37a49781fd7353bea660
         records = c.fetchall()
         print("salam ibia", records[0])    
         Builder.load_file('login.kv')        
@@ -183,7 +180,7 @@ class TestApp(MDApp):
         loginPassword = self.root.ids.page2.ids.password.text
         print("this is usr_data", usr_data[0],loginName)  
         #when username or password is empty
-        if(loginName.split() == [] or loginPassword.split() == []):
+        if(loginName.split() == [] and loginPassword.split() == []):
             self.dialog = MDDialog(
                     title = 'Invalid Input !',
                     text = 'Please enter a valid Username and Password',
@@ -191,21 +188,21 @@ class TestApp(MDApp):
                     buttons = [MDFlatButton(text='Retry',on_release = self.close)]
                     )
             self.dialog.open()      
-        if (len(usr_data) == 0):
-            if not self.dialog:
+        elif (len(usr_data) == 0):
+            # if not self.dialog:
                 # create dialog
-                print("I am inside login usr_Data len",len(usr_data))
-                self.dialog = MDDialog(
-                    title="Sign up notice",
-                    text=f"Please Sign up!",
-                    buttons=[
-                        MDFlatButton(
-                            text="Ok", text_color=self.theme_cls.primary_color, 
-                            on_release=self.close
-                        ),
-                    ],
-                )
-                self.dialog.open()        
+            print("I am inside login usr_Data len",len(usr_data))
+            self.dialog = MDDialog(
+                title="Sign up notice",
+                text=f"Please Sign up!",
+                buttons=[
+                    MDFlatButton(
+                        text="Ok", text_color=self.theme_cls.primary_color, 
+                        on_release=self.close
+                    ),
+                ],
+            )
+            self.dialog.open()        
 
         elif(usr_data[0][0] == self.root.ids.page2.ids.user.text and usr_data[0][1] == self.root.ids.page2.ids.password.text):
             # print("I am elif usr",usr_data, usr_data[0][1], usr_data[0][0] == self.root.ids.page2.ids.user.text, usr_data[0][1] == int(self.root.ids.page2.ids.password.text))
