@@ -120,13 +120,13 @@ class TestApp(MDApp):
         #app icon
         self.icon = "images/logo.png"
         
-        # Create Database Or Connect To One
-        conn = sqlite3.connect('doctechpat.db')
-        c = conn.cursor()
+        # # Create Database Or Connect To One
+        # conn = sqlite3.connect('doctechpat.db')
+        # c = conn.cursor()
 
-        c.execute("SELECT * FROM 'doctortech' LIMIT 0,1")
-        records = c.fetchall()
-        print("salam ibia", records[0])    
+        # c.execute("SELECT * FROM 'doctortech' LIMIT 0,1")
+        # records = c.fetchall()
+        # print("salam ibia", records[0])    
         Builder.load_file('login.kv')        
         return ScreenManagement()
 
@@ -173,7 +173,7 @@ class TestApp(MDApp):
 
         conn = sqlite3.connect('doctechpat.db')       
         c = conn.cursor()                      
-        # c.execute("SELECT * FROM 'doctortech' where person_name = ? AND password = ?", (self.root.ids.page2.ids.user.text,self.root.ids.page2.ids.password.text))
+        c.execute("SELECT person_name, password FROM 'doctortech' where person_name = ? AND password = ? ", (self.root.ids.page2.ids.user.text,self.root.ids.page2.ids.password.text))
 
         usr_data = c.fetchall()
         loginName = self.root.ids.page2.ids.user.text
