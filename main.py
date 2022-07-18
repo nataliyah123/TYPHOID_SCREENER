@@ -178,7 +178,7 @@ class TestApp(MDApp):
         usr_data = c.fetchall()
         loginName = self.root.ids.page2.ids.user.text
         loginPassword = self.root.ids.page2.ids.password.text
-        print("this is usr_data", usr_data[0],loginName)  
+        # print("this is usr_data", usr_data[0],loginName)  
         #when username or password is empty
         if(loginName.split() == [] and loginPassword.split() == []):
             self.dialog = MDDialog(
