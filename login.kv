@@ -24,15 +24,7 @@
 
 <FirstPage>:
     name: "first_page"
-    #MDScreen:
-        #MDBoxLayout:
-        #MDCard:
-            #size_hint: None, None
-            #size: 300, 450
-            #elevation:10
-            #padding: 65
-            #spacing: 25
-            #pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
     orientation: "vertical"
 
     MDLabel:
@@ -63,140 +55,108 @@
     name: "second_page"    
 
         # Show login page #2
-    MDCard:    
-        size_hint: None, None
-        size: 300, 450
-        pos_hint: {"center_x": 0.5, "center_y": 0.5}
-        elevation: 10
-        padding: 65
-        spacing: 25
-        orientation: 'vertical'
+   
+    orientation: 'vertical'
         
-        MDTextFieldRound:
-            id: user
-            icon_left: "account-check"
-            hint_text: "Name"
-            foreground_color: 1, 0, 1, 1
-            size_hint_x: None
-            width: 220
-            font_size: 20
-            pos_hint: {"center_x": 0.5}
-        MDTextFieldRound:
-            id: password
-            icon_left: "key-variant"
-            hint_text: "Password"
-            foreground_color: 1, 0, 1, 1
-            size_hint_x: None
-            width: 220
-            font_size: 20            
-            pos_hint: {"center_x": 0.5}
-            password: True
-        MDRectangleFlatButton:
-            text: "LOG IN"
-            font_size: 15
-            theme_text_color: "Custom"
-            text_color: 0, 0, 1, 1
-            pos_hint: {"center_x": 0.5}
-            on_press: app.Login()
-        MDRectangleFlatButton:
-            text: "SIGN UP"
-            font_size: 15
-            theme_text_color: "Custom"
-            text_color: 0, 0, 1, 1
-            pos_hint: {"center_x": 0.5}
-            on_press: root.manager.current = "third_page"   
+    MDTextFieldRound:
+        id: user
+        icon_left: "account-check"
+        hint_text: "Name"
+        foreground_color: 1, 0, 1, 1
+        size_hint_x: None
+        width: 220
+        font_size: 20
+        pos_hint: {"center_x": 0.5,"center_y": 0.6}
+    MDTextFieldRound:
+        id: password
+        icon_left: "key-variant"
+        hint_text: "Password"
+        foreground_color: 1, 0, 1, 1
+        size_hint_x: None
+        width: 220
+        font_size: 20            
+        pos_hint: {"center_x": 0.5,"center_y": 0.5}
+        password: True
+    MDRectangleFlatButton:
+        text: "LOG IN"
+        font_size: 15
+        theme_text_color: "Custom"
+        text_color: 0, 0, 1, 1
+        pos_hint: {"center_x": 0.5,"center_y": 0.3}
+        on_press: app.Login()
+    MDRectangleFlatButton:
+        text: "SIGN UP"
+        font_size: 15
+        theme_text_color: "Custom"
+        text_color: 0, 0, 1, 1
+        pos_hint: {"center_x": 0.5,"center_y": 0.2}
+        on_press: root.manager.current = "third_page"   
      
 
 <ThirdPage>:
     name: "third_page"  
     # Show doctor and tech sign up page #3
-    MDCard:
-        size_hint: None, None
-        size: 300, 450
-        pos_hint: {"center_x": 0.5, "center_y": 0.5}
-        elevation: 10
-        padding: 55
-        spacing: 35
-        orientation: 'vertical'
-        MDIcon:
-            icon: 'account'
-            icon_color: 0, 0, 0, 0
-            halign: 'center'
-            font_size: 180
-            
-        ScrollView:
-            #size_hint_y: 1.93
-            pos_hint: {'x':0, 'y': .11}
-            do_scroll_x: False
-            do_scroll_y: True
-            GridLayout:
-                size:(root.width, 800)
-                size_hint_x: None
-                size_hint_y: None
-                cols: 1
-                height: self.minimum_height
-                row_default_height: 60
-                row_force_default: True
-                #username
-                MDTextFieldRound:
-                    id: user_signup
-                    icon_left: "account-check"
-                    hint_text: "Username"
-                    foreground_color: 1, 0, 1, 1
-                    size_hint_x: None
-                    width: 220
-                    font_size: 20
-                    pos_hint: {"center_x": 0.5}
-                #email
-                MDTextFieldRound:
-                    id: signup_email
-                    icon_left: "email"
-                    hint_text: "Email"
-                    foreground_color: 1, 0, 1, 1
-                    size_hint_x: None
-                    width: 220
-                    font_size: 20
-                    pos_hint: {"center_x": 0.5}    
-                #occupation
-                MDTextFieldRound:
-                    id: occupation
-                    icon_left: "doctor"
-                    hint_text: "Doctor / technician"
-                    foreground_color: 1, 0, 1, 1
-                    size_hint_x: None
-                    width: 220
-                    font_size: 20
-                    pos_hint: {"center_x": 0.5} 
-                #organization
-                MDTextFieldRound:
-                    id: organization
-                    icon_left: "progress-wrench"
-                    hint_text: "organization"
-                    foreground_color: 1, 0, 1, 1
-                    size_hint_x: None
-                    width: 220
-                    font_size: 20
-                    pos_hint: {"center_x": 0.5}                       
+    orientation: "vertical"
+    #username
+    MDTextFieldRound:
+        id: user_signup
+        icon_left: "account-check"
+        hint_text: "Username"
+        foreground_color: 1, 0, 1, 1
+        size_hint_x: None
+        width: 220
+        font_size: 20
+        pos_hint: {"center_x": 0.5,"center_y": 0.7}
+    #email
+    MDTextFieldRound:
+        id: signup_email
+        icon_left: "email"
+        hint_text: "Email"
+        foreground_color: 1, 0, 1, 1
+        size_hint_x: None
+        width: 220
+        font_size: 20
+        pos_hint: {"center_x": 0.5,"center_y": 0.6}    
+    #occupation
+    MDTextFieldRound:
+        id: occupation
+        icon_left: "doctor"
+        hint_text: "Doctor / technician"
+        foreground_color: 1, 0, 1, 1
+        size_hint_x: None
+        width: 220
+        font_size: 20
+        pos_hint: {"center_x": 0.5,"center_y": 0.5} 
+    #organization
+    MDTextFieldRound:
+        id: organization
+        icon_left: "progress-wrench"
+        hint_text: "organization"
+        foreground_color: 1, 0, 1, 1
+        size_hint_x: None
+        width: 220
+        font_size: 20
+        pos_hint: {"center_x": 0.5,"center_y": 0.4}                       
                                 
-                #password
-                MDTextFieldRound:
-                    id: password
-                    icon_left: "key-variant"
-                    hint_text: "Password"
-                    foreground_color: 1, 0, 1, 1
-                    size_hint_x: None
-                    width: 220
-                    font_size: 20            
-                    pos_hint: {"center_x": 0.5}        
-                    password: True
+    #password
+    MDTextFieldRound:
+        id: password
+        icon_left: "key-variant"
+        hint_text: "Password"
+        foreground_color: 1, 0, 1, 1
+        size_hint_x: None
+        width: 220
+        font_size: 20            
+        pos_hint: {"center_x": 0.5,"center_y": 0.3}        
+        password: True
                 
-                MDRectangleFlatButton:
-                    text: "SIGN UP"
-                    font_size: 15
-                    theme_text_color: "Custom"
-                    text_color: 0, 0, 1, 1
-                    pos_hint: {"center_x": 0.5}
-                    on_press: app.Sign_Up_doctech()                 
+    MDRectangleFlatButton:
+        text: "SIGN UP"
+        font_size: 15
+        theme_text_color: "Custom"
+        text_color: 0, 0, 1, 1
+        pos_hint: {"center_x": 0.5,"center_y": 0.2}
+        on_press: app.Sign_Up_doctech()                 
 
 <FourthPage>:
     name: "fourth_page"    
@@ -425,151 +385,120 @@
     name: "fifth_page" 
     # different options to alter data
     # Data collection and processing
-    MDCard:    
-        size_hint: None, None
-        size: 300, 400
-        pos_hint: {"center_x": 0.5, "center_y": 0.5}
-        elevation: 8
-        padding: 15
-        spacing: 10
-        orientation: 'vertical'         
-        MDRectangleFlatButton:
-            text: "  Create a New Record  "
-            font_size: 15
-            pos_hint: {"center_x": 0.5}
-            on_press: app.changer()
-        MDRectangleFlatButton:
-            text: "         Edit Records         "
-            font_size: 15
-            pos_hint: {"center_x": 0.5}
-            on_press: root.manager.current = "seventh_page"    
-        MDRectangleFlatButton:
-            text: "Show Previous Records"
-            font_size: 15
-            pos_hint: {"center_x": 0.5}
-            on_press: root.manager.current = "eight_page" 
-        MDRectangleFlatButton:
-            text: "        Delete Records       "
-            font_size: 15
-            pos_hint: {"center_x": 0.5}              
-            on_press: root.manager.current = "ninth_page"
-        MDRectangleFlatButton:
-            text: "BACK"
-            font_size: 15
-            pos_hint: {"center_x": 0.5}
-            on_press: root.manager.current = "sixth_page" 
+    
+    orientation: 'vertical'         
+    MDRectangleFlatButton:
+        text: "  Create a New Record  "
+        font_size: 15
+        pos_hint: {"center_x": 0.5,"center_y": 0.7}
+        on_press: app.changer()
+    MDRectangleFlatButton:
+        text: "         Edit Records         "
+        font_size: 15
+        pos_hint: {"center_x": 0.5,"center_y": 0.6}
+        on_press: root.manager.current = "seventh_page"    
+    MDRectangleFlatButton:
+        text: "Show Previous Records"
+        font_size: 15
+        pos_hint: {"center_x": 0.5,"center_y": 0.5}
+        on_press: root.manager.current = "eight_page" 
+    MDRectangleFlatButton:
+        text: "        Delete Records       "
+        font_size: 15
+        pos_hint: {"center_x": 0.5,"center_y": 0.4}              
+        on_press: root.manager.current = "ninth_page"
+    MDRectangleFlatButton:
+        text: "BACK"
+        font_size: 15
+        pos_hint: {"center_x": 0.5,"center_y": 0.2}
+        on_press: root.manager.current = "sixth_page" 
         
 <SixthPage>:
     name: "sixth_page"             
     # data and image landing page
-    MDCard:    
-        size_hint: None, None
-        size: 300, 400
+    
+    orientation: 'vertical'         
+    MDRectangleFlatButton:
+        text: "  Data  " 
+        font_size: 15
         pos_hint: {"center_x": 0.5, "center_y": 0.5}
-        elevation: 8
-        padding: 15
-        spacing: 10
-        orientation: 'vertical'         
-        MDRectangleFlatButton:
-            text: "  Data  " 
-            font_size: 15
-            pos_hint: {"center_x": 0.5, "center_y": 0.6}
-            #on_press: app.changer()
-            on_press: root.manager.current = "fifth_page"
-        MDRectangleFlatButton:
-            #icon: "android"
-            text: " Image "
-            #valign: "center"
-            pos_hint: {"center_x": 0.5, "center_y": 0.4}
-            #spacing: None
-            on_press:                    
-                root.manager.current = "tenth_page"
-        MDRectangleFlatButton:
-            text: "BACK"
-            font_size: 15
-            pos_hint: {"center_x": 0.5, "center_y": 0.2}
-            on_press: root.manager.current = "first_page"  
+        #on_press: app.changer()
+        on_press: root.manager.current = "fifth_page"
+    MDRectangleFlatButton:
+        #icon: "android"
+        text: " Image "
+        #valign: "center"
+        pos_hint: {"center_x": 0.5, "center_y": 0.4}
+        #spacing: None
+        on_press:root.manager.current = "tenth_page"
+    MDRectangleFlatButton:
+        text: "BACK"
+        font_size: 15
+        pos_hint: {"center_x": 0.5, "center_y": 0.3}
+        on_press: root.manager.current = "first_page"  
         
 
 <SeventhPage>:
     name: "seventh_page"             
     # update a record
-    MDCard:    
-        size_hint: None, None
-        size: 300, 400
-        pos_hint: {"center_x": 0.5, "center_y": 0.5}
-        elevation: 8
-        padding: 15
-        spacing: 10
-        orientation: 'vertical'
-        MDTextFieldRound:
-            id: feature
-            icon_left: "account-check"
-            hint_text: "Feature Name"
-            foreground_color: 1, 0, 1, 1
-            size_hint_x: None
-            width: 220
-            font_size: 20
-            pos_hint: {"center_x": 0.5}
-        MDTextFieldRound:
-            id: value
-            icon_left: "map-marker"
-            hint_text: "Location"
-            foreground_color: 1, 0, 1, 1
-            size_hint_x: None
-            width: 220
-            font_size: 20            
-            pos_hint: {"center_x": 0.5}  
-        MDTextFieldRound:
-            id: rowID
-            icon_left: "account-check"
-            hint_text: "ID of the row to update"
-            foreground_color: 1, 0, 1, 1
-            size_hint_x: None
-            width: 220
-            font_size: 20
-            pos_hint: {"center_x": 0.5}
-        MDRectangleFlatButton:
-            text: "BACK"
-            font_size: 15
-            pos_hint: {"center_x": 0.5, "center_y": 0.1}
-            on_press: root.manager.current = "fifth_page"
+    
+    orientation: 'vertical'
+    MDTextFieldRound:
+        id: feature
+        icon_left: "account-check"
+        hint_text: "Feature Name"
+        foreground_color: 1, 0, 1, 1
+        size_hint_x: None
+        width: 220
+        font_size: 20
+        pos_hint: {"center_x": 0.5,"center_y": 0.6}
+    MDTextFieldRound:
+        id: value
+        icon_left: "map-marker"
+        hint_text: "Location"
+        foreground_color: 1, 0, 1, 1
+        size_hint_x: None
+        width: 220
+        font_size: 20            
+        pos_hint: {"center_x": 0.5,"center_y": 0.5}  
+    MDTextFieldRound:
+        id: rowID
+        icon_left: "account-check"
+        hint_text: "ID of the row to update"
+        foreground_color: 1, 0, 1, 1
+        size_hint_x: None
+        width: 220
+        font_size: 20
+        pos_hint: {"center_x": 0.5,"center_y": 0.4}
+    MDRectangleFlatButton:
+        text: "BACK"
+        font_size: 15
+        pos_hint: {"center_x": 0.5, "center_y": 0.2}
+        on_press: root.manager.current = "fifth_page"
         
         
 <EightPage>:
     name: "eight_page"             
     # View records
-    MDCard:    
-        size_hint: None, None
-        size: 300, 400
-        pos_hint: {"center_x": 0.5, "center_y": 0.5}
-        elevation: 8
-        padding: 15
-        spacing: 10
-        orientation: 'vertical'
-        MDRectangleFlatButton:
-            text: "BACK"
-            font_size: 15
-            pos_hint: {"center_x": 0.5, "center_y": 0.1}
-            on_press: root.manager.current = "fifth_page"
+    
+    orientation: 'vertical'
+    MDRectangleFlatButton:
+        text: "BACK"
+        font_size: 15
+        pos_hint: {"center_x": 0.5, "center_y": 0.2}
+        on_press: root.manager.current = "fifth_page"
             
 
 <NinthPage>:
     name: "ninth_page"             
     # delete a record
-    MDCard:    
-        size_hint: None, None
-        size: 300, 400
-        pos_hint: {"center_x": 0.5, "center_y": 0.5}
-        elevation: 8
-        padding: 15
-        spacing: 10
-        orientation: 'vertical'
-        MDRectangleFlatButton:
-            text: "BACK"
-            font_size: 15
-            pos_hint: {"center_x": 0.5}
-            on_press: root.manager.current = "fifth_page"     
+    
+    orientation: 'vertical'
+    MDRectangleFlatButton:
+        text: "BACK"
+        font_size: 15
+        pos_hint: {"center_x": 0.5,"center_y": 0.2}
+        on_press: root.manager.current = "fifth_page"     
 
 <Camera2>:
     name: "tenth_page"
@@ -604,21 +533,15 @@
     name: "eleventh_page"
     #download option    
     #result
-    MDCard:    
-        size_hint: None, None
-        size: 300, 400
-        pos_hint: {"center_x": 0.5, "center_y": 0.5}
-        elevation: 8
-        padding: 15
-        spacing: 10
-        orientation: 'vertical' 
-        MDFlatButton:
-            text: "DOWNLOAD"
-            font_size: 15
-            pos_hint: {"center_x": 0.5}            
-            #on_press: app.download()
-        MDRectangleFlatButton:
-            text: "BACK"
-            font_size: 15
-            pos_hint: {"center_x": 0.5, "center_y": 0.1}
-            on_press: root.manager.current = "tenth_page"
+    
+    orientation: 'vertical' 
+    MDFlatButton:
+        text: "DOWNLOAD"
+        font_size: 15
+        pos_hint: {"center_x": 0.5,"center_y": 0.3}            
+        #on_press: app.download()
+    MDRectangleFlatButton:
+        text: "BACK"
+        font_size: 15
+        pos_hint: {"center_x": 0.5, "center_y": 0.2}
+        on_press: root.manager.current = "tenth_page"
