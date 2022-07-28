@@ -31,9 +31,7 @@
         text: "Disclaimer"
         font_style: 'H5'
         pos_hint:{'center_x':0.8,'center_y':0.8}   
-        #valign: 'top'     
-        #pos_hint: {"center_x": 0.5, "center_y": 0.5}
-        #elevation: 10
+        
     MDLabel:
         text: "Welcome to Mboalab! \n This app is by no means a substitue of a established diagnostic procedures"
         halign: "center"    
@@ -49,7 +47,8 @@
         pos_hint: {"center_x": 0.5, "center_y": 0.1}
         spacing: None
         on_press:                    
-            root.manager.current = "second_page"   
+            root.manager.current = "second_page" 
+            #root.manager.current = "fourth_page"  
 
 <SecondPage>:
     name: "second_page"    
@@ -162,224 +161,896 @@
     name: "fourth_page"    
         # create new patient records
         # Show patient symptoms form page #4        
-    MDCard:    
-        size_hint: None, None
-        size: 300, 400
-        pos_hint: {"center_x": 0.5, "center_y": 0.5}
-        elevation: 8
-        padding: 15
-        spacing: 10
-        orientation: 'vertical'
+
         # below is kivy not kivy md except for the last buttons
-        ScrollView:
-            #size_hint_y: 1.93
-            pos_hint: {'x':0, 'y': .11}
-            do_scroll_x: False
-            do_scroll_y: True
-            GridLayout:
-                size:(root.width, 2000)
+    ScrollView:
+        size: self.size
+        GridLayout:
+            size_hint_y: None
+            height: self.minimum_height
+            width: self.minimum_width
+            cols: 1
+            spacing: "20dp"
+            padding: "20dp"
+            
+            MDToolbar:
+                title: "Hi"
+                id:toolbar
+                elevation: 5
+                pos_hint: {'top':0.5}
+                md_bg_color: 200/255,10/255,30/255,1
+            MDTextFieldRound:
+                id: patient_name
+                icon_left: "account-check"
+                hint_text: "Patient Name"
+                foreground_color: 1, 0, 1, 1
                 size_hint_x: None
-                size_hint_y: None
-                cols: 1
-                height: self.minimum_height
-                row_default_height: 50
-                row_force_default: True
-                MDToolbar:
-                    title: "Hi"
-                    id:toolbar
-                    elevation: 5
-                    pos_hint: {'top':0.5}
-                    md_bg_color: 200/255,10/255,30/255,1
-                TextInput:
-                    id: patient_name
-                    icon_left: "account-check"
-                    hint_text: "Patient Name"
-                    foreground_color: 1, 0, 1, 1
-                    size_hint_x: None
-                    width: 220
-                    adaptive_height: True
-                    font_size: 20
-                    pos_hint: {"center_x": 0.5}
-                TextInput:
-                    id: age
-                    icon_left: "map-marker"
-                    hint_text: "Age"
-                    input_filter: 'int'
-                    foreground_color: 1, 0, 1, 1
-                    size_hint_x: None
-                    width: 220
-                    font_size: 20            
-                    pos_hint: {"center_x": 0.5}                                   
-                #city
-                MDTextFieldRound:
-                    id: city
-                    icon_left: "city"
-                    hint_text: "City"
-                    foreground_color: 1, 0, 1, 1
-                    size_hint_x: None
-                    width: 220
-                    font_size: 20
-                    pos_hint: {"center_x": 0.5}
-                #state
-                MDTextFieldRound:
-                    id: state
-                    icon_left: "city"
-                    hint_text: "State"
-                    foreground_color: 1, 0, 1, 1
-                    size_hint_x: None
-                    width: 220
-                    font_size: 20
-                    pos_hint: {"center_x": 0.5}
-                #country
-                MDTextFieldRound:
-                    id: country
-                    icon_left: "city"
-                    hint_text: "Country"
-                    foreground_color: 1, 0, 1, 1
-                    size_hint_x: None
-                    width: 220
-                    font_size: 20
-                    pos_hint: {"center_x": 0.5}
-                #Gender
-                MDTextFieldRound:
-                    id: gender
-                    icon_left: "gender"
-                    hint_text: "Gender"
-                    foreground_color: 1, 0, 1, 1
-                    size_hint_x: None
-                    width: 220
-                    font_size: 20
-                    pos_hint: {"center_x": 0.5}
-                #phone number
-                MDTextFieldRound:
-                    id: phone
-                    icon_left: "phone"
-                    hint_text: "Contact number"
-                    foreground_color: 1, 0, 1, 1
-                    size_hint_x: None
-                    width: 220
-                    font_size: 20
-                    pos_hint: {"center_x": 0.5}    
-                #email    
-                MDTextFieldRound:
-                    id: signup_email
-                    icon_left: "email"
-                    hint_text: "Email"
-                    foreground_color: 1, 0, 1, 1
-                    size_hint_x: None
-                    width: 220
-                    font_size: 20
-                    pos_hint: {"center_x": 0.5}
-                #ethnicity
-                #email    
-                MDTextFieldRound:
-                    id: ethnicity
-                    icon_left: "email"
-                    hint_text: "Caucassian"
-                    foreground_color: 1, 0, 1, 1
-                    size_hint_x: None
-                    width: 220
-                    font_size: 20
-                    pos_hint: {"center_x": 0.5}
-                #DOB
-                MDFloatLayout:
-                    MDRaisedButton:
-                        id : date
-                        text : "Record entry date"
-                        pos_hint: {"center_x": 0.2,"center_y": 0.5} 
-                        on_release : app.show_date_picker()                                                             
+                width: 220
+                font_size: 20
+                pos_hint: {"center_x": 0.5}
+            MDTextFieldRound:
+                id: age
+                icon_left: "map-marker"
+                hint_text: "Age"
+                input_filter: 'int'
+                foreground_color: 1, 0, 1, 1
+                size_hint_x: None
+                width: 220
+                font_size: 20            
+                pos_hint: {"center_x": 0.5}                                   
+            #city
+            MDTextFieldRound:
+                id: city
+                icon_left: "city"    
+                hint_text: "City"
+                foreground_color: 1, 0, 1, 1
+                size_hint_x: None
+                width: 220
+                font_size: 20
+                pos_hint: {"center_x": 0.5}
+            #state
+            MDTextFieldRound:
+                id: state
+                icon_left: "city"
+                hint_text: "State"
+                foreground_color: 1, 0, 1, 1
+                size_hint_x: None
+                width: 220
+                font_size: 20
+                pos_hint: {"center_x": 0.5}
+            #country
+            MDTextFieldRound:
+                id: country
+                icon_left: "city"
+                hint_text: "Country"
+                foreground_color: 1, 0, 1, 1
+                size_hint_x: None
+                width: 220
+                font_size: 20
+                pos_hint: {"center_x": 0.5}
+            #Gender
+            MDTextFieldRound:
+                id: gender
+                icon_left: "gender"
+                hint_text: "Gender"
+                foreground_color: 1, 0, 1, 1
+                size_hint_x: None
+                width: 220
+                font_size: 20
+                pos_hint: {"center_x": 0.5}
+            #phone number
+            MDTextFieldRound:
+                id: phone
+                icon_left: "phone"
+                hint_text: "Contact number"
+                foreground_color: 1, 0, 1, 1
+                size_hint_x: None
+                width: 220
+                font_size: 20
+                pos_hint: {"center_x": 0.5}    
+            #email    
+            MDTextFieldRound:
+                id: signup_email
+                icon_left: "email"
+                hint_text: "Email"
+                foreground_color: 1, 0, 1, 1
+                size_hint_x: None
+                width: 220
+                font_size: 20
+                pos_hint: {"center_x": 0.5}
+            #ethnicity
+            #email    
+            MDTextFieldRound:
+                id: ethnicity
+                icon_left: "email"
+                hint_text: "Caucassian"
+                foreground_color: 1, 0, 1, 1
+                size_hint_x: None
+                width: 220
+                font_size: 20
+                pos_hint: {"center_x": 0.5}
+            #DOB
+            MDFloatLayout:
+                MDRaisedButton:
+                    id : date
+                    text : "Record entry date"
+                    pos_hint: {"center_x": 0.1,"center_y": 0.4} 
+                    on_release : app.show_date_picker()   
+
+            #symptoms starts from here                                             
+            Label:
+                id: fever
+                text: "Fever"
+                font_size: 30
+                halign: "center" 
+            MDFloatLayout:
                 Label:
-                    id: fever
-                    text: "Fever"
-                    font_size: 20
-                    halign: "center"
-                    padding_y: 5 
-                BoxLayout:
-                    CheckBox:
-                        id: fever_yes
-                        group: "fever_radio"
-                        text: "Yes"
-                        active: True
-                        pos_hint: {'center_x': .4, 'center_y': .5}
-                    CheckBox:
-                        id: fever_no
-                        group: "fever_radio"
-                        text: "No"
-                        pos_hint: {'center_x': .6, 'center_y': .5}
+                    id: fever_high
+                    text: "High"
+                    font_size:20
+                    pos_hint: {'center_x': .1, 'center_y': .5}
+                MDCheckbox:
+                    group: "fever_ratio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .2, 'center_y': .5}
+                    #on_active: app.check_high(*args)
                 Label:
-                    id: abd_pain
-                    text: "Abdominal Pain"
-                    font_size: 20
-                    halign: "center"
-                    padding_y: 5 
-                BoxLayout:
-                    CheckBox:
-                        id: abd_pain_yes
-                        group: "abd_pain_radio"
-                        text: "Yes"
-                        active: True
-                        pos_hint: {'center_x': .4, 'center_y': .5}
-                    CheckBox:
-                        id: abd_pain_no
-                        group: "abd_pain_radio"
-                        text: "No"
-                        pos_hint: {'center_x': .6, 'center_y': .5}                
+                    id: fever_low
+                    text: "Low"
+                    font_size:20
+                    pos_hint: {'center_x': .4, 'center_y': .5}
+                MDCheckbox:
+                    group: "fever_ratio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    #on_active: app.check_low(*args)
                 Label:
-                    id: cough
-                    text: "Cough"
-                    font_size: 20
-                    halign: "center"
-                    padding_y: 5 
-                BoxLayout:
-                    CheckBox:
-                        id: cough_yes
-                        group: "cough_radio"
-                        text: "Yes"
-                        active: True
-                        pos_hint: {'center_x': .4, 'center_y': .5}
-                    CheckBox:
-                        id: cough_no
-                        group: "cough_radio"
-                        text: "No"
-                        pos_hint: {'center_x': .6, 'center_y': .5}
+                    id: fever_no
+                    text: "No"
+                    font_size:20
+                    pos_hint: {'center_x': .7, 'center_y': .5}
+                MDCheckbox:
+                    group: "fever_ratio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .8, 'center_y': .5}
+                    #on_active: app.check_no(*args)
+
+            Label:
+                id: abd_pain
+                text: "Abdominal Pain"
+                font_size: 30
+                halign: "center" 
+                text_size: root.width, None
+                size: self.texture_size
+            MDFloatLayout:
                 Label:
-                    id: diarrheoa
-                    text: "Diarrheoa"
-                    font_size: 20
-                    halign: "center"
-                    padding_y: 5 
-                BoxLayout:
-                    CheckBox:
-                        id: diar_pain_yes
-                        group: "diar_pain_radio"
-                        text: "Yes"
-                        active: True
-                        pos_hint: {'center_x': .4, 'center_y': .5}
-                    CheckBox:
-                        id: diar_pain_no
-                        group: "diar_pain_radio"
-                        text: "No"
-                        pos_hint: {'center_x': .6, 'center_y': .5}
+                    id: abd_high
+                    text: "High"
+                    font_size:20
+                    pos_hint: {'center_x': .1, 'center_y': .5}
+                MDCheckbox:
+                    group: "abd_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .2, 'center_y': .5}
+                    #on_active: app.check_high(*args)
+                Label:
+                    id: abd_low
+                    text: "Low"
+                    font_size:20
+                    pos_hint: {'center_x': .4, 'center_y': .5}
+                MDCheckbox:
+                    group: "abd_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    #on_active: app.check_low(*args)
+                Label:
+                    id: abd_no
+                    text: "No"
+                    font_size:20
+                    pos_hint: {'center_x': .7, 'center_y': .5}
+                MDCheckbox:
+                    group: "abd_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .8, 'center_y': .5}
+                    #on_active: app.check_no(*args)
+            
+            Label:
+                id: cough
+                text: "Cough"
+                font_size: 30
+                halign: "center" 
+                text_size: root.width, None
+                size: self.texture_size
+            MDFloatLayout:
+                Label:
+                    id: cough_high
+                    text: "High"
+                    font_size:20
+                    pos_hint: {'center_x': .1, 'center_y': .5}
+                MDCheckbox:
+                    group: "cough_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .2, 'center_y': .5}
+                    #on_active: app.check_high(*args)
+                Label:
+                    id: cough_low
+                    text: "Low"
+                    font_size:20
+                    pos_hint: {'center_x': .4, 'center_y': .5}
+                MDCheckbox:
+                    group: "cough_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    #on_active: app.check_low(*args)
+                Label:
+                    id: cough_no
+                    text: "No"
+                    font_size:20
+                    pos_hint: {'center_x': .7, 'center_y': .5}
+                MDCheckbox:
+                    group: "cough_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .8, 'center_y': .5}
+                    #on_active: app.check_no(*args)
+            
+            Label:
+                id: diarrheoa
+                text: "Diarrheoa"
+                font_size: 30
+                halign: "center" 
+                text_size: root.width, None
+                size: self.texture_size
+            MDFloatLayout:
+                Label:
+                    id: diarrheoa_high
+                    text: "High"
+                    font_size:20
+                    pos_hint: {'center_x': .1, 'center_y': .5}
+                MDCheckbox:
+                    group: "diarrheoa_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .2, 'center_y': .5}
+                    #on_active: app.check_high(*args)
+                Label:
+                    id: diarrheoa_low
+                    text: "Low"
+                    font_size:20
+                    pos_hint: {'center_x': .4, 'center_y': .5}
+                MDCheckbox:
+                    group: "diarrheoa_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    #on_active: app.check_low(*args)
+                Label:
+                    id: diarrheoa_no
+                    text: "No"
+                    font_size:20
+                    pos_hint: {'center_x': .7, 'center_y': .5}
+                MDCheckbox:
+                    group: "diarrheoa_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .8, 'center_y': .5}
+                    #on_active: app.check_no(*args)
+            
+            Label:
+                id: constipation
+                text: "Constipation"
+                font_size: 30
+                halign: "center" 
+                text_size: root.width, None
+                size: self.texture_size
+            MDFloatLayout:
+                Label:
+                    id: constipation_high
+                    text: "High"
+                    font_size:20
+                    pos_hint: {'center_x': .1, 'center_y': .5}
+                MDCheckbox:
+                    group: "constipation_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .2, 'center_y': .5}
+                    #on_active: app.check_high(*args)
+                Label:
+                    id: constipation_low
+                    text: "Low"
+                    font_size:20
+                    pos_hint: {'center_x': .4, 'center_y': .5}
+                MDCheckbox:
+                    group: "constipation_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    #on_active: app.check_low(*args)
+                Label:
+                    id: constipation_no
+                    text: "No"
+                    font_size:20
+                    pos_hint: {'center_x': .7, 'center_y': .5}
+                MDCheckbox:
+                    group: "constipation_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .8, 'center_y': .5}
+                    #on_active: app.check_no(*args)
+            
+            Label:
+                id: rose_spot
+                text: "Rose Spot"
+                font_size: 30
+                halign: "center" 
+                text_size: root.width, None
+                size: self.texture_size
+            MDFloatLayout:
+                Label:
+                    id: rose_spot_high
+                    text: "High"
+                    font_size:20
+                    pos_hint: {'center_x': .1, 'center_y': .5}
+                MDCheckbox:
+                    group: "rose_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .2, 'center_y': .5}
+                    #on_active: app.check_high(*args)
+                Label:
+                    id: rose_spot_low
+                    text: "Low"
+                    font_size:20
+                    pos_hint: {'center_x': .4, 'center_y': .5}
+                MDCheckbox:
+                    group: "rose_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    #on_active: app.check_low(*args)
+                Label:
+                    id: rose_spot_no
+                    text: "No"
+                    font_size:20
+                    pos_hint: {'center_x': .7, 'center_y': .5}
+                MDCheckbox:
+                    group: "rose_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .8, 'center_y': .5}
+                    #on_active: app.check_no(*args)
                         
-                MDRectangleFlatButton:
-                    text: "SUBMIT"
-                    font_size: 15
-                    theme_text_color: "Custom"
-                    text_color: 0, 0, 1, 1
-                    pos_hint: {"center_x": 0.5}
-                    on_press: app.submit_pat_info()
-                MDRectangleFlatButton:
-                    text: "PREDICT"
-                    font_size: 15
-                    theme_text_color: "Custom"
-                    text_color: 0, 0, 1, 1
-                    pos_hint: {"center_x": 0.5}
-                    #on_press: app.Sign_Up() # this needs to route to predict page     
-                MDRectangleFlatButton:
-                    text: "BACK"
-                    font_size: 15
-                    pos_hint: {"center_x": 0.5}
-                    on_press: root.manager.current = "fifth_page"              
+            Label:
+                id: muscle_weakness
+                text: "Muscle Weakness"
+                font_size: 30
+                halign: "center" 
+                text_size: root.width, None
+                size: self.texture_size
+            MDFloatLayout:
+                Label:
+                    id: muscle_weakness_high
+                    text: "High"
+                    font_size:20
+                    pos_hint: {'center_x': .1, 'center_y': .5}
+                MDCheckbox:
+                    group: "muscle_weakness_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .2, 'center_y': .5}
+                    #on_active: app.check_high(*args)
+                Label:
+                    id: muscle_weakness_low
+                    text: "Low"
+                    font_size:20
+                    pos_hint: {'center_x': .4, 'center_y': .5}
+                MDCheckbox:
+                    group: "muscle_weakness_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    #on_active: app.check_low(*args)
+                Label:
+                    id: muscle_weakness_no
+                    text: "No"
+                    font_size:20
+                    pos_hint: {'center_x': .7, 'center_y': .5}
+                MDCheckbox:
+                    group: "muscle_weakness_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .8, 'center_y': .5}
+                    #on_active: app.check_no(*args)
+                        
+            Label:
+                id: anorexia
+                text: "Anorexia"
+                font_size: 30
+                halign: "center" 
+                text_size: root.width, None
+                size: self.texture_size
+            MDFloatLayout:
+                Label:
+                    id: anorexia_high
+                    text: "High"
+                    font_size:20
+                    pos_hint: {'center_x': .1, 'center_y': .5}
+                MDCheckbox:
+                    group: "anorexia_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .2, 'center_y': .5}
+                    #on_active: app.check_high(*args)
+                Label:
+                    id: anorexia_low
+                    text: "Low"
+                    font_size:20
+                    pos_hint: {'center_x': .4, 'center_y': .5}
+                MDCheckbox:
+                    group: "anorexia_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    #on_active: app.check_low(*args)
+                Label:
+                    id: anorexia_no
+                    text: "No"
+                    font_size:20
+                    pos_hint: {'center_x': .7, 'center_y': .5}
+                MDCheckbox:
+                    group: "anorexia_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .8, 'center_y': .5}
+                    #on_active: app.check_no(*args)
+                        
+            Label:
+                id: headache
+                text: "Headache"
+                font_size: 30
+                halign: "center" 
+                text_size: root.width, None
+                size: self.texture_size
+            MDFloatLayout:
+                Label:
+                    id: headache_high
+                    text: "High"
+                    font_size:20
+                    pos_hint: {'center_x': .1, 'center_y': .5}
+                MDCheckbox:
+                    group: "headache_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .2, 'center_y': .5}
+                    #on_active: app.check_high(*args)
+                Label:
+                    id: headache_low
+                    text: "Low"
+                    font_size:20
+                    pos_hint: {'center_x': .4, 'center_y': .5}
+                MDCheckbox:
+                    group: "headache_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    #on_active: app.check_low(*args)
+                Label:
+                    id: headache_no
+                    text: "No"
+                    font_size:20
+                    pos_hint: {'center_x': .7, 'center_y': .5}
+                MDCheckbox:
+                    group: "headache_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .8, 'center_y': .5}
+                    #on_active: app.check_no(*args)
+                        
+            Label:
+                id: skin_rash
+                text: "Skin Rash"
+                font_size: 30
+                halign: "center" 
+                text_size: root.width, None
+                size: self.texture_size
+            MDFloatLayout:
+                Label:
+                    id: skin_rash_high
+                    text: "High"
+                    font_size:20
+                    pos_hint: {'center_x': .1, 'center_y': .5}
+                MDCheckbox:
+                    group: "skin_rash_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .2, 'center_y': .5}
+                    #on_active: app.check_high(*args)
+                Label:
+                    id: skin_rash_low
+                    text: "Low"
+                    font_size:20
+                    pos_hint: {'center_x': .4, 'center_y': .5}
+                MDCheckbox:
+                    group: "skin_rash_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    #on_active: app.check_low(*args)
+                Label:
+                    id: skin_rash_no
+                    text: "No"
+                    font_size:20
+                    pos_hint: {'center_x': .7, 'center_y': .5}
+                MDCheckbox:
+                    group: "skin_rash_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .8, 'center_y': .5}
+                    #on_active: app.check_no(*args)
+                        
+            Label:
+                id: weightless
+                text: "Weightless"
+                font_size: 30
+                halign: "center" 
+                text_size: root.width, None
+                size: self.texture_size
+            MDFloatLayout:
+                Label:
+                    id: weightless_high
+                    text: "High"
+                    font_size:20
+                    pos_hint: {'center_x': .1, 'center_y': .5}
+                MDCheckbox:
+                    group: "weightless_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .2, 'center_y': .5}
+                    #on_active: app.check_high(*args)
+                Label:
+                    id: weightless_low
+                    text: "Low"
+                    font_size:20
+                    pos_hint: {'center_x': .4, 'center_y': .5}
+                MDCheckbox:
+                    group: "weightless_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    #on_active: app.check_low(*args)
+                Label:
+                    id: weightless_no
+                    text: "No"
+                    font_size:20
+                    pos_hint: {'center_x': .7, 'center_y': .5}
+                MDCheckbox:
+                    group: "weightless_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .8, 'center_y': .5}
+                    #on_active: app.check_no(*args)
+                        
+            Label:
+                id: stomach_distension
+                text: "Rose Spot"
+                font_size: 30
+                halign: "center" 
+                text_size: root.width, None
+                size: self.texture_size
+            MDFloatLayout:
+                Label:
+                    id: stomach_distension_high
+                    text: "High"
+                    font_size:20
+                    pos_hint: {'center_x': .1, 'center_y': .5}
+                MDCheckbox:
+                    group: "stomach_distension_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .2, 'center_y': .5}
+                    #on_active: app.check_high(*args)
+                Label:
+                    id: stomach_distension_low
+                    text: "Low"
+                    font_size:20
+                    pos_hint: {'center_x': .4, 'center_y': .5}
+                MDCheckbox:
+                    group: "stomach_distension_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    #on_active: app.check_low(*args)
+                Label:
+                    id: stomach_distension_no
+                    text: "No"
+                    font_size:20
+                    pos_hint: {'center_x': .7, 'center_y': .5}
+                MDCheckbox:
+                    group: "stomach_distension_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .8, 'center_y': .5}
+                    #on_active: app.check_no(*args)
+                        
+            Label:
+                id: malaise
+                text: "Malaise"
+                font_size: 30
+                halign: "center" 
+                text_size: root.width, None
+                size: self.texture_size
+            MDFloatLayout:
+                Label:
+                    id: malaise_high
+                    text: "High"
+                    font_size:20
+                    pos_hint: {'center_x': .1, 'center_y': .5}
+                MDCheckbox:
+                    group: "malaise_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .2, 'center_y': .5}
+                    #on_active: app.check_high(*args)
+                Label:
+                    id: malaise_low
+                    text: "Low"
+                    font_size:20
+                    pos_hint: {'center_x': .4, 'center_y': .5}
+                MDCheckbox:
+                    group: "malaise_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    #on_active: app.check_low(*args)
+                Label:
+                    id: malaise_no
+                    text: "No"
+                    font_size:20
+                    pos_hint: {'center_x': .7, 'center_y': .5}
+                MDCheckbox:
+                    group: "malaise_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .8, 'center_y': .5}
+                    #on_active: app.check_no(*args)
+                        
+            Label:
+                id: occult_blood
+                text: "Occult Blood in Stool"
+                font_size: 30
+                halign: "center" 
+                text_size: root.width, None
+                size: self.texture_size
+            MDFloatLayout:
+                Label:
+                    id: occult_blood_high
+                    text: "High"
+                    font_size:20
+                    pos_hint: {'center_x': .1, 'center_y': .5}
+                MDCheckbox:
+                    group: "occult_blood_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .2, 'center_y': .5}
+                    ##on_active: app.check_high(*args)
+                Label:
+                    id: occult_blood_low
+                    text: "Low"
+                    font_size:20
+                    pos_hint: {'center_x': .4, 'center_y': .5}
+                MDCheckbox:
+                    group: "occult_blood_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    ##on_active: app.check_low(*args)
+                Label:
+                    id: occult_blood_no
+                    text: "No"
+                    font_size:20
+                    pos_hint: {'center_x': .7, 'center_y': .5}
+                MDCheckbox:
+                    group: "occult_blood_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .8, 'center_y': .5}
+                    ##on_active: app.check_no(*args)
+                        
+            Label:
+                id: hemorrhages
+                text: "Hemorrhages"
+                font_size: 30
+                halign: "center" 
+                text_size: root.width, None
+                size: self.texture_size
+            MDFloatLayout:
+                Label:
+                    id: hemorrhages_high
+                    text: "High"
+                    font_size:20
+                    pos_hint: {'center_x': .1, 'center_y': .5}
+                MDCheckbox:
+                    group: "hemorrhages_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .2, 'center_y': .5}
+                    #on_active: app.check_high(*args)
+                Label:
+                    id: hemorrhages_low
+                    text: "Low"
+                    font_size:20
+                    pos_hint: {'center_x': .4, 'center_y': .5}
+                MDCheckbox:
+                    group: "hemorrhages_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    #on_active: app.check_low(*args)
+                Label:
+                    id: hemorrhages_no
+                    text: "No"
+                    font_size:20
+                    pos_hint: {'center_x': .7, 'center_y': .5}
+                MDCheckbox:
+                    group: "hemorrhages_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .8, 'center_y': .5}
+                   # on_active: app.check_no(*args)
+                        
+            Label:
+                id: derilium
+                text: "Derilium"
+                font_size: 30
+                halign: "center" 
+                text_size: root.width, None
+                size: self.texture_size
+            MDFloatLayout:
+                Label:
+                    id: derilium_high
+                    text: "High"
+                    font_size:20
+                    pos_hint: {'center_x': .1, 'center_y': .5}
+                MDCheckbox:
+                    group: "derilium_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .2, 'center_y': .5}
+                    #on_active: app.check_high(*args)
+                Label:
+                    id: derilium_low
+                    text: "Low"
+                    font_size:20
+                    pos_hint: {'center_x': .4, 'center_y': .5}
+                MDCheckbox:
+                    group: "derilium_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    #on_active: app.check_low(*args)
+                Label:
+                    id: derilium_no
+                    text: "No"
+                    font_size:20
+                    pos_hint: {'center_x': .7, 'center_y': .5}
+                MDCheckbox:
+                    group: "derilium_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .8, 'center_y': .5}
+                    #on_active: app.check_no(*args)
+
+            Label:
+                id: abdominal_rigidity
+                text: "Abdominal Rigidity"
+                font_size: 30
+                halign: "center" 
+                text_size: root.width, None
+                size: self.texture_size
+            MDFloatLayout:
+                Label:
+                    id: abdominal_rigidity_high
+                    text: "High"
+                    font_size:20
+                    pos_hint: {'center_x': .1, 'center_y': .5}
+                MDCheckbox:
+                    group: "abdominal_rigidity_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .2, 'center_y': .5}
+                    ##on_active: app.check_high(*args)
+                Label:
+                    id: abdominal_rigidity_low
+                    text: "Low"
+                    font_size:20
+                    pos_hint: {'center_x': .4, 'center_y': .5}
+                MDCheckbox:
+                    group: "abdominal_rigidity_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    ##on_active: app.check_low(*args)
+                Label:
+                    id: abdominal_rigidity_no
+                    text: "No"
+                    font_size:20
+                    pos_hint: {'center_x': .7, 'center_y': .5}
+                MDCheckbox:
+                    group: "abdominal_rigidity_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .8, 'center_y': .5}
+                    ##on_active: app.check_no(*args)
+
+            Label:
+                id: epitaxis
+                text: "Epitaxis"
+                font_size: 30
+                halign: "center" 
+                text_size: root.width, None
+                size: self.texture_size
+            MDFloatLayout:
+                Label:
+                    id: epitaxis_high
+                    text: "High"
+                    font_size:20
+                    pos_hint: {'center_x': .1, 'center_y': .5}
+                MDCheckbox:
+                    group: "epitaxis_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .2, 'center_y': .5}
+                    #on_active: app.check_high(*args)
+                Label:
+                    id: epitaxis_low
+                    text: "Low"
+                    font_size:20
+                    pos_hint: {'center_x': .4, 'center_y': .5}
+                MDCheckbox:
+                    group: "epitaxis_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    #on_active: app.check_low(*args)
+                Label:
+                    id: epitaxis_no
+                    text: "No"
+                    font_size:20
+                    pos_hint: {'center_x': .7, 'center_y': .5}
+                MDCheckbox:
+                    group: "epitaxis_radio"
+                    size: "48dp", "48dp"
+                    size_hint: None,None
+                    pos_hint: {'center_x': .8, 'center_y': .5}
+                    #on_active: app.check_no(*args)
+
+            MDRectangleFlatButton:
+                text: "SUBMIT"
+                font_size: 15
+                theme_text_color: "Custom"
+                text_color: 0, 0, 1, 1
+                pos_hint: {"center_x": 0.5}
+                on_press: app.submit_pat_info()
+            MDRectangleFlatButton:
+                text: "PREDICT"
+                font_size: 15
+                theme_text_color: "Custom"
+                text_color: 0, 0, 1, 1
+                pos_hint: {"center_x": 0.5}
+                #on_press: app.Sign_Up() # this needs to route to predict page     
+            MDRectangleFlatButton:
+                text: "BACK"
+                font_size: 15
+                pos_hint: {"center_x": 0.5}
+                on_press: root.manager.current = "fifth_page" 
 
 <FifthPage>:
     name: "fifth_page" 
