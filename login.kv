@@ -1179,23 +1179,29 @@
         id: camera
         resolution: (640, 480)
         play: False
-    ToggleButton:
+    ToggleButton:   
         text: 'PLAY'
         on_press: camera.play = not camera.play
-        pos_hint: {"center_x": 0.5, "center_y": 0.4}
+        pos_hint: {"center_x": 0.5, "center_y": 0.25}
         size_hint_y: None
-        height: '48dp'
+        height: '28dp'
     Button:
         text: 'CAPTURE'
         size_hint_y: None
-        pos_hint: {"center_x": 0.5, "center_y": 0.3}
-        height: '48dp'
+        pos_hint: {"center_x": 0.5, "center_y": 0.19}
+        height: '28dp'
         on_press: app.capture()
+    Button:
+        text: 'UPLOAD'
+        size_hint_y: None
+        pos_hint: {"center_x": 0.5, "center_y": 0.13}
+        height: '28dp'
+
     Button:
         text: 'PREDICT'
         size_hint_y: None
-        pos_hint: {"center_x": 0.5, "center_y": 0.2}
-        height: '48dp'
+        pos_hint: {"center_x": 0.5, "center_y": 0.07}
+        height: '28dp'
         on_press: root.manager.current = "eleventh_page"   
     
     
