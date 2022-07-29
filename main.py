@@ -9,6 +9,7 @@ from kivymd.uix.button import MDFlatButton
 from kivy.core.window import Window
 from kivy.utils import platform
 from kivymd.uix.picker import MDDatePicker
+from kivy.config import Config
 import kivy
 # try:
 #     import cv2
@@ -35,7 +36,7 @@ if platform == 'android':
     # ])
 
 
-Window.size=(300,700)
+Config.set('graphics','resizable',True)
 
 class ScreenManagement(ScreenManager):
     pass
