@@ -206,9 +206,9 @@
         size_hint: None, None
         size: 300, 400
         pos_hint: {"center_x": 0.5, "center_y": 0.5}
-        elevation: 8
+        elevation: 60
         padding: 15
-        spacing: 10
+        spacing: 105
         orientation: 'vertical'
         # below is kivy not kivy md except for the last buttons
         ScrollView:
@@ -224,10 +224,10 @@
                 height: self.minimum_height
                 row_default_height: 50
                 row_force_default: True
+                spacing: 0
                 MDToolbar:
                     title: "Hi"
-                    id:toolbar
-                    elevation: 5
+                    id:toolbar                    
                     pos_hint: {'top':0.5}
                     md_bg_color: 200/255,10/255,30/255,1
                 TextInput:
@@ -255,11 +255,11 @@
                     id: city
                     icon_left: "city"
                     hint_text: "City"
-                    foreground_color: 1, 0, 1, 1
+                    foreground_color: 1, 0, 1, 1                    
                     size_hint_x: None
                     width: 220
                     font_size: 20
-                    pos_hint: {"center_x": 0.5}
+                    pos_hint: {"center_x": 0.5, "top":0.6}
                 #state
                 MDTextFieldRound:
                     id: state
@@ -414,7 +414,7 @@
                     theme_text_color: "Custom"
                     text_color: 0, 0, 1, 1
                     pos_hint: {"center_x": 0.5}
-                    #on_press: app.Sign_Up() # this needs to route to predict page     
+                    #on_press: app.generatePDF() # this needs to route to predict page     
                 MDRectangleFlatButton:
                     text: "BACK"
                     font_size: 15
@@ -596,7 +596,8 @@
         size_hint_y: None
         pos_hint: {"center_x": 0.5, "center_y": 0.2}
         height: '48dp'
-        on_press: root.manager.current = "eleventh_page"   
+        on_press: root.manager.current = "eleventh_page"
+       
     
     
 

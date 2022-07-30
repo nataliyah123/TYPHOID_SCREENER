@@ -9,6 +9,7 @@ from kivymd.uix.button import MDFlatButton
 from kivy.core.window import Window
 from kivy.utils import platform
 from kivymd.uix.picker import MDDatePicker
+from fpdf import FPDF
 import kivy
 # try:
 #     import cv2
@@ -35,7 +36,6 @@ if platform == 'android':
     # ])
 
 
-Window.size=(300,700)
 
 class ScreenManagement(ScreenManager):
     pass
@@ -139,8 +139,7 @@ class TestApp(MDApp):
                  self.root.ids.page3.ids.signup_email.text,
                  self.root.ids.page3.ids.occupation.text,
                  self.root.ids.page3.ids.organization.text,
-                 self.root.ids.page3.ids.password.text
-                
+                 self.root.ids.page3.ids.password.text                
             ])
         conn.commit()
         conn.close()
@@ -175,38 +174,39 @@ class TestApp(MDApp):
         usr_data = c.fetchall()
         loginName = self.root.ids.page2.ids.user.text
         loginPassword = self.root.ids.page2.ids.password.text
-        print("this is usr_data", usr_data[0],loginName)  
+        print("this is usr_data", usr_data,loginName)  
         #when username or password is empty
-        if(loginName.split() == [] or loginPassword.split() == []):
+        if(loginName.split() == [] and loginPassword.split() == []):
             self.dialog = MDDialog(
                     title = 'Invalid Input !',
-                    text = 'Please enter a valid Username and Password',
+                    text = 'Please enter all the fields',
                     size_hint = (0.7,0.2),
                     buttons = [MDFlatButton(text='Retry',on_release = self.close)]
                     )
             self.dialog.open()      
-        if (len(usr_data) == 0):
-            if not self.dialog:
+        elif (len(usr_data) == 0):
+            # if not self.dialog:
                 # create dialog
-                print("I am inside login usr_Data len",len(usr_data))
-                self.dialog = MDDialog(
-                    title="Sign up notice",
-                    text=f"Please Sign up!",
-                    buttons=[
-                        MDFlatButton(
-                            text="Ok", text_color=self.theme_cls.primary_color, 
-                            on_release=self.close
-                        ),
-                    ],
-                )
-                self.dialog.open()        
+            print("I am inside login usr_Data len",len(usr_data))
+            self.dialog = MDDialog(
+                title="Sign up notice",
+                text=f"Invalid username or password!",
+                buttons=[
+                    MDFlatButton(
+                        text="Ok", text_color=self.theme_cls.primary_color, 
+                        on_release=self.close
+                    ),
+                ],
+            )
+            self.dialog.open()        
 
         elif(usr_data[0][0] == self.root.ids.page2.ids.user.text and usr_data[0][1] == self.root.ids.page2.ids.password.text):
             # print("I am elif usr",usr_data, usr_data[0][1], usr_data[0][0] == self.root.ids.page2.ids.user.text, usr_data[0][1] == int(self.root.ids.page2.ids.password.text))
             print("checking manager", self.root.current)
             print("this is page4 ibia", self.root)
             self.root.current = 'sixth_page' 
-                
+
+                        
         #self.root.ids.word_label.text = f'{self.root.ids.user_signup.text} Added'       
         #self.root.ids.word_input.text = ''
         # ibia.............. self.root.manager.current is used whereas outside this function in testApp it is not
@@ -241,12 +241,28 @@ class TestApp(MDApp):
         '''
         print("Captured ibia 22..................$$$$$$$")
         print("what are the vars./././././/.//./...",self.root.ids.page10.ids)
-        # camera = self.root.ids.page10.ids.camera #uncomment for android devt0
+        camera = self.root.ids.page10.ids.camera #uncomment for android devt0
         timestr = time.strftime("%Y%m%d_%H%M%S")
         print("what is going on here")
-        # camera.export_to_png("IMG_{}.png".format(timestr))
+        camera.export_to_png("/sdcard/IMG_{}.png".format(timestr))
         print("Captured ibia..................$$$$$$$")
-    
+
+    def generatePDF(self):
+        print("I am pdf genrator......................*** start ibia")
+        pdf = FPDF() 
+        # Add a page
+        pdf.add_page()         
+        # set style and size of font
+        # that you want in the pdf
+        pdf.set_font("Arial", size = 15)         
+        # create a cell
+        pdf.cell(200, 10, txt = "GeeksforGeeks",
+                 ln = 1, align = 'C')
+
+        # save the pdf with name .pdf
+        pdf.output("/sdcard/GFG.pdf") 
+        print("I am pdf genrator......................*** end ibia")
+
   
 if __name__ == '__main__':
     app = TestApp()
