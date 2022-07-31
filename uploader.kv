@@ -1,0 +1,28 @@
+<Uploader>:
+    
+    Button:
+        text: 'UPLOAD'
+        size_hint_y: None
+        pos_hint: {"center_x": 0.5, "center_y": 0.13}
+        height: '28dp'
+        on_release: root.show_load()       
+        
+<LoadDialog>:
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserListView:
+            id: filechooser
+            path: '/sdcard'
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: "Cancel"
+                on_release: root.cancel()
+
+            Button:
+                text: "Load"
+                on_release: root.load(filechooser.path, filechooser.selection)
+
