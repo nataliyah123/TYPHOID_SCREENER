@@ -238,14 +238,10 @@ class TestApp(MDApp):
         '''
         Function to capture the images and give them the names
         according to their captured time and date.
-        '''
-        print("Captured ibia 22..................$$$$$$$")
-        print("what are the vars./././././/.//./...",self.root.ids.page10.ids)
+        '''        
         camera = self.root.ids.page10.ids.camera #uncomment for android devt0
-        timestr = time.strftime("%Y%m%d_%H%M%S")
-        print("what is going on here")
-        camera.export_to_png("/sdcard/IMG_{}.png".format(timestr))
-        print("Captured ibia..................$$$$$$$")
+        timestr = time.strftime("%Y%m%d_%H%M%S")        
+        camera.export_to_png("/sdcard/IMG_{}.png".format(timestr))        
 
     def generatePDF(self):
         print("I am pdf genrator......................*** start ibia")
