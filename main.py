@@ -1,3 +1,4 @@
+from kivy.config import Config
 from kivy.lang import Builder
 from kivy.app import App
 from kivy.uix.label import Label
@@ -10,6 +11,7 @@ from kivy.core.window import Window
 from kivy.utils import platform
 from kivymd.uix.picker import MDDatePicker
 from fpdf import FPDF
+
 import kivy
 # try:
 #     import cv2
@@ -35,7 +37,7 @@ if platform == 'android':
     #   Permission.READ_EXTERNAL_STORAGE
     # ])
 
-
+Config.set('graphics','resizable',True)
 
 class ScreenManagement(ScreenManager):
     pass
@@ -120,12 +122,13 @@ class TestApp(MDApp):
         #app icon
         self.icon = "images/logo.png"
         
-        # Create Database Or Connect To One
-        conn = sqlite3.connect('doctechpat.db')
-        c = conn.cursor()
-        c.execute("SELECT * FROM 'doctortech' LIMIT 0,1")
-        records = c.fetchall()
-        print("salam ibia", records[0])    
+        # # Create Database Or Connect To One
+        # conn = sqlite3.connect('doctechpat.db')
+        # c = conn.cursor()
+
+        # c.execute("SELECT * FROM 'doctortech' LIMIT 0,1")
+        # records = c.fetchall()
+        # print("salam ibia", records[0])    
         Builder.load_file('login.kv')        
         return ScreenManagement()
 
@@ -133,7 +136,9 @@ class TestApp(MDApp):
         print("this is testin", self.root.ids.page3.ids.user_signup.text)
         conn = sqlite3.connect('doctechpat.db')       
         c = conn.cursor()        
+
         c.execute("INSERT INTO doctortech (person_name, email, occupation, organization,password) values(?,?,?,?,?)",
+
             [
                  self.root.ids.page3.ids.user_signup.text,
                  self.root.ids.page3.ids.signup_email.text,
@@ -166,15 +171,16 @@ class TestApp(MDApp):
 
     def Login(self):
         print("this is login", self.root.ids.page2.ids.user.text)
+
         conn = sqlite3.connect('doctechpat.db')       
         c = conn.cursor()                      
-        # c.execute("SELECT * FROM 'doctortech' where person_name = ? AND password = ?", (self.root.ids.page2.ids.user.text,self.root.ids.page2.ids.password.text))
         c.execute("SELECT person_name, password FROM 'doctortech' where person_name = ? AND password = ? ", (self.root.ids.page2.ids.user.text,self.root.ids.page2.ids.password.text))
 
         usr_data = c.fetchall()
         loginName = self.root.ids.page2.ids.user.text
         loginPassword = self.root.ids.page2.ids.password.text
-        print("this is usr_data", usr_data,loginName)  
+        # print("this is usr_data", usr_data[0],loginName)  
+
         #when username or password is empty
         if(loginName.split() == [] and loginPassword.split() == []):
             self.dialog = MDDialog(
@@ -190,7 +196,7 @@ class TestApp(MDApp):
             print("I am inside login usr_Data len",len(usr_data))
             self.dialog = MDDialog(
                 title="Sign up notice",
-                text=f"Invalid username or password!",
+                text=f"Please Sign up! or provide a valid username and password",
                 buttons=[
                     MDFlatButton(
                         text="Ok", text_color=self.theme_cls.primary_color, 
@@ -239,9 +245,9 @@ class TestApp(MDApp):
         Function to capture the images and give them the names
         according to their captured time and date.
         '''        
-        camera = self.root.ids.page10.ids.camera #uncomment for android devt0
-        timestr = time.strftime("%Y%m%d_%H%M%S")        
-        camera.export_to_png("/sdcard/IMG_{}.png".format(timestr))        
+        #camera = self.root.ids.page10.ids.camera #uncomment for android devt0
+        #timestr = time.strftime("%Y%m%d_%H%M%S")        
+        #camera.export_to_png("/sdcard/IMG_{}.png".format(timestr))
 
     def generatePDF(self):
         print("I am pdf genrator......................*** start ibia")
@@ -259,7 +265,7 @@ class TestApp(MDApp):
         pdf.output("/sdcard/GFG.pdf") 
         print("I am pdf genrator......................*** end ibia")
 
-  
+
 if __name__ == '__main__':
     app = TestApp()
     app.run()
