@@ -27,6 +27,14 @@
 
     orientation: "vertical"
 
+    #themechanger
+    MDRoundFlatIconButton:
+        text: 'Theme'
+        icon: 'theme-light-dark'
+        pos_hint:{'center_x':0.18,'center_y':0.9}
+        font_size: '18sp'
+        on_release: app.theme_changer()
+
     MDLabel:
         text: "Disclaimer"
         font_style: 'H5'
@@ -156,7 +164,6 @@
         text_color: 0, 0, 1, 1
         pos_hint: {"center_x": 0.5,"center_y": 0.2}
         on_press: app.Sign_Up_doctech()                 
-
 <FourthPage>:
     name: "fourth_page"    
         # create new patient records
@@ -1051,6 +1058,7 @@
                 font_size: 15
                 pos_hint: {"center_x": 0.5}
                 on_press: root.manager.current = "fifth_page" 
+
 
 <FifthPage>:
     name: "fifth_page" 
