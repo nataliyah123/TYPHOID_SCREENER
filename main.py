@@ -239,7 +239,14 @@ class TestApp(MDApp):
         date_dialog = MDDatePicker()
         date_dialog.bind(on_save = self.on_save,on_cancel=self.on_cancel)
         date_dialog.open()
-   
+
+    #changes then from dark to light and vice-versa
+    def theme_changer(self):
+        if self.theme_cls.theme_style == "Dark":
+            self.theme_cls.theme_style = "Light"
+        else:
+            self.theme_cls.theme_style = "Dark"
+
     def changer(self,*args):
         self.root.current = 'fourth_page'    
 
