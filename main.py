@@ -18,7 +18,7 @@ import kivy
 # except:
 #     from cv import cv2
 # import numpy as np
-# from kivy.uix.camera import Camera   ## uncomment for android
+from kivy.uix.camera import Camera   
 from kivy.graphics.texture import Texture
 import time
 import sqlite3
@@ -31,7 +31,7 @@ folder = os.path.dirname(os.path.realpath(__file__))
 
 print("I need to know what is your platform ibia", platform)
 if platform == 'android':
-  from android.permissions import request_permissions, Permission
+  #from android.permissions import request_permissions, Permission   ibia uncomment this line
   def callback(permission, callbacks):
     if all([res for res in results]):
       print("All premissions are granted")
@@ -259,9 +259,9 @@ class TestApp(MDApp):
         Function to capture the images and give them the names
         according to their captured time and date.
         '''        
-        # camera = self.root.ids.page10.ids.camera #uncomment for android devt0
-        # timestr = time.strftime("%Y%m%d_%H%M%S")        
-        # camera.export_to_png("/sdcard/IMG_{}.png".format(timestr)) 
+        camera = self.root.ids.page10.ids.camera #uncomment for android devt0
+        timestr = time.strftime("%Y%m%d_%H%M%S")        
+        camera.export_to_png("/sdcard/IMG_{}.png".format(timestr)) 
 
 
 # Factory.register('ChooseAFile', cls=ChooseAFile)

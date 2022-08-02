@@ -10,7 +10,8 @@ from kivy.factory import Factory
 from android.permissions import request_permissions, Permission
 
 request_permissions([Permission.WRITE_EXTERNAL_STORAGE,
-                     Permission.READ_EXTERNAL_STORAGE])
+                    Permission.READ_EXTERNAL_STORAGE])
+
 
 import os
 # folder = os.path.dirname(os.path.realpath(__file__))
