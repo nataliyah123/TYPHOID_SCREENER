@@ -10,7 +10,8 @@ from kivymd.uix.button import MDFlatButton
 from kivy.core.window import Window
 from kivy.utils import platform
 from kivymd.uix.picker import MDDatePicker
-from fpdf import FPDF
+from kivy.properties import ObjectProperty
+import os
 
 import kivy
 # try:
@@ -18,10 +19,16 @@ import kivy
 # except:
 #     from cv import cv2
 # import numpy as np
-from kivy.uix.camera import Camera   ## uncomment for android
+#from kivy.uix.camera import Camera   ## uncomment for android
 from kivy.graphics.texture import Texture
 import time
 import sqlite3
+folder = os.path.dirname(os.path.realpath(__file__))
+Builder.load_file(folder + "/predict.kv")
+from predict import Predict
+
+
+features = []
 
 print("I need to know what is your platform ibia", platform)
 if platform == 'android':
@@ -168,6 +175,16 @@ class TestApp(MDApp):
             ])
         conn.commit()
         conn.close()
+
+    def checkbox_func_arr(self, instance, value, feat_value):
+        conn = sqlite3.connect('doctechpat.db')       
+        c = conn.cursor()
+        if value == True:  
+            features.append(feat_value)
+
+    def for_checking(self):
+        print("checkboxes check", self.checkbox_func_arr, features) 
+
 
     def Login(self):
         print("this is login", self.root.ids.page2.ids.user.text)
