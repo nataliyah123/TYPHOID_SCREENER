@@ -1222,13 +1222,13 @@
     name: "tenth_page"
     orientation: 'vertical'
     spacing:10
-    Camera:
-        id: camera
-        resolution: (640, 480)
-        play: False
+    #Camera:
+        #id: camera
+        #resolution: (640, 480)
+        #play: False
     ToggleButton:   
         text: 'PLAY'
-        on_press: camera.play = not camera.play
+        #on_press: camera.play = not camera.play
         pos_hint: {"center_x": 0.5, "center_y": 0.25}
         size_hint_y: None
         height: '28dp'
@@ -1237,20 +1237,15 @@
         size_hint_y: None
         pos_hint: {"center_x": 0.5, "center_y": 0.19}
         height: '28dp'
-        on_press: app.capture()
+        #on_press: app.capture()
     Button:
         text: 'UPLOAD'
         size_hint_y: None
         pos_hint: {"center_x": 0.5, "center_y": 0.13}
         height: '28dp'
-
-    Button:
-        text: 'PREDICT'
-        size_hint_y: None
-        pos_hint: {"center_x": 0.5, "center_y": 0.07}
-        height: '28dp'
-        on_press: root.manager.current = "eleventh_page"   
-    
+    Uploader:
+        id: uploader
+        name: "uploader"
     
 
 <EleventhPage>:
