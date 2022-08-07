@@ -1222,10 +1222,17 @@
     name: "tenth_page"
     orientation: 'vertical'
     spacing:10
-    #Camera:
-        #id: camera
-        #resolution: (640, 480)
-        #play: False
+    Camera:
+        id: camera
+        resolution: (640, 480)
+        play: False
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: -90
+                origin: self.center
+        canvas.after:
+            PopMatrix
     ToggleButton:   
         text: 'PLAY'
         #on_press: camera.play = not camera.play
