@@ -163,7 +163,16 @@
         theme_text_color: "Custom"
         text_color: 0, 0, 1, 1
         pos_hint: {"center_x": 0.5,"center_y": 0.2}
-        on_press: app.Sign_Up_doctech()                 
+        on_press: app.Sign_Up_doctech()
+
+    MDRectangleFlatButton:
+        text: "BACK"
+        font_size: 15
+        theme_text_color: "Custom"
+        text_color: 0, 0, 1, 1
+        pos_hint: {"center_x": 0.5,"center_y": 0.1}
+        on_press: root.manager.current = 'second_page'
+                
 
 <FourthPage>:
     name: "fourth_page"    
@@ -1243,9 +1252,16 @@
         size_hint_y: None
         pos_hint: {"center_x": 0.5, "center_y": 0.13}
         height: '28dp'
-    Uploader:
-        id: uploader
-        name: "uploader"
+    #Uploader:
+    #    id: uploader
+    #    name: "uploader"
+    Button:
+        text: 'BACK'
+        size_hint_y: None
+        pos_hint: {"center_x": 0.5, "center_y": 0.07}
+        height: '28dp'
+        on_press: 
+            root.manager.current = 'sixth_page'
     
 
 <EleventhPage>:
