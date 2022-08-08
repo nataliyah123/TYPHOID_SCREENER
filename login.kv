@@ -56,8 +56,8 @@
         valign: "center"
         pos_hint: {"center_x": 0.5, "center_y": 0.1}
         spacing: None
-        on_press:                    
-            root.manager.current = "second_page"        
+        on_press: root.manager.current = "second_page"                  
+                   
             
   
 
@@ -1230,22 +1230,22 @@
         font_size: 15
         pos_hint: {"center_x": 0.5,"center_y": 0.2}
         on_press: root.manager.current = "fifth_page"  
-           
+
 <Camera2>:
     name: "tenth_page"
     orientation: 'vertical'
     spacing:10
-    Camera:
-        id: camera
-        resolution: (640, 480)
-        play: False
-        canvas.before:
-            PushMatrix
-            Rotate:
-                angle: -90
-                origin: self.center
-        canvas.after:
-            PopMatrix
+    #Camera:
+        #id: camera
+        #resolution: (640, 480)
+        #play: False
+        #canvas.before:
+        #    PushMatrix
+        #    Rotate:
+        #        angle: -90
+        #        origin: self.center
+        #canvas.after:
+        #    PopMatrix
     ToggleButton:   
         text: 'PLAY'
         #on_press: camera.play = not camera.play
@@ -1258,11 +1258,11 @@
         pos_hint: {"center_x": 0.5, "center_y": 0.14}
         height: '25dp'
         #on_press: app.capture()
-    Button:
-        text: 'UPLOAD'
-        size_hint_y: None
-        pos_hint: {"center_x": 0.5, "center_y": 0.10}
-        height: '25dp'
+    #Button:
+    #    text: 'UPLOAD'
+    #    size_hint_y: None
+    #    pos_hint: {"center_x": 0.5, "center_y": 0.10}
+    #    height: '25dp'
     Uploader:
         id: uploader
         name: "uploader"
@@ -1271,8 +1271,8 @@
         size_hint_y: None
         pos_hint: {"center_x": 0.5, "center_y": 0.06}
         height: '25dp'
-        on_press: 
-            root.manager.current = 'sixth_page'
+        on_press: root.manager.current = 'sixth_page'
+            
 
 <EleventhPage>:
     name: "eleventh_page"

@@ -12,28 +12,18 @@ from kivy.core.window import Window
 from kivy.utils import platform
 from kivymd.uix.picker import MDDatePicker
 from kivy.properties import ObjectProperty
-import os
-
 import kivy
 # try:
 #     import cv2
 # except:
 #     from cv import cv2
 # import numpy as np
-<<<<<<< HEAD
+
 #from kivy.uix.camera import Camera   ## uncomment for android
 from kivy.graphics.texture import Texture
 import time
 import sqlite3
-folder = os.path.dirname(os.path.realpath(__file__))
-Builder.load_file(folder + "/predict.kv")
-from predict import Predict
-
-
-features = []
-=======
-from kivy.uix.camera import Camera   
-from kivy.graphics.texture import Texture
+from predict import Predict 
 import time
 import sqlite3
 import os
@@ -41,8 +31,8 @@ from uploader import Uploader
 from uploader import LoadDialog
 
 folder = os.path.dirname(os.path.realpath(__file__))
-
->>>>>>> d3f19af8eef70d10f306d496f4cbeae12a8fc174
+Builder.load_file(folder + "/predict.kv")
+features = []
 
 print("I need to know what is your platform ibia", platform)
 if platform == 'android':
