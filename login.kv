@@ -27,6 +27,14 @@
 
     orientation: "vertical"
 
+    #themechanger
+    MDRoundFlatIconButton:
+        text: 'Theme'
+        icon: 'theme-light-dark'
+        pos_hint:{'center_x':0.18,'center_y':0.9}
+        font_size: '18sp'
+        on_release: app.theme_changer()
+
     MDLabel:
         text: "Disclaimer"
         font_style: 'H5'
@@ -158,7 +166,16 @@
         theme_text_color: "Custom"
         text_color: 0, 0, 1, 1
         pos_hint: {"center_x": 0.5,"center_y": 0.2}
-        on_press: app.Sign_Up_doctech()                 
+        on_press: app.Sign_Up_doctech()
+
+    MDRectangleFlatButton:
+        text: "BACK"
+        font_size: 15
+        theme_text_color: "Custom"
+        text_color: 0, 0, 1, 1
+        pos_hint: {"center_x": 0.5,"center_y": 0.1}
+        on_press: root.manager.current = 'second_page'
+                
 
 <FourthPage>:    
     name: "fourth_page"    
@@ -286,12 +303,14 @@
                 id: fever
                 text: "Fever"
                 font_size: 30
+                color: (126/255,126/255,128/255,1)
                 halign: "center" 
             MDFloatLayout:
                 Label:
                     id: fever_high
                     text: "High"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .1, 'center_y': .5}
                 MDCheckbox:
                     group: "fever_ratio"
@@ -303,6 +322,7 @@
                     id: fever_low
                     text: "Low"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .4, 'center_y': .5}
                 MDCheckbox:
                     group: "fever_ratio"
@@ -314,6 +334,7 @@
                     id: fever_no
                     text: "No"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .7, 'center_y': .5}
                 MDCheckbox:
                     group: "fever_ratio"
@@ -326,14 +347,14 @@
                 id: abd_pain
                 text: "Abdominal Pain"
                 font_size: 30
-                halign: "center" 
-                text_size: root.width, None
-                size: self.texture_size
+                color: (126/255,126/255,128/255,1)
+                halign: "center"
             MDFloatLayout:
                 Label:
                     id: abd_high
                     text: "High"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .1, 'center_y': .5}
                 MDCheckbox:
                     group: "abd_radio"
@@ -345,6 +366,7 @@
                     id: abd_low
                     text: "Low"
                     font_size:20
+                    color:(126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .4, 'center_y': .5}
                 MDCheckbox:
                     group: "abd_radio"
@@ -356,6 +378,7 @@
                     id: abd_no
                     text: "No"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .7, 'center_y': .5}
                 MDCheckbox:
                     group: "abd_radio"
@@ -368,14 +391,14 @@
                 id: cough
                 text: "Cough"
                 font_size: 30
+                color: (126/255,126/255,128/255,1)
                 halign: "center" 
-                text_size: root.width, None
-                size: self.texture_size
             MDFloatLayout:
                 Label:
                     id: cough_high
                     text: "High"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .1, 'center_y': .5}
                 MDCheckbox:
                     group: "cough_radio"
@@ -387,6 +410,7 @@
                     id: cough_low
                     text: "Low"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .4, 'center_y': .5}
                 MDCheckbox:
                     group: "cough_radio"
@@ -398,6 +422,7 @@
                     id: cough_no
                     text: "No"
                     font_size:20
+                    color:  (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .7, 'center_y': .5}
                 MDCheckbox:
                     group: "cough_radio"
@@ -410,14 +435,14 @@
                 id: diarrheoa
                 text: "Diarrheoa"
                 font_size: 30
+                color: (126/255,126/255,128/255,1)
                 halign: "center" 
-                text_size: root.width, None
-                size: self.texture_size
             MDFloatLayout:
                 Label:
                     id: diarrheoa_high
                     text: "High"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .1, 'center_y': .5}
                 MDCheckbox:
                     group: "diarrheoa_radio"
@@ -429,6 +454,7 @@
                     id: diarrheoa_low
                     text: "Low"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .4, 'center_y': .5}
                 MDCheckbox:
                     group: "diarrheoa_radio"
@@ -440,6 +466,7 @@
                     id: diarrheoa_no
                     text: "No"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .7, 'center_y': .5}
                 MDCheckbox:
                     group: "diarrheoa_radio"
@@ -452,14 +479,14 @@
                 id: constipation
                 text: "Constipation"
                 font_size: 30
+                color: (126/255,126/255,128/255,1)
                 halign: "center" 
-                text_size: root.width, None
-                size: self.texture_size
             MDFloatLayout:
                 Label:
                     id: constipation_high
                     text: "High"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .1, 'center_y': .5}
                 MDCheckbox:
                     group: "constipation_radio"
@@ -471,6 +498,7 @@
                     id: constipation_low
                     text: "Low"
                     font_size:20
+                    color:  (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .4, 'center_y': .5}
                 MDCheckbox:
                     group: "constipation_radio"
@@ -482,6 +510,7 @@
                     id: constipation_no
                     text: "No"
                     font_size:20
+                    color:  (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .7, 'center_y': .5}
                 MDCheckbox:
                     group: "constipation_radio"
@@ -494,14 +523,14 @@
                 id: rose_spot
                 text: "Rose Spot"
                 font_size: 30
+                color: (126/255,126/255,128/255,1)
                 halign: "center" 
-                text_size: root.width, None
-                size: self.texture_size
             MDFloatLayout:
                 Label:
                     id: rose_spot_high
                     text: "High"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .1, 'center_y': .5}
                 MDCheckbox:
                     group: "rose_radio"
@@ -513,6 +542,7 @@
                     id: rose_spot_low
                     text: "Low"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .4, 'center_y': .5}
                 MDCheckbox:
                     group: "rose_radio"
@@ -524,6 +554,7 @@
                     id: rose_spot_no
                     text: "No"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .7, 'center_y': .5}
                 MDCheckbox:
                     group: "rose_radio"
@@ -536,14 +567,14 @@
                 id: muscle_weakness
                 text: "Muscle Weakness"
                 font_size: 30
+                color: (126/255,126/255,128/255,1)
                 halign: "center" 
-                text_size: root.width, None
-                size: self.texture_size
             MDFloatLayout:
                 Label:
                     id: muscle_weakness_high
                     text: "High"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .1, 'center_y': .5}
                 MDCheckbox:
                     group: "muscle_weakness_radio"
@@ -555,6 +586,7 @@
                     id: muscle_weakness_low
                     text: "Low"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .4, 'center_y': .5}
                 MDCheckbox:
                     group: "muscle_weakness_radio"
@@ -566,6 +598,7 @@
                     id: muscle_weakness_no
                     text: "No"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .7, 'center_y': .5}
                 MDCheckbox:
                     group: "muscle_weakness_radio"
@@ -578,14 +611,14 @@
                 id: anorexia
                 text: "Anorexia"
                 font_size: 30
+                color:(126/255,126/255,128/255,1)
                 halign: "center" 
-                text_size: root.width, None
-                size: self.texture_size
             MDFloatLayout:
                 Label:
                     id: anorexia_high
                     text: "High"
                     font_size:20
+                    color:(126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .1, 'center_y': .5}
                 MDCheckbox:
                     group: "anorexia_radio"
@@ -597,6 +630,7 @@
                     id: anorexia_low
                     text: "Low"
                     font_size:20
+                    color:(126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .4, 'center_y': .5}
                 MDCheckbox:
                     group: "anorexia_radio"
@@ -608,6 +642,7 @@
                     id: anorexia_no
                     text: "No"
                     font_size:20
+                    color:(126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .7, 'center_y': .5}
                 MDCheckbox:
                     group: "anorexia_radio"
@@ -620,14 +655,14 @@
                 id: headache
                 text: "Headache"
                 font_size: 30
+                color: (126/255,126/255,128/255,1)
                 halign: "center" 
-                text_size: root.width, None
-                size: self.texture_size
             MDFloatLayout:
                 Label:
                     id: headache_high
                     text: "High"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .1, 'center_y': .5}
                 MDCheckbox:
                     group: "headache_radio"
@@ -639,6 +674,7 @@
                     id: headache_low
                     text: "Low"
                     font_size:20
+                    color:(126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .4, 'center_y': .5}
                 MDCheckbox:
                     group: "headache_radio"
@@ -650,6 +686,7 @@
                     id: headache_no
                     text: "No"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .7, 'center_y': .5}
                 MDCheckbox:
                     group: "headache_radio"
@@ -662,14 +699,14 @@
                 id: skin_rash
                 text: "Skin Rash"
                 font_size: 30
+                color:(126/255,126/255,128/255,1)
                 halign: "center" 
-                text_size: root.width, None
-                size: self.texture_size
             MDFloatLayout:
                 Label:
                     id: skin_rash_high
                     text: "High"
                     font_size:20
+                    color:(126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .1, 'center_y': .5}
                 MDCheckbox:
                     group: "skin_rash_radio"
@@ -681,6 +718,7 @@
                     id: skin_rash_low
                     text: "Low"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .4, 'center_y': .5}
                 MDCheckbox:
                     group: "skin_rash_radio"
@@ -692,6 +730,7 @@
                     id: skin_rash_no
                     text: "No"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .7, 'center_y': .5}
                 MDCheckbox:
                     group: "skin_rash_radio"
@@ -704,14 +743,14 @@
                 id: weightless
                 text: "Weightless"
                 font_size: 30
+                color:(126/255,126/255,128/255,1)
                 halign: "center" 
-                text_size: root.width, None
-                size: self.texture_size
             MDFloatLayout:
                 Label:
                     id: weightless_high
                     text: "High"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .1, 'center_y': .5}
                 MDCheckbox:
                     group: "weightless_radio"
@@ -723,6 +762,7 @@
                     id: weightless_low
                     text: "Low"
                     font_size:20
+                    color:(126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .4, 'center_y': .5}
                 MDCheckbox:
                     group: "weightless_radio"
@@ -734,6 +774,7 @@
                     id: weightless_no
                     text: "No"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .7, 'center_y': .5}
                 MDCheckbox:
                     group: "weightless_radio"
@@ -746,14 +787,14 @@
                 id: stomach_distension
                 text: "Rose Spot"
                 font_size: 30
+                color: (126/255,126/255,128/255,1)
                 halign: "center" 
-                text_size: root.width, None
-                size: self.texture_size
             MDFloatLayout:
                 Label:
                     id: stomach_distension_high
                     text: "High"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .1, 'center_y': .5}
                 MDCheckbox:
                     group: "stomach_distension_radio"
@@ -765,6 +806,7 @@
                     id: stomach_distension_low
                     text: "Low"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .4, 'center_y': .5}
                 MDCheckbox:
                     group: "stomach_distension_radio"
@@ -776,6 +818,7 @@
                     id: stomach_distension_no
                     text: "No"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .7, 'center_y': .5}
                 MDCheckbox:
                     group: "stomach_distension_radio"
@@ -788,14 +831,14 @@
                 id: malaise
                 text: "Malaise"
                 font_size: 30
+                color: (126/255,126/255,128/255,1)
                 halign: "center" 
-                text_size: root.width, None
-                size: self.texture_size
             MDFloatLayout:
                 Label:
                     id: malaise_high
                     text: "High"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .1, 'center_y': .5}
                 MDCheckbox:
                     group: "malaise_radio"
@@ -807,6 +850,7 @@
                     id: malaise_low
                     text: "Low"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .4, 'center_y': .5}
                 MDCheckbox:
                     group: "malaise_radio"
@@ -818,6 +862,7 @@
                     id: malaise_no
                     text: "No"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .7, 'center_y': .5}
                 MDCheckbox:
                     group: "malaise_radio"
@@ -830,14 +875,14 @@
                 id: occult_blood
                 text: "Occult Blood in Stool"
                 font_size: 30
+                color: (126/255,126/255,128/255,1)
                 halign: "center" 
-                text_size: root.width, None
-                size: self.texture_size
             MDFloatLayout:
                 Label:
                     id: occult_blood_high
                     text: "High"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .1, 'center_y': .5}
                 MDCheckbox:
                     group: "occult_blood_radio"
@@ -849,6 +894,7 @@
                     id: occult_blood_low
                     text: "Low"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .4, 'center_y': .5}
                 MDCheckbox:
                     group: "occult_blood_radio"
@@ -860,6 +906,7 @@
                     id: occult_blood_no
                     text: "No"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .7, 'center_y': .5}
                 MDCheckbox:
                     group: "occult_blood_radio"
@@ -872,14 +919,14 @@
                 id: hemorrhages
                 text: "Hemorrhages"
                 font_size: 30
+                color:(126/255,126/255,128/255,1)
                 halign: "center" 
-                text_size: root.width, None
-                size: self.texture_size
             MDFloatLayout:
                 Label:
                     id: hemorrhages_high
                     text: "High"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .1, 'center_y': .5}
                 MDCheckbox:
                     group: "hemorrhages_radio"
@@ -891,6 +938,7 @@
                     id: hemorrhages_low
                     text: "Low"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .4, 'center_y': .5}
                 MDCheckbox:
                     group: "hemorrhages_radio"
@@ -902,6 +950,7 @@
                     id: hemorrhages_no
                     text: "No"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .7, 'center_y': .5}
                 MDCheckbox:
                     group: "hemorrhages_radio"
@@ -914,14 +963,14 @@
                 id: derilium
                 text: "Derilium"
                 font_size: 30
+                color: (126/255,126/255,128/255,1)
                 halign: "center" 
-                text_size: root.width, None
-                size: self.texture_size
             MDFloatLayout:
                 Label:
                     id: derilium_high
                     text: "High"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .1, 'center_y': .5}
                 MDCheckbox:
                     group: "derilium_radio"
@@ -933,6 +982,7 @@
                     id: derilium_low
                     text: "Low"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .4, 'center_y': .5}
                 MDCheckbox:
                     group: "derilium_radio"
@@ -944,6 +994,7 @@
                     id: derilium_no
                     text: "No"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .7, 'center_y': .5}
                 MDCheckbox:
                     group: "derilium_radio"
@@ -956,14 +1007,14 @@
                 id: abdominal_rigidity
                 text: "Abdominal Rigidity"
                 font_size: 30
+                color: (126/255,126/255,128/255,1)
                 halign: "center" 
-                text_size: root.width, None
-                size: self.texture_size
             MDFloatLayout:
                 Label:
                     id: abdominal_rigidity_high
                     text: "High"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .1, 'center_y': .5}
                 MDCheckbox:
                     group: "abdominal_rigidity_radio"
@@ -975,6 +1026,7 @@
                     id: abdominal_rigidity_low
                     text: "Low"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .4, 'center_y': .5}
                 MDCheckbox:
                     group: "abdominal_rigidity_radio"
@@ -986,6 +1038,7 @@
                     id: abdominal_rigidity_no
                     text: "No"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .7, 'center_y': .5}
                 MDCheckbox:
                     group: "abdominal_rigidity_radio"
@@ -998,14 +1051,14 @@
                 id: epitaxis
                 text: "Epitaxis"
                 font_size: 30
+                color: (126/255,126/255,128/255,1)
                 halign: "center" 
-                text_size: root.width, None
-                size: self.texture_size
             MDFloatLayout:
                 Label:
                     id: epitaxis_high
                     text: "High"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .1, 'center_y': .5}
                 MDCheckbox:
                     group: "epitaxis_radio"
@@ -1017,6 +1070,7 @@
                     id: epitaxis_low
                     text: "Low"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .4, 'center_y': .5}
                 MDCheckbox:
                     group: "epitaxis_radio"
@@ -1028,6 +1082,7 @@
                     id: epitaxis_no
                     text: "No"
                     font_size:20
+                    color: (126/255,126/255,128/255,1)
                     pos_hint: {'center_x': .7, 'center_y': .5}
                 MDCheckbox:
                     group: "epitaxis_radio"
@@ -1054,8 +1109,9 @@
                 text: "BACK"
                 font_size: 15
                 pos_hint: {"center_x": 0.5}
-                #on_press: root.manager.current = "fifth_page" 
-                on_press: app.for_checking()# this should be removed
+                on_press: root.manager.current = "fifth_page" 
+                #on_press: app.for_checking()# this should be removed
+
 <FifthPage>:
     name: "fifth_page" 
     # different options to alter data
@@ -1173,41 +1229,50 @@
         text: "BACK"
         font_size: 15
         pos_hint: {"center_x": 0.5,"center_y": 0.2}
-        on_press: root.manager.current = "fifth_page"     
-
+        on_press: root.manager.current = "fifth_page"  
+           
 <Camera2>:
     name: "tenth_page"
     orientation: 'vertical'
     spacing:10
-    #Camera:
-        #id: camera
-        #resolution: (640, 480)
-        #play: False
+    Camera:
+        id: camera
+        resolution: (640, 480)
+        play: False
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: -90
+                origin: self.center
+        canvas.after:
+            PopMatrix
     ToggleButton:   
         text: 'PLAY'
         #on_press: camera.play = not camera.play
-        pos_hint: {"center_x": 0.5, "center_y": 0.25}
+        pos_hint: {"center_x": 0.5, "center_y": 0.18}
         size_hint_y: None
-        height: '28dp'
+        height: '25dp'
     Button:
         text: 'CAPTURE'
         size_hint_y: None
-        pos_hint: {"center_x": 0.5, "center_y": 0.19}
-        height: '28dp'
-        on_press: app.capture()
+        pos_hint: {"center_x": 0.5, "center_y": 0.14}
+        height: '25dp'
+        #on_press: app.capture()
     Button:
         text: 'UPLOAD'
         size_hint_y: None
-        pos_hint: {"center_x": 0.5, "center_y": 0.13}
-        height: '28dp'
-
+        pos_hint: {"center_x": 0.5, "center_y": 0.10}
+        height: '25dp'
+    Uploader:
+        id: uploader
+        name: "uploader"
     Button:
-        text: 'PREDICT'
+        text: 'BACK'
         size_hint_y: None
-        pos_hint: {"center_x": 0.5, "center_y": 0.07}
-        height: '28dp'
-        on_press: root.manager.current = "eleventh_page"   
-   
+        pos_hint: {"center_x": 0.5, "center_y": 0.06}
+        height: '25dp'
+        on_press: 
+            root.manager.current = 'sixth_page'
 
 <EleventhPage>:
     name: "eleventh_page"

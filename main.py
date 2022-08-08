@@ -1,6 +1,7 @@
 from kivy.config import Config
 from kivy.lang import Builder
 from kivy.app import App
+# from kivy.factory import Factory
 from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -19,6 +20,7 @@ import kivy
 # except:
 #     from cv import cv2
 # import numpy as np
+<<<<<<< HEAD
 #from kivy.uix.camera import Camera   ## uncomment for android
 from kivy.graphics.texture import Texture
 import time
@@ -29,10 +31,22 @@ from predict import Predict
 
 
 features = []
+=======
+from kivy.uix.camera import Camera   
+from kivy.graphics.texture import Texture
+import time
+import sqlite3
+import os
+from uploader import Uploader
+from uploader import LoadDialog
+
+folder = os.path.dirname(os.path.realpath(__file__))
+
+>>>>>>> d3f19af8eef70d10f306d496f4cbeae12a8fc174
 
 print("I need to know what is your platform ibia", platform)
 if platform == 'android':
-  from android.permissions import request_permissions, Permission
+  #from android.permissions import request_permissions, Permission   ibia uncomment this line
   def callback(permission, callbacks):
     if all([res for res in results]):
       print("All premissions are granted")
@@ -136,7 +150,8 @@ class TestApp(MDApp):
         # c.execute("SELECT * FROM 'doctortech' LIMIT 0,1")
         # records = c.fetchall()
         # print("salam ibia", records[0])    
-        Builder.load_file('login.kv')        
+        Builder.load_file('login.kv')  
+        Builder.load_file(folder + "/uploader.kv")      
         return ScreenManagement()
 
     def Sign_Up_doctech(self):
@@ -249,7 +264,14 @@ class TestApp(MDApp):
         date_dialog = MDDatePicker()
         date_dialog.bind(on_save = self.on_save,on_cancel=self.on_cancel)
         date_dialog.open()
-   
+
+    #changes then from dark to light and vice-versa
+    def theme_changer(self):
+        if self.theme_cls.theme_style == "Dark":
+            self.theme_cls.theme_style = "Light"
+        else:
+            self.theme_cls.theme_style = "Dark"
+
     def changer(self,*args):
         self.root.current = 'fourth_page'    
 
@@ -262,26 +284,10 @@ class TestApp(MDApp):
         Function to capture the images and give them the names
         according to their captured time and date.
         '''        
+
         #camera = self.root.ids.page10.ids.camera #uncomment for android devt0
         #timestr = time.strftime("%Y%m%d_%H%M%S")        
         #camera.export_to_png("/sdcard/IMG_{}.png".format(timestr))
-
-    def generatePDF(self):
-        print("I am pdf genrator......................*** start ibia")
-        pdf = FPDF() 
-        # Add a page
-        pdf.add_page()         
-        # set style and size of font
-        # that you want in the pdf
-        pdf.set_font("Arial", size = 15)         
-        # create a cell
-        pdf.cell(200, 10, txt = "GeeksforGeeks",
-                 ln = 1, align = 'C')
-
-        # save the pdf with name .pdf
-        pdf.output("/sdcard/GFG.pdf") 
-        print("I am pdf genrator......................*** end ibia")
-
 
 if __name__ == '__main__':
     app = TestApp()

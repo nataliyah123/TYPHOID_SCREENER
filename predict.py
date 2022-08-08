@@ -92,9 +92,8 @@ class Predict(FloatLayout):
         # set style and size of font
         # that you want in the pdf
         pdf.set_font("Arial", size = 15)         
-        # create a cell
-        pdf.cell(200, 10, txt = "GeeksforGeeks",
-        # pdf.cell(200, 10, txt = reportxt,	
+        # create a cell        
+        pdf.cell(200, 10, txt = reportxt,	
                  ln = 1, align = 'C')
 
         # save the pdf with name .pdf
