@@ -157,6 +157,23 @@ class TestApp(MDApp):
             ])
         conn.commit()
         conn.close()
+        patientName = self.root.ids.page4.ids.patient_name.text
+        country = self.root.ids.page4.ids.country.text
+        city = self.root.ids.page4.ids.city.text
+        state = self.root.ids.page4.ids.state.text
+        phone = self.root.ids.page4.ids.phone.text
+        signupEmail = self.root.ids.page4.ids.signup_email.text
+        gender = self.root.ids.page4.ids.gender.text
+        ethnicity = self.root.ids.page4.ids.ethnicity.text
+        RecordDate = self.root.ids.page4.ids.date.text
+        if(patientName.split() == [] or country.split() == [] or city.split() == [] or state.split() == [] or phone.split() == [] or signupEmail.split() == [] or gender.split() == [] or ethnicity.split() == [] or RecordDate.split() == []):
+            self.dialog = MDDialog(
+                    title = 'Invalid Input !',
+                    text = 'Please enter all the required fields.',
+                    size_hint = (0.7,0.2),
+                    buttons = [MDFlatButton(text='Retry',on_release = self.close)]
+                    )
+            self.dialog.open()   
 
     def submit_pat_info(self):
         print("this is testin", self.root.ids.page4.ids.date.text)
