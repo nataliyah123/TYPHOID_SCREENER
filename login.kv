@@ -69,7 +69,7 @@
         id: user
         icon_left: "account-check"
         hint_text: "Name"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20
@@ -78,7 +78,7 @@
         id: password
         icon_left: "key-variant"
         hint_text: "Password"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20            
@@ -109,7 +109,7 @@
         id: user_signup
         icon_left: "account-check"
         hint_text: "Username"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20
@@ -119,7 +119,7 @@
         id: signup_email
         icon_left: "email"
         hint_text: "Email"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20
@@ -129,7 +129,7 @@
         id: occupation
         icon_left: "doctor"
         hint_text: "Doctor / technician"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20
@@ -139,7 +139,7 @@
         id: organization
         icon_left: "progress-wrench"
         hint_text: "organization"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20
@@ -150,7 +150,7 @@
         id: password
         icon_left: "key-variant"
         hint_text: "Password"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20            
@@ -200,7 +200,7 @@
                 id: patient_name
                 icon_left: "account-check"
                 hint_text: "Patient Name"
-                foreground_color: 1, 0, 1, 1
+                foreground_color: (0,0,0,1)
                 size_hint_x: None
                 width: 220
                 font_size: 20
@@ -210,7 +210,7 @@
                 icon_left: "map-marker"
                 hint_text: "Age"
                 input_filter: 'int'
-                foreground_color: 1, 0, 1, 1
+                foreground_color: (0,0,0,1)
                 size_hint_x: None
                 width: 220
                 font_size: 20            
@@ -220,7 +220,7 @@
                 id: city
                 icon_left: "city"    
                 hint_text: "City"
-                foreground_color: 1, 0, 1, 1
+                foreground_color: (0,0,0,1)
                 size_hint_x: None
                 width: 220
                 font_size: 20
@@ -230,7 +230,7 @@
                 id: state
                 icon_left: "city"
                 hint_text: "State"
-                foreground_color: 1, 0, 1, 1
+                foreground_color: (0,0,0,1)
                 size_hint_x: None
                 width: 220
                 font_size: 20
@@ -240,7 +240,7 @@
                 id: country
                 icon_left: "city"
                 hint_text: "Country"
-                foreground_color: 1, 0, 1, 1
+                foreground_color: (0,0,0,1)
                 size_hint_x: None
                 width: 220
                 font_size: 20
@@ -250,7 +250,7 @@
                 id: gender
                 icon_left: "gender"
                 hint_text: "Gender"
-                foreground_color: 1, 0, 1, 1
+                foreground_color: (0,0,0,1)
                 size_hint_x: None
                 width: 220
                 font_size: 20
@@ -260,7 +260,7 @@
                 id: phone
                 icon_left: "phone"
                 hint_text: "Contact number"
-                foreground_color: 1, 0, 1, 1
+                foreground_color: (0,0,0,1)
                 size_hint_x: None
                 width: 220
                 font_size: 20
@@ -270,7 +270,7 @@
                 id: signup_email
                 icon_left: "email"
                 hint_text: "Email"
-                foreground_color: 1, 0, 1, 1
+                foreground_color: (0,0,0,1)
                 size_hint_x: None
                 width: 220
                 font_size: 20
@@ -281,7 +281,7 @@
                 id: ethnicity
                 icon_left: "email"
                 hint_text: "Caucassian"
-                foreground_color: 1, 0, 1, 1
+                foreground_color: (0,0,0,1)
                 size_hint_x: None
                 width: 220
                 font_size: 20
@@ -1174,7 +1174,7 @@
         id: feature
         icon_left: "account-check"
         hint_text: "Feature Name"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20
@@ -1183,7 +1183,7 @@
         id: value
         icon_left: "map-marker"
         hint_text: "Location"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20            
@@ -1192,7 +1192,7 @@
         id: rowID
         icon_left: "account-check"
         hint_text: "ID of the row to update"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20
@@ -1231,17 +1231,17 @@
     name: "tenth_page"
     orientation: 'vertical'
     spacing:10
-    Camera:
-        id: camera
-        resolution: (640, 480)
-        play: False
-        canvas.before:
-            PushMatrix
-            Rotate:
-                angle: -90
-                origin: self.center
-        canvas.after:
-            PopMatrix
+    #Camera:
+    #    id: camera
+    #    resolution: (640, 480)
+    #    play: False
+    #    canvas.before:
+    #        PushMatrix
+    #        Rotate:
+    #            angle: -90
+    #            origin: self.center
+    #    canvas.after:
+    #        PopMatrix
     ToggleButton:   
         text: 'PLAY'
         #on_press: camera.play = not camera.play
@@ -1259,9 +1259,9 @@
         size_hint_y: None
         pos_hint: {"center_x": 0.5, "center_y": 0.10}
         height: '25dp'
-    Uploader:
-        id: uploader
-        name: "uploader"
+    #Uploader:
+        #id: uploader
+        #name: "uploader"
     Button:
         text: 'BACK'
         size_hint_y: None
