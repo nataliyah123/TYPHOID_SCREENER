@@ -157,6 +157,13 @@ class TestApp(MDApp):
             ])
         conn.commit()
         conn.close()
+        self.dialog = MDDialog(
+                title = 'Congratulations!',
+                text = 'You have successfully signed in to Mboalab.\nPlease click "Ok" to land on the image and data option page.',
+                size_hint = (0.7,0.2),
+                buttons = [MDFlatButton(text='Ok',on_release = self.move)]
+                )
+        self.dialog.open()
 
     def submit_pat_info(self):
         print("this is testin", self.root.ids.page4.ids.date.text)
@@ -252,6 +259,10 @@ class TestApp(MDApp):
 
     def close(self, instance):
         # close dialog
+        self.dialog.dismiss()
+
+    def move(self, instance):
+        self.root.current = 'sixth_page'
         self.dialog.dismiss()
 
     def capture(self):
