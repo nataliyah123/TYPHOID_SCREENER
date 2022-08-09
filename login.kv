@@ -7,6 +7,8 @@
         id: page3
     FourthPage:
         id: page4
+    Features:
+        id: features
     FifthPage:
         id: page5
     SixthPage:
@@ -43,7 +45,7 @@
     MDLabel:
         text: "Welcome to Mboalab! \n This app is by no means a substitue of a established diagnostic procedures"
         halign: "center"    
-
+        
     MDRectangleFlatButton:
         text: "Next"
         theme_text_color: "Custom"
@@ -54,9 +56,8 @@
         valign: "center"
         pos_hint: {"center_x": 0.5, "center_y": 0.1}
         spacing: None
-        on_press:                    
-            root.manager.current = "second_page" 
-            #root.manager.current = "fourth_page"  
+        on_press: root.manager.current = "second_page"                  
+    
 
 <SecondPage>:
     name: "second_page"    
@@ -69,7 +70,7 @@
         id: user
         icon_left: "account-check"
         hint_text: "Name"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20
@@ -78,7 +79,7 @@
         id: password
         icon_left: "key-variant"
         hint_text: "Password"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20            
@@ -109,7 +110,7 @@
         id: user_signup
         icon_left: "account-check"
         hint_text: "Username"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20
@@ -119,7 +120,7 @@
         id: signup_email
         icon_left: "email"
         hint_text: "Email"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20
@@ -129,7 +130,7 @@
         id: occupation
         icon_left: "doctor"
         hint_text: "Doctor / technician"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20
@@ -139,7 +140,7 @@
         id: organization
         icon_left: "progress-wrench"
         hint_text: "organization"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20
@@ -150,7 +151,7 @@
         id: password
         icon_left: "key-variant"
         hint_text: "Password"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20            
@@ -174,10 +175,10 @@
         on_press: root.manager.current = 'second_page'
                 
 
-<FourthPage>:
+<FourthPage>:    
     name: "fourth_page"    
         # create new patient records
-        # Show patient symptoms form page #4        
+        # Show patient symptoms form page #4    
 
         # below is kivy not kivy md except for the last buttons
     ScrollView:
@@ -200,7 +201,7 @@
                 id: patient_name
                 icon_left: "account-check"
                 hint_text: "Patient Name"
-                foreground_color: 1, 0, 1, 1
+                foreground_color: (0,0,0,1)
                 size_hint_x: None
                 width: 220
                 font_size: 20
@@ -210,7 +211,7 @@
                 icon_left: "map-marker"
                 hint_text: "Age"
                 input_filter: 'int'
-                foreground_color: 1, 0, 1, 1
+                foreground_color: (0,0,0,1)
                 size_hint_x: None
                 width: 220
                 font_size: 20            
@@ -220,7 +221,7 @@
                 id: city
                 icon_left: "city"    
                 hint_text: "City"
-                foreground_color: 1, 0, 1, 1
+                foreground_color: (0,0,0,1)
                 size_hint_x: None
                 width: 220
                 font_size: 20
@@ -230,7 +231,7 @@
                 id: state
                 icon_left: "city"
                 hint_text: "State"
-                foreground_color: 1, 0, 1, 1
+                foreground_color: (0,0,0,1)
                 size_hint_x: None
                 width: 220
                 font_size: 20
@@ -240,7 +241,7 @@
                 id: country
                 icon_left: "city"
                 hint_text: "Country"
-                foreground_color: 1, 0, 1, 1
+                foreground_color: (0,0,0,1)
                 size_hint_x: None
                 width: 220
                 font_size: 20
@@ -250,7 +251,7 @@
                 id: gender
                 icon_left: "gender"
                 hint_text: "Gender"
-                foreground_color: 1, 0, 1, 1
+                foreground_color: (0,0,0,1)
                 size_hint_x: None
                 width: 220
                 font_size: 20
@@ -260,7 +261,7 @@
                 id: phone
                 icon_left: "phone"
                 hint_text: "Contact number"
-                foreground_color: 1, 0, 1, 1
+                foreground_color: (0,0,0,1)
                 size_hint_x: None
                 width: 220
                 font_size: 20
@@ -270,8 +271,9 @@
                 id: signup_email
                 icon_left: "email"
                 hint_text: "Email"
-                foreground_color: 1, 0, 1, 1
+                foreground_color: (0,0,0,1)
                 size_hint_x: None
+
                 width: 220
                 font_size: 20
                 pos_hint: {"center_x": 0.5}
@@ -281,7 +283,7 @@
                 id: ethnicity
                 icon_left: "email"
                 hint_text: "Caucassian"
-                foreground_color: 1, 0, 1, 1
+                foreground_color: (0,0,0,1)
                 size_hint_x: None
                 width: 220
                 font_size: 20
@@ -292,9 +294,73 @@
                     id : date
                     text : "Record entry date"
                     pos_hint: {"center_x": 0.1,"center_y": 0.4} 
-                    on_release : app.show_date_picker()   
+                    on_release : app.show_date_picker(self, fourth_page)  
 
-            #symptoms starts from here                                             
+            MDRectangleFlatButton:
+                text: "SUBMIT"
+                font_size: 15
+                theme_text_color: "Custom"
+                text_color: 0, 0, 1, 1
+                pos_hint: {"center_x": 0.5}
+                on_press: app.submit_pat_info()
+            MDRectangleFlatButton:
+                text: "EXISTING PATIENT"
+                font_size: 15
+                theme_text_color: "Custom"
+                text_color: 0, 0, 1, 1
+                pos_hint: {"center_x": 0.5}
+                on_press: root.manager.current = "patient_features" # this needs to route to predict page
+                 
+            MDRectangleFlatButton:
+                text: "BACK"
+                font_size: 15
+                pos_hint: {"center_x": 0.5}
+                on_press: root.manager.current = "fifth_page" 
+                #on_press: app.for_checking()# this should be removed
+<Features>:
+    name: "patient_features"
+    ScrollView:
+        size: self.size
+        GridLayout:
+            size_hint_y: None
+            height: self.minimum_height
+            width: self.minimum_width
+            cols: 1
+            spacing: "20dp"
+            padding: "20dp"
+            
+            MDToolbar:
+                title: "Hi"
+                id:toolbar
+                elevation: 5
+                pos_hint: {'top':0.5}
+                md_bg_color: 200/255,10/255,30/255,1
+            MDTextFieldRound:
+                id: patient_name_features
+                icon_left: "account-check"
+                hint_text: "Patient Name"
+                foreground_color: 1, 0, 1, 1
+                size_hint_x: None
+                width: 220
+                font_size: 20
+                pos_hint: {"center_x": 0.5}
+            MDTextFieldRound:
+                id: personnel_id_features
+                icon_left: "account-check"
+                hint_text: "Doctor id"
+                foreground_color: 1, 0, 1, 1
+                size_hint_x: None
+                width: 220
+                font_size: 20
+                pos_hint: {"center_x": 0.5}
+            MDFloatLayout:
+                MDRaisedButton:
+                    id : date_features
+                    text : "Record entry date"
+                    pos_hint: {"center_x": 0.1,"center_y": 0.4} 
+                    on_release : app.show_date_picker("patient_features_val")   
+
+    #symptoms starts from here                                             
             Label:
                 id: fever
                 text: "Fever"
@@ -313,7 +379,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .2, 'center_y': .5}
-                    #on_active: app.check_high(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "High")
                 Label:
                     id: fever_low
                     text: "Low"
@@ -325,7 +391,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .5, 'center_y': .5}
-                    #on_active: app.check_low(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "Low")
                 Label:
                     id: fever_no
                     text: "No"
@@ -337,7 +403,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .8, 'center_y': .5}
-                    #on_active: app.check_no(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "No")
 
             Label:
                 id: abd_pain
@@ -357,7 +423,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .2, 'center_y': .5}
-                    #on_active: app.check_high(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "High")
                 Label:
                     id: abd_low
                     text: "Low"
@@ -369,7 +435,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .5, 'center_y': .5}
-                    #on_active: app.check_low(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "Low")
                 Label:
                     id: abd_no
                     text: "No"
@@ -381,7 +447,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .8, 'center_y': .5}
-                    #on_active: app.check_no(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "No")
             
             Label:
                 id: cough
@@ -401,7 +467,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .2, 'center_y': .5}
-                    #on_active: app.check_high(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "High")
                 Label:
                     id: cough_low
                     text: "Low"
@@ -413,7 +479,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .5, 'center_y': .5}
-                    #on_active: app.check_low(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "Low")
                 Label:
                     id: cough_no
                     text: "No"
@@ -425,7 +491,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .8, 'center_y': .5}
-                    #on_active: app.check_no(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "No")
             
             Label:
                 id: diarrheoa
@@ -445,7 +511,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .2, 'center_y': .5}
-                    #on_active: app.check_high(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "High")
                 Label:
                     id: diarrheoa_low
                     text: "Low"
@@ -457,7 +523,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .5, 'center_y': .5}
-                    #on_active: app.check_low(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "Low")
                 Label:
                     id: diarrheoa_no
                     text: "No"
@@ -469,7 +535,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .8, 'center_y': .5}
-                    #on_active: app.check_no(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "No")
             
             Label:
                 id: constipation
@@ -489,7 +555,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .2, 'center_y': .5}
-                    #on_active: app.check_high(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "High")
                 Label:
                     id: constipation_low
                     text: "Low"
@@ -501,7 +567,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .5, 'center_y': .5}
-                    #on_active: app.check_low(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "Low")
                 Label:
                     id: constipation_no
                     text: "No"
@@ -513,7 +579,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .8, 'center_y': .5}
-                    #on_active: app.check_no(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "No")
             
             Label:
                 id: rose_spot
@@ -533,7 +599,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .2, 'center_y': .5}
-                    #on_active: app.check_high(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "High")
                 Label:
                     id: rose_spot_low
                     text: "Low"
@@ -545,7 +611,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .5, 'center_y': .5}
-                    #on_active: app.check_low(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "Low")
                 Label:
                     id: rose_spot_no
                     text: "No"
@@ -557,7 +623,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .8, 'center_y': .5}
-                    #on_active: app.check_no(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "No")
                         
             Label:
                 id: muscle_weakness
@@ -577,7 +643,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .2, 'center_y': .5}
-                    #on_active: app.check_high(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "High")
                 Label:
                     id: muscle_weakness_low
                     text: "Low"
@@ -589,7 +655,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .5, 'center_y': .5}
-                    #on_active: app.check_low(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "Low")
                 Label:
                     id: muscle_weakness_no
                     text: "No"
@@ -601,7 +667,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .8, 'center_y': .5}
-                    #on_active: app.check_no(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "No")
                         
             Label:
                 id: anorexia
@@ -621,7 +687,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .2, 'center_y': .5}
-                    #on_active: app.check_high(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "High")
                 Label:
                     id: anorexia_low
                     text: "Low"
@@ -633,7 +699,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .5, 'center_y': .5}
-                    #on_active: app.check_low(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "Low")
                 Label:
                     id: anorexia_no
                     text: "No"
@@ -645,7 +711,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .8, 'center_y': .5}
-                    #on_active: app.check_no(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "No")
                         
             Label:
                 id: headache
@@ -665,7 +731,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .2, 'center_y': .5}
-                    #on_active: app.check_high(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "High")
                 Label:
                     id: headache_low
                     text: "Low"
@@ -677,7 +743,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .5, 'center_y': .5}
-                    #on_active: app.check_low(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "Low")
                 Label:
                     id: headache_no
                     text: "No"
@@ -689,7 +755,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .8, 'center_y': .5}
-                    #on_active: app.check_no(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "No")
                         
             Label:
                 id: skin_rash
@@ -709,7 +775,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .2, 'center_y': .5}
-                    #on_active: app.check_high(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "High")
                 Label:
                     id: skin_rash_low
                     text: "Low"
@@ -721,7 +787,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .5, 'center_y': .5}
-                    #on_active: app.check_low(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "Low")
                 Label:
                     id: skin_rash_no
                     text: "No"
@@ -733,7 +799,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .8, 'center_y': .5}
-                    #on_active: app.check_no(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "No")
                         
             Label:
                 id: weightless
@@ -753,7 +819,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .2, 'center_y': .5}
-                    #on_active: app.check_high(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "High")
                 Label:
                     id: weightless_low
                     text: "Low"
@@ -765,7 +831,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .5, 'center_y': .5}
-                    #on_active: app.check_low(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "Low")
                 Label:
                     id: weightless_no
                     text: "No"
@@ -777,7 +843,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .8, 'center_y': .5}
-                    #on_active: app.check_no(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "No")
                         
             Label:
                 id: stomach_distension
@@ -797,7 +863,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .2, 'center_y': .5}
-                    #on_active: app.check_high(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "High")
                 Label:
                     id: stomach_distension_low
                     text: "Low"
@@ -809,7 +875,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .5, 'center_y': .5}
-                    #on_active: app.check_low(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "Low")
                 Label:
                     id: stomach_distension_no
                     text: "No"
@@ -821,7 +887,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .8, 'center_y': .5}
-                    #on_active: app.check_no(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "No")
                         
             Label:
                 id: malaise
@@ -841,7 +907,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .2, 'center_y': .5}
-                    #on_active: app.check_high(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "High")
                 Label:
                     id: malaise_low
                     text: "Low"
@@ -853,7 +919,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .5, 'center_y': .5}
-                    #on_active: app.check_low(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "Low")
                 Label:
                     id: malaise_no
                     text: "No"
@@ -865,7 +931,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .8, 'center_y': .5}
-                    #on_active: app.check_no(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "No")
                         
             Label:
                 id: occult_blood
@@ -885,7 +951,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .2, 'center_y': .5}
-                    ##on_active: app.check_high(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "High")
                 Label:
                     id: occult_blood_low
                     text: "Low"
@@ -897,7 +963,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .5, 'center_y': .5}
-                    ##on_active: app.check_low(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "Low")
                 Label:
                     id: occult_blood_no
                     text: "No"
@@ -909,7 +975,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .8, 'center_y': .5}
-                    ##on_active: app.check_no(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "No")
                         
             Label:
                 id: hemorrhages
@@ -929,7 +995,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .2, 'center_y': .5}
-                    #on_active: app.check_high(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "High")
                 Label:
                     id: hemorrhages_low
                     text: "Low"
@@ -941,7 +1007,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .5, 'center_y': .5}
-                    #on_active: app.check_low(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "Low")
                 Label:
                     id: hemorrhages_no
                     text: "No"
@@ -953,7 +1019,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .8, 'center_y': .5}
-                   # on_active: app.check_no(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "No")
                         
             Label:
                 id: derilium
@@ -973,7 +1039,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .2, 'center_y': .5}
-                    #on_active: app.check_high(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "High")
                 Label:
                     id: derilium_low
                     text: "Low"
@@ -985,7 +1051,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .5, 'center_y': .5}
-                    #on_active: app.check_low(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "Low")
                 Label:
                     id: derilium_no
                     text: "No"
@@ -997,7 +1063,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .8, 'center_y': .5}
-                    #on_active: app.check_no(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "No")
 
             Label:
                 id: abdominal_rigidity
@@ -1017,7 +1083,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .2, 'center_y': .5}
-                    ##on_active: app.check_high(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "High")
                 Label:
                     id: abdominal_rigidity_low
                     text: "Low"
@@ -1029,7 +1095,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .5, 'center_y': .5}
-                    ##on_active: app.check_low(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "Low")
                 Label:
                     id: abdominal_rigidity_no
                     text: "No"
@@ -1041,7 +1107,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .8, 'center_y': .5}
-                    ##on_active: app.check_no(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "No")
 
             Label:
                 id: epitaxis
@@ -1061,7 +1127,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .2, 'center_y': .5}
-                    #on_active: app.check_high(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "High")
                 Label:
                     id: epitaxis_low
                     text: "Low"
@@ -1073,7 +1139,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .5, 'center_y': .5}
-                    #on_active: app.check_low(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "Low")
                 Label:
                     id: epitaxis_no
                     text: "No"
@@ -1085,7 +1151,7 @@
                     size: "48dp", "48dp"
                     size_hint: None,None
                     pos_hint: {'center_x': .8, 'center_y': .5}
-                    #on_active: app.check_no(*args)
+                    on_active: app.checkbox_func_arr(self, self.active, "No")
 
             MDRectangleFlatButton:
                 text: "SUBMIT"
@@ -1093,14 +1159,16 @@
                 theme_text_color: "Custom"
                 text_color: 0, 0, 1, 1
                 pos_hint: {"center_x": 0.5}
-                on_press: app.submit_pat_info()
+                on_press: app.submit_pat_features()
+                #on_press: app.for_checking()
+
             MDRectangleFlatButton:
                 text: "PREDICT"
                 font_size: 15
                 theme_text_color: "Custom"
                 text_color: 0, 0, 1, 1
                 pos_hint: {"center_x": 0.5}
-                #on_press: app.Sign_Up() # this needs to route to predict page     
+                on_press: root.manager.current = "eleventh_page" # this needs to route to predict #page                 
             MDRectangleFlatButton:
                 text: "BACK"
                 font_size: 15
@@ -1174,7 +1242,7 @@
         id: feature
         icon_left: "account-check"
         hint_text: "Feature Name"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20
@@ -1183,7 +1251,7 @@
         id: value
         icon_left: "map-marker"
         hint_text: "Location"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20            
@@ -1192,7 +1260,7 @@
         id: rowID
         icon_left: "account-check"
         hint_text: "ID of the row to update"
-        foreground_color: 1, 0, 1, 1
+        foreground_color: (0,0,0,1)
         size_hint_x: None
         width: 220
         font_size: 20
@@ -1225,23 +1293,23 @@
         text: "BACK"
         font_size: 15
         pos_hint: {"center_x": 0.5,"center_y": 0.2}
-        on_press: root.manager.current = "fifth_page"     
+        on_press: root.manager.current = "fifth_page"  
 
 <Camera2>:
     name: "tenth_page"
     orientation: 'vertical'
     spacing:10
-    Camera:
-        id: camera
-        resolution: (640, 480)
-        play: False
-        canvas.before:
-            PushMatrix
-            Rotate:
-                angle: -90
-                origin: self.center
-        canvas.after:
-            PopMatrix
+    #Camera:
+        #id: camera
+        #resolution: (640, 480)
+        #play: False
+        #canvas.before:
+        #    PushMatrix
+        #    Rotate:
+        #        angle: -90
+        #        origin: self.center
+        #canvas.after:
+        #    PopMatrix
     ToggleButton:   
         text: 'PLAY'
         #on_press: camera.play = not camera.play
@@ -1254,11 +1322,11 @@
         pos_hint: {"center_x": 0.5, "center_y": 0.14}
         height: '25dp'
         #on_press: app.capture()
-    Button:
-        text: 'UPLOAD'
-        size_hint_y: None
-        pos_hint: {"center_x": 0.5, "center_y": 0.10}
-        height: '25dp'
+    #Button:
+    #    text: 'UPLOAD'
+    #    size_hint_y: None
+    #    pos_hint: {"center_x": 0.5, "center_y": 0.10}
+    #    height: '25dp'
     Uploader:
         id: uploader
         name: "uploader"
@@ -1267,17 +1335,18 @@
         size_hint_y: None
         pos_hint: {"center_x": 0.5, "center_y": 0.06}
         height: '25dp'
-        on_press: 
-            root.manager.current = 'sixth_page'
-
-    
+        on_press: root.manager.current = 'sixth_page'
+            
 
 <EleventhPage>:
     name: "eleventh_page"
+    orientation: 'vertical' 
     #download option    
     #result
+    Predict:
+        name: "predictTyphoid"
+        id: "predictTypoid"
     
-    orientation: 'vertical' 
     MDFlatButton:
         text: "DOWNLOAD"
         font_size: 15
@@ -1288,3 +1357,5 @@
         font_size: 15
         pos_hint: {"center_x": 0.5, "center_y": 0.2}
         on_press: root.manager.current = "tenth_page"
+
+

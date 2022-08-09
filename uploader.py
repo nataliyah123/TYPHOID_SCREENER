@@ -6,14 +6,14 @@ import pyrebase
 from kivy.uix.floatlayout import FloatLayout
 from kivy.properties import ObjectProperty
 from kivy.uix.popup import Popup
-from kivy.factory import Factory
-from android.permissions import request_permissions, Permission
+# import os
+# from android.permissions import request_permissions, Permission
 
-request_permissions([Permission.WRITE_EXTERNAL_STORAGE,
-                    Permission.READ_EXTERNAL_STORAGE])
+# request_permissions([Permission.WRITE_EXTERNAL_STORAGE,
+#                     Permission.READ_EXTERNAL_STORAGE])
 
 
-import os
+
 # folder = os.path.dirname(os.path.realpath(__file__))
 config ={
 	
