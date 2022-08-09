@@ -7,6 +7,8 @@
         id: page3
     FourthPage:
         id: page4
+    Features:
+        id: features
     FifthPage:
         id: page5
     SixthPage:
@@ -43,9 +45,7 @@
     MDLabel:
         text: "Welcome to Mboalab! \n This app is by no means a substitue of a established diagnostic procedures"
         halign: "center"    
-    Predict:
-        name: "predictTyphoid"
-        id: "predictTypoid"    
+        
     MDRectangleFlatButton:
         text: "Next"
         theme_text_color: "Custom"
@@ -57,9 +57,7 @@
         pos_hint: {"center_x": 0.5, "center_y": 0.1}
         spacing: None
         on_press: root.manager.current = "second_page"                  
-                   
-            
-  
+    
 
 <SecondPage>:
     name: "second_page"    
@@ -296,9 +294,73 @@
                     id : date
                     text : "Record entry date"
                     pos_hint: {"center_x": 0.1,"center_y": 0.4} 
-                    on_release : app.show_date_picker()   
+                    on_release : app.show_date_picker(self, fourth_page)  
 
-            #symptoms starts from here                                             
+            MDRectangleFlatButton:
+                text: "SUBMIT"
+                font_size: 15
+                theme_text_color: "Custom"
+                text_color: 0, 0, 1, 1
+                pos_hint: {"center_x": 0.5}
+                on_press: app.submit_pat_info()
+            MDRectangleFlatButton:
+                text: "EXISTING PATIENT"
+                font_size: 15
+                theme_text_color: "Custom"
+                text_color: 0, 0, 1, 1
+                pos_hint: {"center_x": 0.5}
+                on_press: root.manager.current = "patient_features" # this needs to route to predict page
+                 
+            MDRectangleFlatButton:
+                text: "BACK"
+                font_size: 15
+                pos_hint: {"center_x": 0.5}
+                on_press: root.manager.current = "fifth_page" 
+                #on_press: app.for_checking()# this should be removed
+<Features>:
+    name: "patient_features"
+    ScrollView:
+        size: self.size
+        GridLayout:
+            size_hint_y: None
+            height: self.minimum_height
+            width: self.minimum_width
+            cols: 1
+            spacing: "20dp"
+            padding: "20dp"
+            
+            MDToolbar:
+                title: "Hi"
+                id:toolbar
+                elevation: 5
+                pos_hint: {'top':0.5}
+                md_bg_color: 200/255,10/255,30/255,1
+            MDTextFieldRound:
+                id: patient_name_features
+                icon_left: "account-check"
+                hint_text: "Patient Name"
+                foreground_color: 1, 0, 1, 1
+                size_hint_x: None
+                width: 220
+                font_size: 20
+                pos_hint: {"center_x": 0.5}
+            MDTextFieldRound:
+                id: personnel_id_features
+                icon_left: "account-check"
+                hint_text: "Doctor id"
+                foreground_color: 1, 0, 1, 1
+                size_hint_x: None
+                width: 220
+                font_size: 20
+                pos_hint: {"center_x": 0.5}
+            MDFloatLayout:
+                MDRaisedButton:
+                    id : date_features
+                    text : "Record entry date"
+                    pos_hint: {"center_x": 0.1,"center_y": 0.4} 
+                    on_release : app.show_date_picker("patient_features_val")   
+
+    #symptoms starts from here                                             
             Label:
                 id: fever
                 text: "Fever"
@@ -1097,20 +1159,22 @@
                 theme_text_color: "Custom"
                 text_color: 0, 0, 1, 1
                 pos_hint: {"center_x": 0.5}
-                on_press: app.submit_pat_info()
+                on_press: app.submit_pat_features()
+                #on_press: app.for_checking()
+
             MDRectangleFlatButton:
                 text: "PREDICT"
                 font_size: 15
                 theme_text_color: "Custom"
                 text_color: 0, 0, 1, 1
                 pos_hint: {"center_x": 0.5}
-                #on_press: app.Sign_Up() # this needs to route to predict page     
+                on_press: root.manager.current = "eleventh_page" # this needs to route to predict #page                 
             MDRectangleFlatButton:
                 text: "BACK"
                 font_size: 15
                 pos_hint: {"center_x": 0.5}
                 on_press: root.manager.current = "fifth_page" 
-                #on_press: app.for_checking()# this should be removed
+
 
 <FifthPage>:
     name: "fifth_page" 
@@ -1276,10 +1340,13 @@
 
 <EleventhPage>:
     name: "eleventh_page"
+    orientation: 'vertical' 
     #download option    
     #result
+    Predict:
+        name: "predictTyphoid"
+        id: "predictTypoid"
     
-    orientation: 'vertical' 
     MDFlatButton:
         text: "DOWNLOAD"
         font_size: 15

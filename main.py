@@ -33,7 +33,7 @@ from uploader import LoadDialog
 folder = os.path.dirname(os.path.realpath(__file__))
 Builder.load_file(folder + "/predict.kv")
 features = []
-
+textval = ""
 print("I need to know what is your platform ibia", platform)
 if platform == 'android':
   #from android.permissions import request_permissions, Permission   ibia uncomment this line
@@ -65,6 +65,9 @@ class ThirdPage(Screen):
 class FourthPage(Screen): 
     pass
 
+class Features(Screen):
+    pass
+    
 class FifthPage(Screen):
     pass 
 
@@ -162,10 +165,11 @@ class TestApp(MDApp):
         conn.close()
 
     def submit_pat_info(self):
+        # this should have some sort of checks for the fields to comply with the format
         print("this is testin", self.root.ids.page4.ids.date.text)
         conn = sqlite3.connect('doctechpat.db')       
         c = conn.cursor()        
-        c.execute("INSERT INTO Patientinfo (patientname,country, city, state,phone,email,GENDER,ETHNICITY,DATEOFBIRTH ) values(?,?,?,?,?,?,?,?,?)",
+        c.execute("INSERT INTO Patientinfo (patientname,country, city, state,phone,email,GENDER,ETHNICITY,recordentrydate ) values(?,?,?,?,?,?,?,?,?)",
             [
                  self.root.ids.page4.ids.patient_name.text,
                  self.root.ids.page4.ids.country.text,
@@ -182,18 +186,48 @@ class TestApp(MDApp):
         conn.close()
 
     def checkbox_func_arr(self, instance, value, feat_value):
-        conn = sqlite3.connect('doctechpat.db')       
-        c = conn.cursor()
+        # conn = sqlite3.connect('doctechpat.db')       
+        # c = conn.cursor()        
+        #print("checking personnel name and patient name",self.root.ids.page4.ids.date.text,self.root.ids.page4.ids.date.text )
         if value == True:  
-            features.append(feat_value)
+             if(feat_value=="High"):
+                features.append(2)
+             elif(feat_value=="Low"):
+                features.append(1)
+             else:
+                features.append(0)   
 
     def for_checking(self):
+        features.insert(0,self.root.ids.features.ids.patient_name_features.text)
+        features.insert(1,self.root.ids.features.ids.personnel_id_features.text)
+        features.insert(21,self.root.ids.features.ids.date_features.text)
         print("checkboxes check", self.checkbox_func_arr, features) 
 
+    def submit_pat_features(self):
+        # a dialog should be added to check whether the patient is in db or not
+        
+        self.checkbox_func_arr
+        if(len(features) < 18):
+            self.dialog = MDDialog(
+                    title = 'Invalid Input !',
+                    text = 'Please enter all the fields',
+                    size_hint = (0.7,0.2),
+                    buttons = [MDFlatButton(text='Retry',on_release = self.close)]
+                    )
+            self.dialog.open()
+        else:
+           features.insert(0,self.root.ids.features.ids.patient_name_features.text)
+           features.insert(1,self.root.ids.features.ids.personnel_id_features.text)
+           features.insert(20,self.root.ids.features.ids.date_features.text) 
+           print("checking the feature arr", features)
+           conn = sqlite3.connect('doctechpat.db')       
+           c = conn.cursor()        
+           c.execute("INSERT INTO Patientfeatures(patientid,personnel_id,Fever,Abdominal_Pain,Cough,Diarrheoa,Constipation,Rose_spots,Muscle_Weakness,Anorexia,Headache,Skin_Rash,Wieghtless,Stomach_distention,Malaise,Occult_blood_in_stool,Haemorrahages,Derilium,Abdominal_rigidity,Epistaxis,recordentrydate) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", features)
+           conn.commit()
+           conn.close()  
 
     def Login(self):
         print("this is login", self.root.ids.page2.ids.user.text)
-
         conn = sqlite3.connect('doctechpat.db')       
         c = conn.cursor()                      
         c.execute("SELECT person_name, password FROM 'doctortech' where person_name = ? AND password = ? ", (self.root.ids.page2.ids.user.text,self.root.ids.page2.ids.password.text))
@@ -243,15 +277,20 @@ class TestApp(MDApp):
     
     #when "Ok" is clicked in the date picker
     def on_save(self,instance,value,date_range):
-        self.root.ids.page4.ids.date.text = str(value)
+        print("on_Save value", value)
+        if(self.textval == "patient_features_val"):
+            self.root.ids.features.ids.date_features.text= str(value) 
+        elif(self.texval == "fourth_page"):     
+            self.root.ids.page4.ids.date.text = str(value)
 
     #when "Cancel" is clicked in the date picker
     def on_cancel(self,instance,value):
         return
 
     #function for date picker
-    def show_date_picker(self):
+    def show_date_picker(self,textval):
         date_dialog = MDDatePicker()
+        self.textval = textval
         date_dialog.bind(on_save = self.on_save,on_cancel=self.on_cancel)
         date_dialog.open()
 
