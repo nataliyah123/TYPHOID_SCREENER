@@ -179,7 +179,7 @@ class TestApp(MDApp):
                     )
             self.dialog.open()   
 
-        else
+        else:
             self.dialog = MDDialog(
                     title = 'Congratulations!',
                     text = 'You have successfully signed in to Mboalab.\nPlease click "Ok" to land on the image and data option page.',
