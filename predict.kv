@@ -1,0 +1,38 @@
+<Predict>:
+	# declare a global variable patientname this now can be access in predict.py using objectproperty
+	patientname : patientname
+    typhoidresult : typhoidresult
+	Label:		
+        id: predict_patlab
+        text: "Enter patient Id"
+        font_size: 30
+        halign: "center" 
+        pos_hint: {"center_x": 0.5,"center_y": 0.8}
+	MDTextFieldRound:
+        id: patientname        
+        hint_text: "patient name"
+        foreground_color: 1, 0, 1, 1
+        size_hint_x: None
+        width: 220
+        font_size: 20
+        opacity: 1
+        pos_hint: {"center_x": 0.5,"center_y": 0.7}
+    MDTextFieldRound:
+        id: typhoidresult
+        text: ""       
+        foreground_color: 1, 0, 1, 1
+        size_hint_x: None
+        width: 500
+        font_size: 20
+        opacity: 0
+        pos_hint: {"center_x": 0.5,"center_y": 0.6}
+    MDFlatButton:
+        text: "PREDICT USING AI"
+        font_size: 15
+        pos_hint: {"center_x": 0.5,"center_y": 0.4}            
+        on_press: root.show_results()   
+    MDFlatButton:
+        text: "DOWNLOAD"
+        font_size: 15
+        pos_hint: {"center_x": 0.5,"center_y": 0.3}            
+        on_press: root.generatePDF()
