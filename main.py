@@ -28,10 +28,12 @@ import time
 import sqlite3
 import os
 from uploader import Uploader
+from Signuplogin import Signuplogin
 from uploader import LoadDialog
 
 folder = os.path.dirname(os.path.realpath(__file__))
 Builder.load_file(folder + "/predict.kv")
+Builder.load_file(folder + "/Signuplogin.kv")
 features = []
 textval = ""
 print("I need to know what is your platform ibia", platform)
@@ -60,7 +62,7 @@ class SecondPage(Screen):
     pass
 
 class ThirdPage(Screen): 
-    pass
+   pass
 
 class FourthPage(Screen): 
     pass
@@ -147,46 +149,46 @@ class TestApp(MDApp):
         Builder.load_file(folder + "/uploader.kv")      
         return ScreenManagement()
 
-    def Sign_Up_doctech(self):
-        print("this is testin", self.root.ids.page3.ids.user_signup.text)
-        conn = sqlite3.connect('doctechpat.db')       
-        c = conn.cursor()        
+    # def Sign_Up_doctech(self):
+    #     print("this is testin", self.root.ids.page3.ids.user_signup.text)
+    #     conn = sqlite3.connect('doctechpat.db')       
+    #     c = conn.cursor()        
 
-        c.execute("INSERT INTO doctortech (person_name, email, occupation, organization,password) values(?,?,?,?,?)",
+    #     c.execute("INSERT INTO doctortech (person_name, email, occupation, organization,password) values(?,?,?,?,?)",
 
-            [
-                 self.root.ids.page3.ids.user_signup.text,
-                 self.root.ids.page3.ids.signup_email.text,
-                 self.root.ids.page3.ids.occupation.text,
-                 self.root.ids.page3.ids.organization.text,
-                 self.root.ids.page3.ids.password.text                
-            ])
-        conn.commit()
-        conn.close()
+    #         [
+    #              self.root.ids.page3.ids.user_signup.text,
+    #              self.root.ids.page3.ids.signup_email.text,
+    #              self.root.ids.page3.ids.occupation.text,
+    #              self.root.ids.page3.ids.organization.text,
+    #              self.root.ids.page3.ids.password.text                
+    #         ])
+    #     conn.commit()
+    #     conn.close()
 
-        signupUsername = self.root.ids.page3.ids.user_signup.text
-        signupEmail = self.root.ids.page3.ids.signup_email.text
-        occupation = self.root.ids.page3.ids.occupation.text
-        organization = self.root.ids.page3.ids.organization.text
-        signupPassword = self.root.ids.page3.ids.password.text 
+    #     signupUsername = self.root.ids.page3.ids.user_signup.text
+    #     signupEmail = self.root.ids.page3.ids.signup_email.text
+    #     occupation = self.root.ids.page3.ids.occupation.text
+    #     organization = self.root.ids.page3.ids.organization.text
+    #     signupPassword = self.root.ids.page3.ids.password.text 
         
-        if(signupUsername.split() == [] or signupEmail.split() == [] or occupation.split() == [] or organization.split() == [] or signupPassword.split() == []):
-            self.dialog = MDDialog(
-                    title = 'Invalid Input !',
-                    text = 'Please enter all the required fields.',
-                    size_hint = (0.7,0.2),
-                    buttons = [MDFlatButton(text='Retry',on_release = self.close)]
-                    )
-            self.dialog.open()   
+    #     if(signupUsername.split() == [] or signupEmail.split() == [] or occupation.split() == [] or organization.split() == [] or signupPassword.split() == []):
+    #         self.dialog = MDDialog(
+    #                 title = 'Invalid Input !',
+    #                 text = 'Please enter all the required fields.',
+    #                 size_hint = (0.7,0.2),
+    #                 buttons = [MDFlatButton(text='Retry',on_release = self.close)]
+    #                 )
+    #         self.dialog.open()   
 
-        else:
-            self.dialog = MDDialog(
-                    title = 'Congratulations!',
-                    text = 'You have successfully signed in to Mboalab.\nPlease click "Ok" to land on the image and data option page.',
-                    size_hint = (0.7,0.2),
-                    buttons = [MDFlatButton(text='Ok',on_release = self.move)]
-                    )
-            self.dialog.open()
+    #     else:
+    #         self.dialog = MDDialog(
+    #                 title = 'Congratulations!',
+    #                 text = 'You have successfully signed in to Mboalab.\nPlease click "Ok" to land on the image and data option page.',
+    #                 size_hint = (0.7,0.2),
+    #                 buttons = [MDFlatButton(text='Ok',on_release = self.move)]
+    #                 )
+    #         self.dialog.open()
 
     def submit_pat_info(self):
         # this should have some sort of checks for the fields to comply with the format
@@ -221,11 +223,11 @@ class TestApp(MDApp):
              else:
                 features.append(0)   
 
-    def for_checking(self):
-        features.insert(0,self.root.ids.features.ids.patient_name_features.text)
-        features.insert(1,self.root.ids.features.ids.personnel_id_features.text)
-        features.insert(21,self.root.ids.features.ids.date_features.text)
-        print("checkboxes check", self.checkbox_func_arr, features) 
+    # def for_checking(self):
+    #     features.insert(0,self.root.ids.features.ids.patient_name_features.text)
+    #     features.insert(1,self.root.ids.features.ids.personnel_id_features.text)
+    #     features.insert(20,self.root.ids.features.ids.date_features.text)
+    #     print("checkboxes check", self.checkbox_func_arr, features) 
 
     def submit_pat_features(self):
         # a dialog should be added to check whether the patient is in db or not

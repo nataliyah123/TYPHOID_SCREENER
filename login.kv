@@ -102,78 +102,81 @@
      
 
 <ThirdPage>:
-    name: "third_page"  
-    # Show doctor and tech sign up page #3
-    orientation: "vertical"
-    #username
-    MDTextFieldRound:
-        id: user_signup
-        icon_left: "account-check"
-        hint_text: "Username"
-        foreground_color: (0,0,0,1)
-        size_hint_x: None
-        width: 220
-        font_size: 20
-        pos_hint: {"center_x": 0.5,"center_y": 0.7}
-    #email
-    MDTextFieldRound:
-        id: signup_email
-        icon_left: "email"
-        hint_text: "Email"
-        foreground_color: (0,0,0,1)
-        size_hint_x: None
-        width: 220
-        font_size: 20
-        pos_hint: {"center_x": 0.5,"center_y": 0.6}    
-    #occupation
-    MDTextFieldRound:
-        id: occupation
-        icon_left: "doctor"
-        hint_text: "Doctor / technician"
-        foreground_color: (0,0,0,1)
-        size_hint_x: None
-        width: 220
-        font_size: 20
-        pos_hint: {"center_x": 0.5,"center_y": 0.5} 
-    #organization
-    MDTextFieldRound:
-        id: organization
-        icon_left: "progress-wrench"
-        hint_text: "organization"
-        foreground_color: (0,0,0,1)
-        size_hint_x: None
-        width: 220
-        font_size: 20
-        pos_hint: {"center_x": 0.5,"center_y": 0.4}                       
-                                
-    #password
-    MDTextFieldRound:
-        id: password
-        icon_left: "key-variant"
-        hint_text: "Password"
-        foreground_color: (0,0,0,1)
-        size_hint_x: None
-        width: 220
-        font_size: 20            
-        pos_hint: {"center_x": 0.5,"center_y": 0.3}        
-        password: True
-                
-    MDRectangleFlatButton:
-        text: "SIGN UP"
-        font_size: 15
-        theme_text_color: "Custom"
-        text_color: 0, 0, 1, 1
-        pos_hint: {"center_x": 0.5,"center_y": 0.2}
-        on_press: app.Sign_Up_doctech()
+    name: "third_page" 
+    Signuplogin:
+        name: 'doctechsignup'
+        id: 'doctecsignup'    
+#    # Show doctor and tech sign up page #3
+#    orientation: "vertical"
+#    #username
+#    MDTextFieldRound:
+#        id: user_signup
+#        icon_left: "account-check"
+#        hint_text: "Username"
+#        foreground_color: (0,0,0,1)
+#        size_hint_x: None
+#        width: 220
+#        font_size: 20
+#        pos_hint: {"center_x": 0.5,"center_y": 0.7}
+#    #email
+#    MDTextFieldRound:
+#        id: signup_email
+#        icon_left: "email"
+#        hint_text: "Email"
+#        foreground_color: (0,0,0,1)
+#        size_hint_x: None
+#       width: 220
+#        font_size: 20
+#        pos_hint: {"center_x": 0.5,"center_y": 0.6}    
+#    #occupation
+#    MDTextFieldRound:
+#        id: occupation
+#        icon_left: "doctor"
+#        hint_text: "Doctor / technician"
+#        foreground_color: (0,0,0,1)
+#        size_hint_x: None
+#        width: 220
+#        font_size: 20
+#        pos_hint: {"center_x": 0.5,"center_y": 0.5} 
+#    #organization
+#    MDTextFieldRound:
+#        id: organization
+#        icon_left: "progress-wrench"
+#        hint_text: "organization"
+#        foreground_color: (0,0,0,1)
+#        size_hint_x: None
+#        width: 220
+#        font_size: 20
+#        pos_hint: {"center_x": 0.5,"center_y": 0.4}                       
+#                                
+#    #password
+#    MDTextFieldRound:
+#        id: password
+#        icon_left: "key-variant"
+#        hint_text: "Password"
+#        foreground_color: (0,0,0,1)
+#        size_hint_x: None
+#        width: 220
+#        font_size: 20            
+#        pos_hint: {"center_x": 0.5,"center_y": 0.3}        
+#        password: True
+#                
+#    MDRectangleFlatButton:
+#        text: "SIGN UP"
+#        font_size: 15
+#        theme_text_color: "Custom"
+#        text_color: 0, 0, 1, 1
+#        pos_hint: {"center_x": 0.5,"center_y": 0.2}
+#        on_press: app.Sign_Up_doctech()
 
-    MDRectangleFlatButton:
-        text: "BACK"
-        font_size: 15
-        theme_text_color: "Custom"
-        text_color: 0, 0, 1, 1
-        pos_hint: {"center_x": 0.5,"center_y": 0.1}
-        on_press: root.manager.current = 'second_page'
-                
+#    MDRectangleFlatButton:
+#        text: "BACK"
+#        font_size: 15
+#        theme_text_color: "Custom"
+#        text_color: 0, 0, 1, 1
+#        pos_hint: {"center_x": 0.5,"center_y": 0.1}
+#        on_press: root.manager.current = 'second_page'
+#                
 
 <FourthPage>:    
     name: "fourth_page"    
