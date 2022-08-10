@@ -163,13 +163,30 @@ class TestApp(MDApp):
             ])
         conn.commit()
         conn.close()
-        self.dialog = MDDialog(
-                title = 'Congratulations!',
-                text = 'You have successfully signed in to Mboalab.\nPlease click "Ok" to land on the image and data option page.',
-                size_hint = (0.7,0.2),
-                buttons = [MDFlatButton(text='Ok',on_release = self.move)]
-                )
-        self.dialog.open()
+
+        signupUsername = self.root.ids.page3.ids.user_signup.text
+        signupEmail = self.root.ids.page3.ids.signup_email.text
+        occupation = self.root.ids.page3.ids.occupation.text
+        organization = self.root.ids.page3.ids.organization.text
+        signupPassword = self.root.ids.page3.ids.password.text 
+        
+        if(signupUsername.split() == [] or signupEmail.split() == [] or occupation.split() == [] or organization.split() == [] or signupPassword.split() == []):
+            self.dialog = MDDialog(
+                    title = 'Invalid Input !',
+                    text = 'Please enter all the required fields.',
+                    size_hint = (0.7,0.2),
+                    buttons = [MDFlatButton(text='Retry',on_release = self.close)]
+                    )
+            self.dialog.open()   
+
+        else:
+            self.dialog = MDDialog(
+                    title = 'Congratulations!',
+                    text = 'You have successfully signed in to Mboalab.\nPlease click "Ok" to land on the image and data option page.',
+                    size_hint = (0.7,0.2),
+                    buttons = [MDFlatButton(text='Ok',on_release = self.move)]
+                    )
+            self.dialog.open()
 
     def submit_pat_info(self):
         # this should have some sort of checks for the fields to comply with the format
