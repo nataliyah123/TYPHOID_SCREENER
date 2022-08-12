@@ -1,5 +1,6 @@
 <Signuplogin>:
-	name: "third_page"  
+
+	 
     # Show doctor and tech sign up page #3
     web_api_key: "AIzaSyDLdBkSysTsUAe0wTpm99ekeVt6V-Xqpkk"
     orientation: "vertical"
@@ -63,11 +64,3 @@
         text_color: 0, 0, 1, 1
         pos_hint: {"center_x": 0.5,"center_y": 0.2}
         on_press: root.Sign_Up_doctech(signup_email.text,password.text )
-
-    MDRectangleFlatButton:
-        text: "BACK"
-        font_size: 15
-        theme_text_color: "Custom"
-        text_color: 0, 0, 1, 1
-        pos_hint: {"center_x": 0.5,"center_y": 0.1}
-        on_press: root.manager.current = 'second_page'
