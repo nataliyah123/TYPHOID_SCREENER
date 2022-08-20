@@ -61,110 +61,115 @@
 
 <SecondPage>:
     name: "second_page"    
-
+    Doctechlogin:
+        name: 'doctechslogin'
+        id: 'docteclogin'
         # Show login page #2
    
-    orientation: 'vertical'
+    #orientation: 'vertical'
         
-    MDTextFieldRound:
-        id: user
-        icon_left: "account-check"
-        hint_text: "Name"
-        foreground_color: (0,0,0,1)
-        size_hint_x: None
-        width: 220
-        font_size: 20
-        pos_hint: {"center_x": 0.5,"center_y": 0.6}
-    MDTextFieldRound:
-        id: password
-        icon_left: "key-variant"
-        hint_text: "Password"
-        foreground_color: (0,0,0,1)
-        size_hint_x: None
-        width: 220
-        font_size: 20            
-        pos_hint: {"center_x": 0.5,"center_y": 0.5}
-        password: True
+#    MDTextFieldRound:
+#        id: user
+#        icon_left: "account-check"
+#        hint_text: "Name"
+#        foreground_color: (0,0,0,1)
+#        size_hint_x: None
+#        width: 220
+#        font_size: 20
+#        pos_hint: {"center_x": 0.5,"center_y": 0.6}
+#    MDTextFieldRound:
+#        id: password
+#        icon_left: "key-variant"
+#        hint_text: "Password"
+#        foreground_color: (0,0,0,1)
+#        size_hint_x: None
+#        width: 220
+#        font_size: 20            
+#        pos_hint: {"center_x": 0.5,"center_y": 0.5}
+#        password: True
+#    MDRectangleFlatButton:
+#        text: "LOG IN"
+#        font_size: 15
+#        theme_text_color: "Custom"
+#        text_color: 0, 0, 1, 1
+#        pos_hint: {"center_x": 0.4,"center_y": 0.3}
+#        on_press: app.Login()
     MDRectangleFlatButton:
-        text: "LOG IN"
+        text: "SIGN UP"
         font_size: 15
         theme_text_color: "Custom"
         text_color: 0, 0, 1, 1
         pos_hint: {"center_x": 0.5,"center_y": 0.3}
-        on_press: app.Login()
-    MDRectangleFlatButton:
-        text: "SIGN UP"
-        font_size: 15
-        theme_text_color: "Custom"
-        text_color: 0, 0, 1, 1
-        pos_hint: {"center_x": 0.5,"center_y": 0.2}
         on_press: root.manager.current = "third_page"   
      
 
 <ThirdPage>:
-    name: "third_page"  
-    # Show doctor and tech sign up page #3
-    orientation: "vertical"
-    #username
-    MDTextFieldRound:
-        id: user_signup
-        icon_left: "account-check"
-        hint_text: "Username"
-        foreground_color: (0,0,0,1)
-        size_hint_x: None
-        width: 220
-        font_size: 20
-        pos_hint: {"center_x": 0.5,"center_y": 0.7}
-    #email
-    MDTextFieldRound:
-        id: signup_email
-        icon_left: "email"
-        hint_text: "Email"
-        foreground_color: (0,0,0,1)
-        size_hint_x: None
-        width: 220
-        font_size: 20
-        pos_hint: {"center_x": 0.5,"center_y": 0.6}    
-    #occupation
-    MDTextFieldRound:
-        id: occupation
-        icon_left: "doctor"
-        hint_text: "Doctor / technician"
-        foreground_color: (0,0,0,1)
-        size_hint_x: None
-        width: 220
-        font_size: 20
-        pos_hint: {"center_x": 0.5,"center_y": 0.5} 
-    #organization
-    MDTextFieldRound:
-        id: organization
-        icon_left: "progress-wrench"
-        hint_text: "organization"
-        foreground_color: (0,0,0,1)
-        size_hint_x: None
-        width: 220
-        font_size: 20
-        pos_hint: {"center_x": 0.5,"center_y": 0.4}                       
-                                
-    #password
-    MDTextFieldRound:
-        id: password
-        icon_left: "key-variant"
-        hint_text: "Password"
-        foreground_color: (0,0,0,1)
-        size_hint_x: None
-        width: 220
-        font_size: 20            
-        pos_hint: {"center_x": 0.5,"center_y": 0.3}        
-        password: True
-                
-    MDRectangleFlatButton:
-        text: "SIGN UP"
-        font_size: 15
-        theme_text_color: "Custom"
-        text_color: 0, 0, 1, 1
-        pos_hint: {"center_x": 0.5,"center_y": 0.2}
-        on_press: app.Sign_Up_doctech()
+    name: "third_page" 
+    Signuplogin:
+        id: 'doctecsignup'
+        name: 'doctecsignup'  
+#    # Show doctor and tech sign up page #3
+#    orientation: "vertical"
+#    #username
+#    MDTextFieldRound:
+#        id: user_signup
+#        icon_left: "account-check"
+#        hint_text: "Username"
+#        foreground_color: (0,0,0,1)
+#        size_hint_x: None
+#        width: 220
+#        font_size: 20
+#        pos_hint: {"center_x": 0.5,"center_y": 0.7}
+#    #email
+#    MDTextFieldRound:
+#        id: signup_email
+#        icon_left: "email"
+#        hint_text: "Email"
+#        foreground_color: (0,0,0,1)
+#        size_hint_x: None
+#       width: 220
+#        font_size: 20
+#        pos_hint: {"center_x": 0.5,"center_y": 0.6}    
+#    #occupation
+#    MDTextFieldRound:
+#        id: occupation
+#        icon_left: "doctor"
+#        hint_text: "Doctor / technician"
+#        foreground_color: (0,0,0,1)
+#        size_hint_x: None
+#        width: 220
+#        font_size: 20
+#        pos_hint: {"center_x": 0.5,"center_y": 0.5} 
+#    #organization
+#    MDTextFieldRound:
+#        id: organization
+#        icon_left: "progress-wrench"
+#        hint_text: "organization"
+#        foreground_color: (0,0,0,1)
+#        size_hint_x: None
+#        width: 220
+#        font_size: 20
+#        pos_hint: {"center_x": 0.5,"center_y": 0.4}                       
+#                                
+#    #password
+#    MDTextFieldRound:
+#        id: password
+#        icon_left: "key-variant"
+#        hint_text: "Password"
+#        foreground_color: (0,0,0,1)
+#        size_hint_x: None
+#        width: 220
+#        font_size: 20            
+#        pos_hint: {"center_x": 0.5,"center_y": 0.3}        
+#        password: True
+#                
+#    MDRectangleFlatButton:
+#        text: "SIGN UP"
+#        font_size: 15
+#        theme_text_color: "Custom"
+#        text_color: 0, 0, 1, 1
+#        pos_hint: {"center_x": 0.5,"center_y": 0.2}
+#        on_press: app.Sign_Up_doctech()
 
     MDRectangleFlatButton:
         text: "BACK"

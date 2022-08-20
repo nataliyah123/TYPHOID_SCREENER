@@ -13,28 +13,24 @@ from kivy.utils import platform
 from kivymd.uix.picker import MDDatePicker
 from kivy.properties import ObjectProperty
 import kivy
-# try:
-#     import cv2
-# except:
-#     from cv import cv2
-# import numpy as np
-
 #from kivy.uix.camera import Camera   ## uncomment for android
 from kivy.graphics.texture import Texture
-import time
-import sqlite3
 from predict import Predict 
 import time
-import sqlite3
+# import sqlite3
 import os
 from uploader import Uploader
+from Signuplogin import Signuplogin
+from doctechlogin import Doctechlogin
 from uploader import LoadDialog
 
 folder = os.path.dirname(os.path.realpath(__file__))
 Builder.load_file(folder + "/predict.kv")
+Builder.load_file(folder + "/Signuplogin.kv")
+Builder.load_file(folder + "/doctechlogin.kv")
 features = []
 textval = ""
-print("I need to know what is your platform ibia", platform)
+#print("I need to know what is your platform ibia", platform)
 if platform == 'android':
   #from android.permissions import request_permissions, Permission   ibia uncomment this line
   def callback(permission, callbacks):
@@ -60,7 +56,7 @@ class SecondPage(Screen):
     pass
 
 class ThirdPage(Screen): 
-    pass
+   pass
 
 class FourthPage(Screen): 
     pass
@@ -147,67 +143,84 @@ class TestApp(MDApp):
         Builder.load_file(folder + "/uploader.kv")      
         return ScreenManagement()
 
-    def Sign_Up_doctech(self):
-        print("this is testin", self.root.ids.page3.ids.user_signup.text)
-        conn = sqlite3.connect('doctechpat.db')       
-        c = conn.cursor()        
+    # def Sign_Up_doctech(self):
+    #     print("this is testin", self.root.ids.page3.ids.user_signup.text)
+    #     conn = sqlite3.connect('doctechpat.db')       
+    #     c = conn.cursor()        
 
-        c.execute("INSERT INTO doctortech (person_name, email, occupation, organization,password) values(?,?,?,?,?)",
+    #     c.execute("INSERT INTO doctortech (person_name, email, occupation, organization,password) values(?,?,?,?,?)",
 
-            [
-                 self.root.ids.page3.ids.user_signup.text,
-                 self.root.ids.page3.ids.signup_email.text,
-                 self.root.ids.page3.ids.occupation.text,
-                 self.root.ids.page3.ids.organization.text,
-                 self.root.ids.page3.ids.password.text                
-            ])
-        conn.commit()
-        conn.close()
+    #         [
+    #              self.root.ids.page3.ids.user_signup.text,
+    #              self.root.ids.page3.ids.signup_email.text,
+    #              self.root.ids.page3.ids.occupation.text,
+    #              self.root.ids.page3.ids.organization.text,
+    #              self.root.ids.page3.ids.password.text                
+    #         ])
+    #     conn.commit()
+    #     conn.close()
 
-        signupUsername = self.root.ids.page3.ids.user_signup.text
-        signupEmail = self.root.ids.page3.ids.signup_email.text
-        occupation = self.root.ids.page3.ids.occupation.text
-        organization = self.root.ids.page3.ids.organization.text
-        signupPassword = self.root.ids.page3.ids.password.text 
+    #     signupUsername = self.root.ids.page3.ids.user_signup.text
+    #     signupEmail = self.root.ids.page3.ids.signup_email.text
+    #     occupation = self.root.ids.page3.ids.occupation.text
+    #     organization = self.root.ids.page3.ids.organization.text
+    #     signupPassword = self.root.ids.page3.ids.password.text 
         
-        if(signupUsername.split() == [] or signupEmail.split() == [] or occupation.split() == [] or organization.split() == [] or signupPassword.split() == []):
-            self.dialog = MDDialog(
-                    title = 'Invalid Input !',
-                    text = 'Please enter all the required fields.',
-                    size_hint = (0.7,0.2),
-                    buttons = [MDFlatButton(text='Retry',on_release = self.close)]
-                    )
-            self.dialog.open()   
+    #     if(signupUsername.split() == [] or signupEmail.split() == [] or occupation.split() == [] or organization.split() == [] or signupPassword.split() == []):
+    #         self.dialog = MDDialog(
+    #                 title = 'Invalid Input !',
+    #                 text = 'Please enter all the required fields.',
+    #                 size_hint = (0.7,0.2),
+    #                 buttons = [MDFlatButton(text='Retry',on_release = self.close)]
+    #                 )
+    #         self.dialog.open()   
 
-        else:
-            self.dialog = MDDialog(
-                    title = 'Congratulations!',
-                    text = 'You have successfully signed in to Mboalab.\nPlease click "Ok" to land on the image and data option page.',
-                    size_hint = (0.7,0.2),
-                    buttons = [MDFlatButton(text='Ok',on_release = self.move)]
-                    )
-            self.dialog.open()
+    #     else:
+    #         self.dialog = MDDialog(
+    #                 title = 'Congratulations!',
+    #                 text = 'You have successfully signed in to Mboalab.\nPlease click "Ok" to land on the image and data option page.',
+    #                 size_hint = (0.7,0.2),
+    #                 buttons = [MDFlatButton(text='Ok',on_release = self.move)]
+    #                 )
+    #         self.dialog.open()
+    def generate_patient_id(self,patname):
+        response = firebase.get('https://testingcloudstorage-db6b3-default-rtdb.firebaseio.com/Patientinfo', '')
+        lastpatientid = response[list(ourkeys)[-1]]['patientid']
+        number = ''
+        alpha = ''
+        for i in range(len(lastpatientid)):
+            if lastpatientid[i].isdigit():
+                number = number + lastpatientid[i]
+            else:
+                alpha = alpha + lastpatientid[i]
+        number = str(int(number) + 1)
+        patientid = lastpatientid[0] + lastpatientid[1] + number
+        return patientid 
 
     def submit_pat_info(self):
         # this should have some sort of checks for the fields to comply with the format
         print("this is testin", self.root.ids.page4.ids.date.text)
-        conn = sqlite3.connect('doctechpat.db')       
-        c = conn.cursor()        
-        c.execute("INSERT INTO Patientinfo (patientname,country, city, state,phone,email,GENDER,ETHNICITY,recordentrydate ) values(?,?,?,?,?,?,?,?,?)",
-            [
-                 self.root.ids.page4.ids.patient_name.text,
-                 self.root.ids.page4.ids.country.text,
-                 self.root.ids.page4.ids.city.text,
-                 self.root.ids.page4.ids.state.text,
-                 self.root.ids.page4.ids.phone.text,
-                 self.root.ids.page4.ids.signup_email.text,
-                 self.root.ids.page4.ids.gender.text,
-                 self.root.ids.page4.ids.ethnicity.text,
-                 self.root.ids.page4.ids.date.text               
+        # conn = sqlite3.connect('doctechpat.db')       
+        # c = conn.cursor() 
+        # c.execute("INSERT INTO Patientinfo (patientname,country, city, state,phone,email,GENDER,ETHNICITY,recordentrydate ) values(?,?,?,?,?,?,?,?,?)",
+            # []
+        Patientinfo = {    
+                 "patientname": self.root.ids.page4.ids.patient_name.text,
+                 "patientid": generate_patient_id(self.root.ids.page4.ids.patient_name.text),
+                 "country": self.root.ids.page4.ids.country.text,
+                 "city":  self.root.ids.page4.ids.city.text,
+                 "state": self.root.ids.page4.ids.state.text,
+                 "phone": self.root.ids.page4.ids.phone.text,
+                 "email": self.root.ids.page4.ids.signup_email.text,
+                 "GENDER": self.root.ids.page4.ids.gender.text,
+                 "ETHNICITY": self.root.ids.page4.ids.ethnicity.text,
+                 "recordentrydate": self.root.ids.page4.ids.date.text               
                 
-            ])
-        conn.commit()
-        conn.close()
+        } 
+        firebase.post('https://testingcloudstorage-db6b3-default-rtdb.firebaseio.com/Patientinfo', Patientinfo)       
+   
+        # conn.commit()
+        # conn.close()
 
     def checkbox_func_arr(self, instance, value, feat_value):
         # conn = sqlite3.connect('doctechpat.db')       
@@ -221,11 +234,11 @@ class TestApp(MDApp):
              else:
                 features.append(0)   
 
-    def for_checking(self):
-        features.insert(0,self.root.ids.features.ids.patient_name_features.text)
-        features.insert(1,self.root.ids.features.ids.personnel_id_features.text)
-        features.insert(21,self.root.ids.features.ids.date_features.text)
-        print("checkboxes check", self.checkbox_func_arr, features) 
+    # def for_checking(self):
+    #     features.insert(0,self.root.ids.features.ids.patient_name_features.text)
+    #     features.insert(1,self.root.ids.features.ids.personnel_id_features.text)
+    #     features.insert(20,self.root.ids.features.ids.date_features.text)
+    #     print("checkboxes check", self.checkbox_func_arr, features) 
 
     def submit_pat_features(self):
         # a dialog should be added to check whether the patient is in db or not
@@ -244,60 +257,83 @@ class TestApp(MDApp):
            features.insert(1,self.root.ids.features.ids.personnel_id_features.text)
            features.insert(20,self.root.ids.features.ids.date_features.text) 
            print("checking the feature arr", features)
-           conn = sqlite3.connect('doctechpat.db')       
-           c = conn.cursor()        
-           c.execute("INSERT INTO Patientfeatures(patientid,personnel_id,Fever,Abdominal_Pain,Cough,Diarrheoa,Constipation,Rose_spots,Muscle_Weakness,Anorexia,Headache,Skin_Rash,Wieghtless,Stomach_distention,Malaise,Occult_blood_in_stool,Haemorrahages,Derilium,Abdominal_rigidity,Epistaxis,recordentrydate) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", features)
-           conn.commit()
-           conn.close()  
+           Patientfeatures = {
+               "patientid":generate_patient_id(features[0]),
+               "personnel_id":"j1",
+               "Fever":features[2],
+               "Abdominal_Pain":features[3],
+               "Cough":features[4],
+               "Diarrheoa":features[5],
+               "Constipation":features[6],
+               "Rose_spots":features[7],
+               "Muscle_Weakness":features[8],
+               "Anorexia":features[9],
+               "Headache":features[10],
+               "Skin_Rash":features[11],
+               "Wieghtless":features[12],
+               "Stomach_distention":features[13],
+               "Malaise":features[14],
+               "Occult_blood_in_stool":features[15],
+               "Haemorrahages":features[16],
+               "Derilium":features[17],
+               "Abdominal_rigidity":features[18],
+               "Epistaxis":features[19],
+               "recordentrydate ":features[20]
+           }           
+           firebase.post('https://testingcloudstorage-db6b3-default-rtdb.firebaseio.com/Patientfeatures', Patientfeatures)
+           # conn = sqlite3.connect('doctechpat.db')       
+           # c = conn.cursor()        
+           # c.execute("INSERT INTO Patientfeatures(patientid,personnel_id,Fever,Abdominal_Pain,Cough,Diarrheoa,Constipation,Rose_spots,Muscle_Weakness,Anorexia,Headache,Skin_Rash,Wieghtless,Stomach_distention,Malaise,Occult_blood_in_stool,Haemorrahages,Derilium,Abdominal_rigidity,Epistaxis,recordentrydate) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", features)
+           # conn.commit()
+           # conn.close()  
 
-    def Login(self):
-        print("this is login", self.root.ids.page2.ids.user.text)
-        conn = sqlite3.connect('doctechpat.db')       
-        c = conn.cursor()                      
-        c.execute("SELECT person_name, password FROM 'doctortech' where person_name = ? AND password = ? ", (self.root.ids.page2.ids.user.text,self.root.ids.page2.ids.password.text))
+    # def Login(self):
+    #     print("this is login", self.root.ids.page2.ids.user.text)
+    #     conn = sqlite3.connect('doctechpat.db')       
+    #     c = conn.cursor()                      
+    #     c.execute("SELECT person_name, password FROM 'doctortech' where person_name = ? AND password = ? ", (self.root.ids.page2.ids.user.text,self.root.ids.page2.ids.password.text))
 
-        usr_data = c.fetchall()
-        loginName = self.root.ids.page2.ids.user.text
-        loginPassword = self.root.ids.page2.ids.password.text
-        # print("this is usr_data", usr_data[0],loginName)  
+    #     usr_data = c.fetchall()
+    #     loginName = self.root.ids.page2.ids.user.text
+    #     loginPassword = self.root.ids.page2.ids.password.text
+    #     # print("this is usr_data", usr_data[0],loginName)  
 
-        #when username or password is empty
-        if(loginName.split() == [] and loginPassword.split() == []):
-            self.dialog = MDDialog(
-                    title = 'Invalid Input !',
-                    text = 'Please enter all the fields',
-                    size_hint = (0.7,0.2),
-                    buttons = [MDFlatButton(text='Retry',on_release = self.close)]
-                    )
-            self.dialog.open()      
-        elif (len(usr_data) == 0):
-            # if not self.dialog:
-                # create dialog
-            print("I am inside login usr_Data len",len(usr_data))
-            self.dialog = MDDialog(
-                title="Sign up notice",
-                text=f"Please Sign up! or provide a valid username and password",
-                buttons=[
-                    MDFlatButton(
-                        text="Ok", text_color=self.theme_cls.primary_color, 
-                        on_release=self.close
-                    ),
-                ],
-            )
-            self.dialog.open()        
+    #     #when username or password is empty
+    #     if(loginName.split() == [] and loginPassword.split() == []):
+    #         self.dialog = MDDialog(
+    #                 title = 'Invalid Input !',
+    #                 text = 'Please enter all the fields',
+    #                 size_hint = (0.7,0.2),
+    #                 buttons = [MDFlatButton(text='Retry',on_release = self.close)]
+    #                 )
+    #         self.dialog.open()      
+    #     elif (len(usr_data) == 0):         
+                
+    #         # print("I am inside login usr_Data len",len(usr_data))
+    #         self.dialog = MDDialog(
+    #             title="Sign up notice",
+    #             text=f"Please Sign up! or provide a valid username and password",
+    #             buttons=[
+    #                 MDFlatButton(
+    #                     text="Ok", text_color=self.theme_cls.primary_color, 
+    #                     on_release=self.close
+    #                 ),
+    #             ],
+    #         )
+    #         self.dialog.open()        
 
-        elif(usr_data[0][0] == self.root.ids.page2.ids.user.text and usr_data[0][1] == self.root.ids.page2.ids.password.text):
-            # print("I am elif usr",usr_data, usr_data[0][1], usr_data[0][0] == self.root.ids.page2.ids.user.text, usr_data[0][1] == int(self.root.ids.page2.ids.password.text))
-            print("checking manager", self.root.current)
-            print("this is page4 ibia", self.root)
-            self.root.current = 'sixth_page' 
+    #     elif(usr_data[0][0] == self.root.ids.page2.ids.user.text and usr_data[0][1] == self.root.ids.page2.ids.password.text):
+    #         # print("I am elif usr",usr_data, usr_data[0][1], usr_data[0][0] == self.root.ids.page2.ids.user.text, usr_data[0][1] == int(self.root.ids.page2.ids.password.text))
+    #         print("checking manager", self.root.current)
+    #         print("this is page4 ibia", self.root)
+    #         self.root.current = 'sixth_page' 
 
                         
-        #self.root.ids.word_label.text = f'{self.root.ids.user_signup.text} Added'       
-        #self.root.ids.word_input.text = ''
-        # ibia.............. self.root.manager.current is used whereas outside this function in testApp it is not
-        conn.commit()
-        conn.close()
+    #     #self.root.ids.word_label.text = f'{self.root.ids.user_signup.text} Added'       
+    #     #self.root.ids.word_input.text = ''
+    #     # ibia.............. self.root.manager.current is used whereas outside this function in testApp it is not
+    #     conn.commit()
+    #     conn.close()
     
     #when "Ok" is clicked in the date picker
     def on_save(self,instance,value,date_range):

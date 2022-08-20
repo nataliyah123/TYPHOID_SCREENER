@@ -1,0 +1,39 @@
+<Doctechlogin>: 
+    name: 'second_page'       
+    orientation: 'vertical'
+    require_email_verification: True        
+    MDTextFieldRound:
+        id: user
+        icon_left: "account-check"
+        hint_text: "EMAIL"        
+        foreground_color: (0,0,0,1)
+        size_hint_x: None
+        width: 220
+        font_size: 20
+        pos_hint: {"center_x": 0.5,"center_y": 0.6}
+    MDTextFieldRound:
+        id: password
+        icon_left: "key-variant"
+        hint_text: "Password"
+        foreground_color: (0,0,0,1)
+        size_hint_x: None
+        width: 220
+        font_size: 20            
+        pos_hint: {"center_x": 0.5,"center_y": 0.5}
+        password: True
+    MDRectangleFlatButton:
+        text: "LOG IN"
+        font_size: 15
+        theme_text_color: "Custom"
+        text_color: 0, 0, 1, 1
+        pos_hint: {"center_x": 0.3,"center_y": 0.3}
+        on_press: root.Login(user.text, password.text)
+    MDRectangleFlatButton:
+        text: "RESET PASSWORD"
+        font_size: 15
+        theme_text_color: "Custom"
+        text_color: 0, 0, 1, 1
+        pos_hint: {"center_x": 0.7,"center_y": 0.3}
+        on_press: root.reset_password( user.text)    
+
+    
