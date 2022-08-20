@@ -5,7 +5,7 @@ from kivymd.uix.dialog import MDDialog
 from kivy.uix.floatlayout import FloatLayout
 from kivymd.uix.button import MDFlatButton
 from kivy.properties import ObjectProperty
-import sqlite3
+# import sqlite3
 from fpdf import FPDF
 
 typhoidresult = ""
@@ -17,9 +17,10 @@ class Predict(FloatLayout):
         # close dialog
         self.dialog.dismiss()
     def predictusingai(self):
-        conn = sqlite3.connect('doctechpat.db')       
-        c = conn.cursor()
+        # conn = sqlite3.connect('doctechpat.db')       
+        # c = conn.cursor()
         nameofpatient = self.ids.patientname.text
+        recordentry = self.ids.recordentrydate.text
         if(nameofpatient == "" ):
             self.dialog = MDDialog(
                     title = 'Invalid Input !',
@@ -29,8 +30,13 @@ class Predict(FloatLayout):
                     )
             self.dialog.open()        
         else:            
-            c.execute("SELECT * FROM 'patientfeatures' where patientid =?", [nameofpatient])
-            usr_data = c.fetchall()
+            # c.execute("SELECT * FROM 'patientfeatures' where patientid =?", [nameofpatient])
+            # usr_data = c.fetchall()
+            patientfeatureresult = firebase.post('https://testingcloudstorage-db6b3-default-rtdb.firebaseio.com/Patientfeatures', "")
+            for i in patientfeatureresult.keys():
+                if (patientfeatureresult[i]['patientid'] == nameofpatient and patientfeatureresult[i]['recordentry'] == recordentry):
+                    usr_data = patientfeatureresult[i][nameofpatient]
+            
             if(len(usr_data) == 0):
                 self.dialog = MDDialog(
                     title = 'Invalid Input !',
@@ -40,9 +46,8 @@ class Predict(FloatLayout):
                     )
                 self.dialog.open()
             else:
-                c.execute("SELECT * from 'patientfeatures' where patientid =?", [nameofpatient])
-                pat_data = c.fetchall()
-                Fever,Abdominal_Pain,Cough,Diarrheoa,Constipation,Rose_spots,Muscle_Weakness,Anorexia,Headache,Skin_Rash,Wieghtless,Stomach_distention,Malaise,Occult_blood_in_stool,Haemorrahages,Derilium,Abdominal_rigidity,Epistaxis= pat_data[0][2],pat_data[0][3],pat_data[0][4],pat_data[0][5],pat_data[0][6],pat_data[0][7],pat_data[0][8],pat_data[0][9],pat_data[0][10],pat_data[0][11],pat_data[0][12],pat_data[0][13],pat_data[0][14],pat_data[0][15],pat_data[0][16],pat_data[0][17],pat_data[0][18],pat_data[0][19]
+                # c.execute("SELECT * from 'patientfeatures' where patientid =?", [nameofpatient])
+                Fever,Abdominal_Pain,Cough,Diarrheoa,Constipation,Rose_spots,Muscle_Weakness,Anorexia,Headache,Skin_Rash,Wieghtless,Stomach_distention,Malaise,Occult_blood_in_stool,Haemorrahages,Derilium,Abdominal_rigidity,Epistaxis= usr_data["Fever"],usr_data["Abdominal_Pain"],usr_data["Cough"],usr_data["Diarrheoa"],usr_data["Constipation"],usr_data["Rose_spots"],usr_data["Muscle_Weakness"],usr_data["Anorexia"],usr_data["Headache"],usr_data["Wieghtless"],usr_data["Stomach_distention"],usr_data["Malaise"],usr_data["Occult_blood_in_stool"],usr_data["Haemorrahages"],usr_data["Derilium"],usr_data["Abdominal_rigidity"],usr_data["Epistaxis"]
                 
                 if ((Muscle_Weakness==1) and (Anorexia==1) and (Headache==1) and (Skin_Rash==1) and (Wieghtless==1) and (Stomach_distension==1) and (Haemorrahages==1) and(Derilium==1)):
                     return "Very low risk"
@@ -87,6 +92,8 @@ class Predict(FloatLayout):
         self.ids.typhoidresult.opacity = 1
         self.ids.typhoidresult.text = "Patient" + " "+ (self.ids.patientname.text) +" has " + typhoid_results + " " + "typhoid"        
         self.ids.patientname.opacity = 0
+        self.ids.recordentrydate.opacity = 0
+
     def generatePDF(self):        
         pdf = FPDF() 
         # Add a page

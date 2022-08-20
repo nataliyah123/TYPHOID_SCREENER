@@ -4,7 +4,7 @@
     typhoidresult : typhoidresult
 	Label:		
         id: predict_patlab
-        text: "Enter patient Id"
+        text: "Enter patient details"
         font_size: 30
         halign: "center" 
         pos_hint: {"center_x": 0.5,"center_y": 0.8}
@@ -17,6 +17,17 @@
         font_size: 20
         opacity: 1
         pos_hint: {"center_x": 0.5,"center_y": 0.7}
+
+    MDTextFieldRound:
+        id: recordentrydate        
+        hint_text: "enter the date when record was added"
+        foreground_color: 1, 0, 1, 1
+        size_hint_x: None
+        width: 220
+        font_size: 20
+        opacity: 1
+        pos_hint: {"center_x": 0.5,"center_y": 0.6}    
+
     MDTextFieldRound:
         id: typhoidresult
         text: ""       

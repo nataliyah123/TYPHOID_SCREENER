@@ -15,11 +15,9 @@ from kivy.properties import ObjectProperty
 import kivy
 #from kivy.uix.camera import Camera   ## uncomment for android
 from kivy.graphics.texture import Texture
-import time
-import sqlite3
 from predict import Predict 
 import time
-import sqlite3
+# import sqlite3
 import os
 from uploader import Uploader
 from Signuplogin import Signuplogin
@@ -29,10 +27,10 @@ from uploader import LoadDialog
 folder = os.path.dirname(os.path.realpath(__file__))
 Builder.load_file(folder + "/predict.kv")
 Builder.load_file(folder + "/Signuplogin.kv")
-Builder.load_file(folder + "/Doctechlogin.kv")
+Builder.load_file(folder + "/doctechlogin.kv")
 features = []
 textval = ""
-print("I need to know what is your platform ibia", platform)
+#print("I need to know what is your platform ibia", platform)
 if platform == 'android':
   #from android.permissions import request_permissions, Permission   ibia uncomment this line
   def callback(permission, callbacks):
@@ -185,27 +183,44 @@ class TestApp(MDApp):
     #                 buttons = [MDFlatButton(text='Ok',on_release = self.move)]
     #                 )
     #         self.dialog.open()
+    def generate_patient_id(self,patname):
+        response = firebase.get('https://testingcloudstorage-db6b3-default-rtdb.firebaseio.com/Patientinfo', '')
+        lastpatientid = response[list(ourkeys)[-1]]['patientid']
+        number = ''
+        alpha = ''
+        for i in range(len(lastpatientid)):
+            if lastpatientid[i].isdigit():
+                number = number + lastpatientid[i]
+            else:
+                alpha = alpha + lastpatientid[i]
+        number = str(int(number) + 1)
+        patientid = lastpatientid[0] + lastpatientid[1] + number
+        return patientid 
 
     def submit_pat_info(self):
         # this should have some sort of checks for the fields to comply with the format
         print("this is testin", self.root.ids.page4.ids.date.text)
-        conn = sqlite3.connect('doctechpat.db')       
-        c = conn.cursor()        
-        c.execute("INSERT INTO Patientinfo (patientname,country, city, state,phone,email,GENDER,ETHNICITY,recordentrydate ) values(?,?,?,?,?,?,?,?,?)",
-            [
-                 self.root.ids.page4.ids.patient_name.text,
-                 self.root.ids.page4.ids.country.text,
-                 self.root.ids.page4.ids.city.text,
-                 self.root.ids.page4.ids.state.text,
-                 self.root.ids.page4.ids.phone.text,
-                 self.root.ids.page4.ids.signup_email.text,
-                 self.root.ids.page4.ids.gender.text,
-                 self.root.ids.page4.ids.ethnicity.text,
-                 self.root.ids.page4.ids.date.text               
+        # conn = sqlite3.connect('doctechpat.db')       
+        # c = conn.cursor() 
+        # c.execute("INSERT INTO Patientinfo (patientname,country, city, state,phone,email,GENDER,ETHNICITY,recordentrydate ) values(?,?,?,?,?,?,?,?,?)",
+            # []
+        Patientinfo = {    
+                 "patientname": self.root.ids.page4.ids.patient_name.text,
+                 "patientid": generate_patient_id(self.root.ids.page4.ids.patient_name.text),
+                 "country": self.root.ids.page4.ids.country.text,
+                 "city":  self.root.ids.page4.ids.city.text,
+                 "state": self.root.ids.page4.ids.state.text,
+                 "phone": self.root.ids.page4.ids.phone.text,
+                 "email": self.root.ids.page4.ids.signup_email.text,
+                 "GENDER": self.root.ids.page4.ids.gender.text,
+                 "ETHNICITY": self.root.ids.page4.ids.ethnicity.text,
+                 "recordentrydate": self.root.ids.page4.ids.date.text               
                 
-            ])
-        conn.commit()
-        conn.close()
+        } 
+        firebase.post('https://testingcloudstorage-db6b3-default-rtdb.firebaseio.com/Patientinfo', Patientinfo)       
+   
+        # conn.commit()
+        # conn.close()
 
     def checkbox_func_arr(self, instance, value, feat_value):
         # conn = sqlite3.connect('doctechpat.db')       
@@ -242,11 +257,35 @@ class TestApp(MDApp):
            features.insert(1,self.root.ids.features.ids.personnel_id_features.text)
            features.insert(20,self.root.ids.features.ids.date_features.text) 
            print("checking the feature arr", features)
-           conn = sqlite3.connect('doctechpat.db')       
-           c = conn.cursor()        
-           c.execute("INSERT INTO Patientfeatures(patientid,personnel_id,Fever,Abdominal_Pain,Cough,Diarrheoa,Constipation,Rose_spots,Muscle_Weakness,Anorexia,Headache,Skin_Rash,Wieghtless,Stomach_distention,Malaise,Occult_blood_in_stool,Haemorrahages,Derilium,Abdominal_rigidity,Epistaxis,recordentrydate) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", features)
-           conn.commit()
-           conn.close()  
+           Patientfeatures = {
+               "patientid":generate_patient_id(features[0]),
+               "personnel_id":"j1",
+               "Fever":features[2],
+               "Abdominal_Pain":features[3],
+               "Cough":features[4],
+               "Diarrheoa":features[5],
+               "Constipation":features[6],
+               "Rose_spots":features[7],
+               "Muscle_Weakness":features[8],
+               "Anorexia":features[9],
+               "Headache":features[10],
+               "Skin_Rash":features[11],
+               "Wieghtless":features[12],
+               "Stomach_distention":features[13],
+               "Malaise":features[14],
+               "Occult_blood_in_stool":features[15],
+               "Haemorrahages":features[16],
+               "Derilium":features[17],
+               "Abdominal_rigidity":features[18],
+               "Epistaxis":features[19],
+               "recordentrydate ":features[20]
+           }           
+           firebase.post('https://testingcloudstorage-db6b3-default-rtdb.firebaseio.com/Patientfeatures', Patientfeatures)
+           # conn = sqlite3.connect('doctechpat.db')       
+           # c = conn.cursor()        
+           # c.execute("INSERT INTO Patientfeatures(patientid,personnel_id,Fever,Abdominal_Pain,Cough,Diarrheoa,Constipation,Rose_spots,Muscle_Weakness,Anorexia,Headache,Skin_Rash,Wieghtless,Stomach_distention,Malaise,Occult_blood_in_stool,Haemorrahages,Derilium,Abdominal_rigidity,Epistaxis,recordentrydate) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", features)
+           # conn.commit()
+           # conn.close()  
 
     # def Login(self):
     #     print("this is login", self.root.ids.page2.ids.user.text)
