@@ -8,35 +8,45 @@
         font_size: 30
         halign: "center" 
         pos_hint: {"center_x": 0.5,"center_y": 0.8}
-	MDTextFieldRound:
+    MDTextFieldRect:
         id: patientname        
         hint_text: "patient name"
         foreground_color: 1, 0, 1, 1
-        size_hint_x: None
+        size_hint: 0.5, None
+        height: "30dp"
         width: 220
         font_size: 20
         opacity: 1
         pos_hint: {"center_x": 0.5,"center_y": 0.7}
 
-    MDTextFieldRound:
-        id: recordentrydate        
-        hint_text: "enter the date when record was added"
-        foreground_color: 1, 0, 1, 1
-        size_hint_x: None
-        width: 220
-        font_size: 20
-        opacity: 1
-        pos_hint: {"center_x": 0.5,"center_y": 0.6}    
+    #MDTextFieldRect:
+    #    id: recordentrydate        
+    #    hint_text: "enter the date when record was added"
+    #    foreground_color: 1, 0, 1, 1
+    #    size_hint: 0.5, None
+    #    height: "30dp"
+    #    width: 220
+    #    font_size: 20
+    #    opacity: 1
+    #    pos_hint: {"center_x": 0.5,"center_y": 0.6}
+    #MDFloatLayout:
+    MDRaisedButton:
+        id : recordentrydate
+        text : "Record entry date"
+        opacity:1
+        pos_hint: {"center_x": 0.5,"center_y": 0.6} 
+        on_release : root.show_date_picker()     
 
-    MDTextFieldRound:
+    MDTextFieldRect:
         id: typhoidresult
         text: ""       
         foreground_color: 1, 0, 1, 1
-        size_hint_x: None
+        size_hint: 0.5, None
+        height: "30dp"
         width: 500
         font_size: 20
         opacity: 0
-        pos_hint: {"center_x": 0.5,"center_y": 0.6}
+        pos_hint: {"center_x": 0.5,"center_y": 0.55}
     MDFlatButton:
         text: "PREDICT USING AI"
         font_size: 15

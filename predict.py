@@ -5,13 +5,14 @@ from kivymd.uix.dialog import MDDialog
 from kivy.uix.floatlayout import FloatLayout
 from kivymd.uix.button import MDFlatButton
 from kivy.properties import ObjectProperty
-# import sqlite3
+from kivymd.uix.picker import MDDatePicker
+from firebase import firebase
 from fpdf import FPDF
 
 typhoidresult = ""
 typhoid_results = ""
 nameofpatient =""
-	
+firebase = firebase.FirebaseApplication('https://testingcloudstorage-db6b3-default-rtdb.firebaseio.com/', None)	
 class Predict(FloatLayout):    
     def close(self, instance):
         # close dialog
@@ -32,9 +33,10 @@ class Predict(FloatLayout):
         else:            
             # c.execute("SELECT * FROM 'patientfeatures' where patientid =?", [nameofpatient])
             # usr_data = c.fetchall()
-            patientfeatureresult = firebase.post('https://testingcloudstorage-db6b3-default-rtdb.firebaseio.com/Patientfeatures', "")
+            patientfeatureresult = firebase.get('https://testingcloudstorage-db6b3-default-rtdb.firebaseio.com/Patientfeatures', "")
             for i in patientfeatureresult.keys():
-                if (patientfeatureresult[i]['patientid'] == nameofpatient and patientfeatureresult[i]['recordentry'] == recordentry):
+                
+                if (patientfeatureresult[i]['patientid'] == nameofpatient and patientfeatureresult[i]['recordentrydate'] == recordentry):
                     usr_data = patientfeatureresult[i][nameofpatient]
             
             if(len(usr_data) == 0):
@@ -111,3 +113,16 @@ class Predict(FloatLayout):
         nameoffile = (self.ids.patientname.text) + ".pdf"
         pdf.output(nameoffile) 
         print("I am pdf genrator*** end ibia")
+
+    def on_save(self,instance,value,date_range):
+        self.ids.recordentrydate.text = str(value)
+
+    #when "Cancel" is clicked in the date picker
+    def on_cancel(self,instance,value):
+        return
+
+    #function for date picker
+    def show_date_picker(self):
+        date_dialog = MDDatePicker()        
+        date_dialog.bind(on_save = self.on_save,on_cancel=self.on_cancel)
+        date_dialog.open()

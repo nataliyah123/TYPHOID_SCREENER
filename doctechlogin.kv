@@ -2,22 +2,24 @@
     name: 'second_page'       
     orientation: 'vertical'
     require_email_verification: True        
-    MDTextFieldRound:
+    MDTextFieldRect:
         id: user
         icon_left: "account-check"
         hint_text: "EMAIL"        
         foreground_color: (0,0,0,1)
-        size_hint_x: None
-        width: 220
+        size_hint: 0.5, None
+        height: "30dp"
+        width: "40dp"
         font_size: 20
         pos_hint: {"center_x": 0.5,"center_y": 0.6}
-    MDTextFieldRound:
+    MDTextFieldRect:
         id: password
         icon_left: "key-variant"
         hint_text: "Password"
         foreground_color: (0,0,0,1)
-        size_hint_x: None
-        width: 220
+        size_hint: 0.5, None
+        width: "40dp"
+        height: "30dp"
         font_size: 20            
         pos_hint: {"center_x": 0.5,"center_y": 0.5}
         password: True
