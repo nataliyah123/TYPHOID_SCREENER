@@ -56,8 +56,8 @@
         valign: "center"
         pos_hint: {"center_x": 0.5, "center_y": 0.1}
         spacing: None
-        #on_press: root.manager.current = "second_page"                  
-        on_press: root.manager.current = 'eleventh_page'
+        on_press: root.manager.current = "second_page"                  
+        #on_press: root.manager.current = 'eleventh_page'
     
 
 <SecondPage>:
@@ -100,8 +100,16 @@
         font_size: 15
         theme_text_color: "Custom"
         text_color: 0, 0, 1, 1
-        pos_hint: {"center_x": 0.5,"center_y": 0.3}
+        pos_hint: {"center_x": 0.5,"center_y": 0.1}
         on_press: root.manager.current = "third_page"   
+    MDRectangleFlatButton:
+        text: "BACK"
+        font_size: 15
+        theme_text_color: "Custom"
+        text_color: 0, 0, 1, 1
+        pos_hint: {"center_x": 0.3,"center_y": 0.3}
+        on_press: root.manager.current = 'first_page'
+
      
 
 <ThirdPage>:
@@ -197,8 +205,7 @@
             cols: 1
             spacing: "20dp"
             padding: "20dp"
-            MDToolbar:
-            #MDTopAppBar:
+            MDTopAppBar:
                 title: "Hi"
                 id:toolbar
                 elevation: 5
@@ -344,8 +351,7 @@
             cols: 1
             spacing: "20dp"
             padding: "20dp"
-            MDToolbar:
-            #MDTopAppBar:
+            MDTopAppBar:
                 title: "Hi"
                 id:toolbar2
                 elevation: 5
