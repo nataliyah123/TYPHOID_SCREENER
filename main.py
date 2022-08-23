@@ -1,7 +1,6 @@
 from kivy.config import Config
 from kivy.lang import Builder
 from kivy.app import App
-# from kivy.factory import Factory
 from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -17,7 +16,6 @@ import kivy
 from kivy.graphics.texture import Texture
 from predict import Predict 
 import time
-# import sqlite3
 import os
 from uploader import Uploader
 from Signuplogin import Signuplogin
@@ -25,12 +23,9 @@ from doctechlogin import Doctechlogin
 from uploader import LoadDialog
 
 folder = os.path.dirname(os.path.realpath(__file__))
-Builder.load_file(folder + "/predict.kv")
-Builder.load_file(folder + "/Signuplogin.kv")
-Builder.load_file(folder + "/doctechlogin.kv")
+
 features = []
 textval = ""
-#print("I need to know what is your platform ibia", platform)
 if platform == 'android':
   #from android.permissions import request_permissions, Permission   ibia uncomment this line
   def callback(permission, callbacks):
@@ -139,8 +134,11 @@ class TestApp(MDApp):
         # c.execute("SELECT * FROM 'doctortech' LIMIT 0,1")
         # records = c.fetchall()
         # print("salam ibia", records[0])    
-        Builder.load_file('login.kv')  
-        Builder.load_file(folder + "/uploader.kv")      
+        Builder.load_file(folder +'/main.kv')  
+        Builder.load_file(folder + "/uploader.kv")  
+        Builder.load_file(folder + "/predict.kv")
+        Builder.load_file(folder + "/Signuplogin.kv")
+        Builder.load_file(folder + "/doctechlogin.kv")    
         return ScreenManagement()
 
     # def Sign_Up_doctech(self):
@@ -199,7 +197,7 @@ class TestApp(MDApp):
 
     def submit_pat_info(self):
         # this should have some sort of checks for the fields to comply with the format
-        print("this is testin", self.root.ids.page4.ids.date.text)
+        #print("this is testin", self.root.ids.page4.ids.date.text)
         # conn = sqlite3.connect('doctechpat.db')       
         # c = conn.cursor() 
         # c.execute("INSERT INTO Patientinfo (patientname,country, city, state,phone,email,GENDER,ETHNICITY,recordentrydate ) values(?,?,?,?,?,?,?,?,?)",
@@ -340,8 +338,10 @@ class TestApp(MDApp):
         print("on_Save value", value)
         if(self.textval == "patient_features_val"):
             self.root.ids.features.ids.date_features.text= str(value) 
-        elif(self.texval == "fourth_page"):     
+        elif(self.textval == "fourth_page"):     
             self.root.ids.page4.ids.date.text = str(value)
+        elif(self.textval == "eleventh_page"):
+            print("I am testiing child", self.root.ids.page11, self.root)
 
     #when "Cancel" is clicked in the date picker
     def on_cancel(self,instance,value):

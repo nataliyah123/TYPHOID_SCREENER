@@ -13,7 +13,7 @@ class Doctechlogin(FloatLayout, EventDispatcher):
 
     web_api_key = "AIzaSyDLdBkSysTsUAe0wTpm99ekeVt6V-Xqpkk"    
     def Login(self, email, password):
-        print("I am logged in")    
+        #print("I am logged in")    
         sign_in_url = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" + self.web_api_key
         sign_in_payload = dumps(
             {"email": email, "password": password, "returnSecureToken": True})
@@ -102,7 +102,7 @@ class Doctechlogin(FloatLayout, EventDispatcher):
                    on_failure=self.could_not_get_verification_info,
                    on_error=self.could_not_get_verification_info,
                    ca_file=certifi.where())
-        self.parent.parent.current = 'third_page'
+        self.parent.parent.current = 'sixth_page'
     
     def could_not_get_verification_info(self, request, result):        
         
@@ -160,7 +160,14 @@ class Doctechlogin(FloatLayout, EventDispatcher):
                     )
         self.dialog.open()
     def sign_in_error(self, *args):
-        print('There is an error in resetting email')    
+        self.dialog = MDDialog(
+                    title = "Error",
+                    text = str(message),
+                    size_hint = (0.7,0.2),
+                    buttons = [MDFlatButton(text='Ok',on_release = self.close)]
+                    )
+        self.dialog.open()
+        # print('There is an error in resetting email', args[1])    
 
     def close(self, instance):
         # close dialog
