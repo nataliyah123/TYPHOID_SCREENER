@@ -56,8 +56,8 @@
         valign: "center"
         pos_hint: {"center_x": 0.5, "center_y": 0.1}
         spacing: None
-        #on_press: root.manager.current = "second_page"                  
-        on_press: root.manager.current = 'eleventh_page'
+        on_press: root.manager.current = "second_page"                  
+        #on_press: root.manager.current = 'eleventh_page'
     
 
 <SecondPage>:
@@ -197,7 +197,7 @@
             cols: 1
             spacing: "20dp"
             padding: "20dp"
-            MDToolbar:
+            MDTopAppBar:
             #MDTopAppBar:
                 title: "Hi"
                 id:toolbar
@@ -344,7 +344,7 @@
             cols: 1
             spacing: "20dp"
             padding: "20dp"
-            MDToolbar:
+            MDTopAppBar:
             #MDTopAppBar:
                 title: "Hi"
                 id:toolbar2
@@ -1320,6 +1320,18 @@
     name: "tenth_page"
     orientation: 'vertical'
     spacing:10
+    #patient id
+    MDTextFieldRect:
+        id: patient_id
+        icon_left: "account"
+        hint_text: "Patient ID"
+        foreground_color: (0,0,0,1)
+        size_hint: 0.5, None
+        width: "40dp"
+        height: "30dp"
+        font_size: 20            
+        pos_hint: {"center_x": 0.5,"center_y": 0.9}
+        password: True
     #Camera:
         #id: camera
         #resolution: (640, 480)
