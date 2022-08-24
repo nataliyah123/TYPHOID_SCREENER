@@ -22,10 +22,11 @@ class Predict(FloatLayout):
         # c = conn.cursor()
         nameofpatient = self.ids.patientname.text
         recordentry = self.ids.recordentrydate.text
-        if(nameofpatient == "" ):
+        print("first recordentry", recordentry)
+        if(nameofpatient == "" or recordentry == "Record entry date"):
             self.dialog = MDDialog(
                     title = 'Invalid Input !',
-                    text = 'Please enter a valid user',
+                    text = 'Please enter a valid user and date',
                     size_hint = (0.7,0.2),
                     buttons = [MDFlatButton(text='Retry',on_release = self.close)]
                     )
@@ -34,12 +35,17 @@ class Predict(FloatLayout):
             # c.execute("SELECT * FROM 'patientfeatures' where patientid =?", [nameofpatient])
             # usr_data = c.fetchall()
             patientfeatureresult = firebase.get('https://testingcloudstorage-db6b3-default-rtdb.firebaseio.com/Patientfeatures', "")
-            for i in patientfeatureresult.keys():
-                
-                if (patientfeatureresult[i]['patientid'] == nameofpatient and patientfeatureresult[i]['recordentrydate'] == recordentry):
-                    usr_data = patientfeatureresult[i][nameofpatient]
+            usr_data = [];
+            #for i in patientfeatureresult.keys():
+            for i in range(len(patientfeatureresult.values())):
+                patfeatres = list(patientfeatureresult.values())[i]
+                print("second recordentry",nameofpatient, recordentry, patfeatres['recordentrydate'],recordentry== patfeatres['recordentrydate'])
+                if (patfeatres['patientid'] == nameofpatient and patfeatres['recordentrydate'] == recordentry):
+                    usr_data = list(patientfeatureresult.values())[i]
+                    print("this difficult no",usr_data)
             
             if(len(usr_data) == 0):
+                print("inside if(len(usr_data))")
                 self.dialog = MDDialog(
                     title = 'Invalid Input !',
                     text = 'Please enter a valid user',
@@ -49,8 +55,8 @@ class Predict(FloatLayout):
                 self.dialog.open()
             else:
                 # c.execute("SELECT * from 'patientfeatures' where patientid =?", [nameofpatient])
-                Fever,Abdominal_Pain,Cough,Diarrheoa,Constipation,Rose_spots,Muscle_Weakness,Anorexia,Headache,Skin_Rash,Wieghtless,Stomach_distention,Malaise,Occult_blood_in_stool,Haemorrahages,Derilium,Abdominal_rigidity,Epistaxis= usr_data["Fever"],usr_data["Abdominal_Pain"],usr_data["Cough"],usr_data["Diarrheoa"],usr_data["Constipation"],usr_data["Rose_spots"],usr_data["Muscle_Weakness"],usr_data["Anorexia"],usr_data["Headache"],usr_data["Wieghtless"],usr_data["Stomach_distention"],usr_data["Malaise"],usr_data["Occult_blood_in_stool"],usr_data["Haemorrahages"],usr_data["Derilium"],usr_data["Abdominal_rigidity"],usr_data["Epistaxis"]
-                
+                Fever,Abdominal_Pain,Cough,Diarrheoa,Constipation,Rose_spots,Muscle_Weakness,Anorexia,Headache,Skin_Rash,Wieghtless,Stomach_distention,Malaise,Occult_blood_in_stool,Haemorrahages,Derilium,Abdominal_rigidity,Epistaxis= usr_data["Fever"],usr_data["Abdominal_Pain"],usr_data["Cough"],usr_data["Diarrheoa"],usr_data["Constipation"],usr_data["Rose_spots"],usr_data["Muscle_Weakness"],usr_data["Anorexia"],usr_data["Headache"],usr_data["Skin_Rash"],usr_data["Wieghtless"],usr_data["Stomach_distention"],usr_data["Malaise"],usr_data["Occult_blood_in_stool"],usr_data["Haemorrahages"],usr_data["Derilium"],usr_data["Abdominal_rigidity"],usr_data["Epistaxis"]
+                print("I am Derilium", Derilium)
                 if ((Muscle_Weakness==1) and (Anorexia==1) and (Headache==1) and (Skin_Rash==1) and (Wieghtless==1) and (Stomach_distension==1) and (Haemorrahages==1) and(Derilium==1)):
                     return "Very low risk"
                 if((Anorexia==1) and (Skin_Rash==1) and (Wieghtless==2) and (Haemorrahages==1)):
@@ -89,19 +95,31 @@ class Predict(FloatLayout):
                     return "High or Very High Risk" 
 
     def show_results(self):  
-        typhoid_results = self.predictusingai()        
-        self.ids.predict_patlab.text = ""
-        self.ids.typhoidresult.opacity = 1
-        self.ids.typhoidresult.text = "Patient" + " "+ (self.ids.patientname.text) +" has " + typhoid_results + " " + "typhoid"        
-        self.ids.patientname.opacity = 0
-        self.ids.recordentrydate.opacity = 0
+        typhoid_results = self.predictusingai() 
+        print("this is typhoid_results", typhoid_results)
+        if (typhoid_results != None):       
+            self.ids.predict_patlab.text = ""
+            self.ids.typhoidresult.opacity = 1
+            self.ids.typhoidresult.text = "Patient" + " "+ (self.ids.patientname.text) +" has " + typhoid_results + " " + "typhoid"        
+            self.ids.patientname.opacity = 0
+            self.ids.recordentrydate.opacity = 0
+        else:
+            self.ids.predict_patlab.text = ""
+            self.ids.typhoidresult.opacity = 1
+            self.ids.typhoidresult.text = "Patient" + " "+ (self.ids.patientname.text) +" has " + "no" + " " + "typhoid"        
+            self.ids.patientname.opacity = 0
+            self.ids.recordentrydate.opacity = 0
 
     def generatePDF(self):        
         pdf = FPDF() 
         # Add a page
         pdf.add_page()    
         #add text        
-        reportxt = "The patient" +" "+ (self.ids.patientname.text) +" has " + self.predictusingai()     
+        print("I am self.predictusingai", self.predictusingai())
+        if (self.predictusingai() != None):
+            reportxt = "The patient" +" "+ (self.ids.patientname.text) +" has " + self.predictusingai() +"typhoid"
+        else:
+            reportxt = "The patient" +" "+ (self.ids.patientname.text) +" has " + "no typhoid"     
         # set style and size of font
         # that you want in the pdf
         pdf.set_font("Arial", size = 15)         
